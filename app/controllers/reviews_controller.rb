@@ -2,7 +2,8 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviewable = find_reviewable
+    @reviews = @reviewable.reviews
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +41,8 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(params[:review])
+    @reviewable = find_reviewable
+    @review =  @reviewable.reviews.build(params[:review])
 
     respond_to do |format|
       if @review.save
@@ -80,4 +82,13 @@ class ReviewsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def find_reviewable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+  end
+
 end

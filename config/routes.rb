@@ -1,9 +1,13 @@
 Azure::Application.routes.draw do
-  resources :partners
+  resources :partners do
+    resources :reviews
+  end
 
-  resources :reviews
+  # resources :reviews
 
-  resources :companies
+  resources :companies do
+    resources :reviews
+  end
 
   devise_for :users
 
@@ -56,7 +60,7 @@ Azure::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'companies#index'
 
   # See how all your routes lay out with "rake routes"
 
