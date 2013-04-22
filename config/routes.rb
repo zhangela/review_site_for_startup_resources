@@ -1,6 +1,8 @@
 Azure::Application.routes.draw do
   resources :reviews
 
+  resources :companies
+
   devise_for :users
 
   # The priority is based upon order of creation:
