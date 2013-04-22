@@ -1,4 +1,6 @@
 Azure::Application.routes.draw do
+  resources :partners
+
   resources :reviews
 
   resources :companies
