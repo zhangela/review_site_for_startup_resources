@@ -14,7 +14,7 @@ class PartnersController < ApplicationController
   # GET /partners/1.json
   def show
     @partner = Partner.find(params[:id])
-    @reviewable = @company
+    @reviewable = @partner
     @reviews = @reviewable.reviews
     @review = Review.new
 
