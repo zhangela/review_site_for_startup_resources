@@ -25,7 +25,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.json
   def new
-    @review = Review.new
+	@reviewable = find_reviewable
+    @review = @reviewable.reviews.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,11 +47,11 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render json: @review, status: :created, location: @review }
+        format.html { redirect_to @reviewable, notice: 'Review was successfully created.' }
+        format.json { render json: @reviewable, status: :created, location: @reviewable }
       else
         format.html { render action: "new" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        format.json { render json: @reviewable.errors, status: :unprocessable_entity }
       end
     end
   end
