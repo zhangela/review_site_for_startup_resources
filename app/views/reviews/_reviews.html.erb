@@ -1,0 +1,24 @@
+<div id="reviews">
+
+    <h2>Comments</h2>
+
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Body</th>
+        <th>User</th>
+      </tr>
+
+    <% @reviews.each do |review| %>
+    <div class="review">
+      <tr>
+        <td><%= simple_format review.title %></td>
+        <td><%= review.rating %></td>
+        <td><%= simple_format review.body %></td>
+        <td><%= review.user %></td>
+      </tr>
+    </div>
+    <% end %>
+    </table>
+</div>
