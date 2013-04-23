@@ -3,7 +3,9 @@
 one:
   name: MyString
   avg_rating: 9.99
+  company: 
 
 two:
   name: MyString
   avg_rating: 9.99
+  company: 

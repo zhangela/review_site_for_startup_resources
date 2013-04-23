@@ -44,10 +44,13 @@ class PartnersController < ApplicationController
   # POST /partners.json
   def create
     @partner = Partner.new(params[:partner])
+    @company = Company.find(params[:company_id])
+    @partner.company = @company
+    @partner.save
 
     respond_to do |format|
       if @partner.save
-        format.html { redirect_to @partner, notice: 'Partner was successfully created.' }
+        format.html { redirect_to @company, notice: 'Partner was successfully created.' }
         format.json { render json: @partner, status: :created, location: @partner }
       else
         format.html { render action: "new" }

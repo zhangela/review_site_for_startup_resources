@@ -18,6 +18,9 @@ class CompaniesController < ApplicationController
     @reviews = @reviewable.reviews
     @review = Review.new
 
+    @partners = @company.partners
+    @partner = Partner.new
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }

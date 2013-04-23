@@ -1,5 +1,5 @@
 Azure::Application.routes.draw do
-  
+
   resources :partners do
     resources :reviews
   end
@@ -7,7 +7,7 @@ Azure::Application.routes.draw do
   # resources :reviews
 
   resources :companies do
-    resources :reviews
+    resources :reviews, :partners
   end
 
   devise_for :users
