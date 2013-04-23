@@ -1,4 +1,5 @@
 Azure::Application.routes.draw do
+  
   resources :partners do
     resources :reviews
   end
