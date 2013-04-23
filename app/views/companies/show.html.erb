@@ -1,11 +1,39 @@
 
+<script>
+	
+	$(document).ready(function(){
 
-<%= render "partners/partners" %>
-<%= render "partners/form" %>
+		$('#addPartnerButton').click(function(){
+			//use partners form to add a new partner
+			$('#partners').append('<%= escape_javascript( render(:partial=>"partners/form")).html_safe %>');
+			$('#addPartnerButton').hide();
+		});
 
-<%= render "reviews/form" %>
-<%= render "reviews/reviews" %>
+		$('#addReviewButton').click(function(){
+			$('#reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
+		});
 
+	});
+		
+	
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+</script>
+
+<div id="company_info">
+	<p>Company Info Goes Here</p>
+</div>
+
+<div id="partners" >
+	<%#= render "partners/partners" %>
+	<input id="addPartnerButton" type="button" value="Add Partner">
+</div>
+	
+<div id="reviews">
+	<input id="addReviewButton" type="button" value="New Review">
+	<%= render "reviews/reviews" %>
+</div>
+
+<div id="navigation">
+	<%= link_to 'Edit', edit_company_path(@company) %> |
+	<%= link_to 'Back', companies_path %>
+</div>
