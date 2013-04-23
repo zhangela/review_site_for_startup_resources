@@ -1,6 +1,9 @@
 class PartnersController < ApplicationController
   # GET /partners
   # GET /partners.json
+
+  before_filter :authenticate_user!
+  
   def index
     @partners = Partner.all
 
