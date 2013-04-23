@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
+
+  before_filter :load_reviewable
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviewable = find_reviewable
     @reviews = @reviewable.reviews
 
     respond_to do |format|
@@ -25,7 +26,6 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.json
   def new
-	@reviewable = find_reviewable
     @review = @reviewable.reviews.new
 
     respond_to do |format|
@@ -42,7 +42,6 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @reviewable = find_reviewable
     @review =  @reviewable.reviews.build(params[:review])
 
     respond_to do |format|
@@ -84,12 +83,9 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def find_reviewable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
+def load_reviewable
+    resource, id = request.path.split('/')[1, 2]
+    @reviewable = resource.singularize.classify.constantize.find(id)
   end
 
 end
