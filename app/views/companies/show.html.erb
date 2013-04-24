@@ -13,6 +13,11 @@
 			$('#reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
 		});
 
+		$('body').on('click', '#cancelPartnerForm', function(event){ 
+			$('#addPartnerForm').remove();
+			$('#addPartnerButton').show();
+		});
+
 	});
 		
 	
