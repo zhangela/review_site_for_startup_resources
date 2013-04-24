@@ -10,8 +10,9 @@
     $('body').on('click', '#cancelDiscussionButton', function(event){
       $('#newDiscussionForm').fadeOut('fast', function() {
           $(this).remove();
+          $('#addDiscussionButton').show();
+
       });
-      $('#addDiscussionButton').show();
     }); 
 
   });
