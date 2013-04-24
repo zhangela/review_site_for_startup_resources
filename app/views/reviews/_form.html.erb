@@ -1,3 +1,5 @@
+<div id="addReviewForm">
+
 <%= form_for [@reviewable, Review.new] do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -28,3 +30,7 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+  <input type="button" value="Cancel" id="cancelReviewForm">
+
+</div>

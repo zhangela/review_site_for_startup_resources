@@ -3,20 +3,30 @@
 	
 	$(document).ready(function(){
 
+		//Render add partner form
 		$('#addPartnerButton').click(function(){
 			//use partners form to add a new partner
 			$('#partners').append('<%= escape_javascript( render(:partial=>"partners/form")).html_safe %>');
 			$('#addPartnerButton').hide();
 		});
 
-		$('#addReviewButton').click(function(){
-			$('#reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
-		});
-
+		//Cancel add partner form
 		$('body').on('click', '#cancelPartnerForm', function(event){ 
 			$('#addPartnerForm').remove();
 			$('#addPartnerButton').show();
 		});
+
+		//Render add review form
+		$('#addReviewButton').click(function(){
+			$('#reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
+			$('#addReviewButton').hide();
+		});
+
+		//Cancel review form
+		$('body').on('click', '#cancelReviewForm', function(event){
+			$('#addReviewForm').remove();
+			$('#addReviewButton').show();
+		});	
 
 	});
 		
