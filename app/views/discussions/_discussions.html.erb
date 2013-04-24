@@ -1,0 +1,19 @@
+<div id="discussions">
+
+    <h2>Discussions</h2>
+
+    <table>
+      <tr>
+        <th>Body</th>
+      </tr>
+
+    <% @discussions.each do |discussion| %>
+    <div class="discussion">
+      <tr>
+        <td><%= simple_format discussion.body %></td>
+       </tr>
+    </div>
+    <% end %>
+    </table>
+
+</div>

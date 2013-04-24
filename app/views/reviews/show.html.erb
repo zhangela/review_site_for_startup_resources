@@ -1,3 +1,23 @@
+<script>
+
+  $(document).ready(function(){
+
+    $('#addDiscussionButton').click(function(){
+        $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('fast');
+        $('#addDiscussionButton').hide();
+    });
+
+    $('body').on('click', '#cancelDiscussionButton', function(event){
+      $('#newDiscussionForm').fadeOut('fast', function() {
+          $(this).remove();
+      });
+      $('#addDiscussionButton').show();
+    }); 
+
+  });
+</script>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -29,5 +49,10 @@
   <b>Reviewable type:</b>
   <%= @review.reviewable_type %>
 </p>
+
+<div id="discussions">
+  <input id="addDiscussionButton" type="button" value="New Discussion" >
+  <%= render "discussions/discussions" %>
+</div>
 
 

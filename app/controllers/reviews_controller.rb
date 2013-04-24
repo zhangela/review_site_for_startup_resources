@@ -18,6 +18,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
     @review = Review.find(params[:id])
+    @discussions = @review.discussions
+    @discussion = Discussion.new
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,6 +48,8 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review =  @reviewable.reviews.build(params[:review])
+    @reviewable.recalculate_average(@review)
+
 
     respond_to do |format|
       if @review.save
