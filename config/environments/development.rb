@@ -34,4 +34,19 @@ Azure::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.assets.initialize_on_precompile = false
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.action_mailer.delivery_method = :smtp
+
+  # Set up email. 
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "mydomain.com",
+    :authentication => :login,
+    :user_name => "myemaiL@mydomain.com",
+    :password => "mypass"
+  }
 end
