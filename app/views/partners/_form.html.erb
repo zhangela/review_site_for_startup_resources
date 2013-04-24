@@ -1,3 +1,4 @@
+<div id="addPartnerForm">
 <h2>Add a Partner </h2>
 
 <%= form_for [@company, @company.partners.build] do |f| %>
@@ -21,3 +22,6 @@
     <%= f.submit %>
   </div>
 <% end %>
+<input type="button" id="cancelPartnerForm" value="Cancel">
+
+</div>
