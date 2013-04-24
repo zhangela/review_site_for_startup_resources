@@ -43,6 +43,8 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review =  @reviewable.reviews.build(params[:review])
+    @reviewable.recalculate_average(@review)
+
 
     respond_to do |format|
       if @review.save

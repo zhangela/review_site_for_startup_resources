@@ -13,14 +13,14 @@ class Company < ActiveRecord::Base
     def recalculate_average(review)
 
     	#if no reviews have been submitted
-    	if(self.avg_rating.exists?)
+    	if(self.avg_rating == -1)
     		self.update_attribute(:avg_rating, review.rating)
     	else
 			oldAvg = self.avg_rating 
     		numRatings = self.reviews.size
-			oldTotal = oldAvg * numRatings
+			oldTotal = oldAvg * (numRatings-1)
 
-    		newAvg = (oldTotal + review.rating) / (numRatings + 1)
+    		newAvg = (oldTotal + review.rating) / (numRatings)
 
     		self.update_attribute(:avg_rating, newAvg)
     	end
