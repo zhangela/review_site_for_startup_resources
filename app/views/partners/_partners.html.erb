@@ -14,10 +14,14 @@
 <% @partners.each do |partner| %>
   <tr>
     <td><%= partner.name %></td>
-    <td><%= partner.avg_rating %></td>
+    <% if partner.avg_rating < 0 %>
+        <td>Not enough data.</td>
+    <% else %>
+        <td><%= partner.avg_rating %></td>
+    <% end %>
     <td><%= partner.id %></td>
     <td><%= link_to 'Show', partner %></td>
-    <td><%= link_to 'Edit', edit_company_partner_path(:company_id => partner.company_id, :parter => partner) %></td>
+    <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
     <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
