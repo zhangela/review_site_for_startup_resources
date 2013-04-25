@@ -3,11 +3,16 @@
 <p>
   <b>Name:</b>
   <%= @partner.name %>
+  <span><%= link_to 'Edit', edit_partner_path(@partner) %></span>
 </p>
 
 <p>
   <b>Avg rating:</b>
-  <%= @partner.avg_rating %>
+    <% if @partner.avg_rating < 0 %>
+        Not enough data.
+    <% else %>
+        <%= @partner.avg_rating %>
+    <% end %>
 </p>
 
 <%= render "reviews/reviews" %>

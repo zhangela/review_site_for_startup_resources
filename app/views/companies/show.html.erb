@@ -1,6 +1,6 @@
 
 <script>
-	
+
 	$(document).ready(function(){
 
 		//Render add partner form
@@ -11,7 +11,7 @@
 		});
 
 		//Cancel add partner form
-		$('body').on('click', '#cancelPartnerForm', function(event){ 
+		$('body').on('click', '#cancelPartnerForm', function(event){
 			$('#addPartnerForm').remove();
 			$('#addPartnerButton').show();
 		});
@@ -26,11 +26,11 @@
 		$('body').on('click', '#cancelReviewForm', function(event){
 			$('#addReviewForm').remove();
 			$('#addReviewButton').show();
-		});	
+		});
 
 	});
-		
-	
+
+
 
 </script>
 
@@ -41,8 +41,38 @@
 <div id="partners" >
 	<%= render "partners/partners" %>
 	<input id="addPartnerButton" type="button" value="Add Partner">
+
+
+	<div id="addPartnerForm" style="display: none;">
+		<h2>Add a Partner </h2>
+
+		<%= form_for [@company, @company.partners.build] do |f| %>
+		  <% if @partner.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
+
+		      <ul>
+		      <% @partner.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+		  <div class="field">
+		    <%= f.label :name %><br />
+		    <%= f.text_field :name %>
+		  </div>
+		  <div class="actions">
+		    <%= f.submit %>
+		  </div>
+		<% end %>
+		<input type="button" id="cancelPartnerForm" value="Cancel">
+
+	</div>
+
 </div>
-	
+
 <div id="reviews">
 	<input id="addReviewButton" type="button" value="New Review">
 	<%= render "reviews/reviews" %>
