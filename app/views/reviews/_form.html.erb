@@ -19,7 +19,11 @@
   </div>
   <div class="field">
     <%= f.label :rating %><br />
-    <%= f.number_field :rating %>
+    <input name="star1" type="radio" class="star">    
+    <input name="star1" type="radio" class="star">
+    <input name="star1" type="radio" class="star">
+    <input name="star1" type="radio" class="star">
+    <input name="star1" type="radio" class="star">
   </div>
   <div class="field">
     <%= f.label :body %><br />
@@ -29,8 +33,9 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
 
-  <input type="button" value="Cancel" id="cancelReviewForm">
+  <input name="star1" type="radio" class="star">
 
 </div>
