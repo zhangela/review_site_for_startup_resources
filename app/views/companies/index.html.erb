@@ -1,29 +1,11 @@
-<h1>Listing companies</h1>
+<h1> Companies </h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Avg rating</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= company.name %></td>
-    <td><%= company.description %></td>
-    <td><%= company.avg_rating %></td>
-    <td><%= company.url %></td>
-    <td><%= link_to 'Show', company %></td>
-    <td><%= link_to 'Edit', edit_company_path(company) %></td>
-    <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="companies"><%= render 'companies' %></div>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Company', new_company_path %>

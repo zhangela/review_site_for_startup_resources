@@ -16,7 +16,7 @@ class Company < ActiveRecord::Base
     	if(self.avg_rating == -1)
     		self.update_attribute(:avg_rating, review.rating)
     	else
-			oldAvg = self.avg_rating 
+			oldAvg = self.avg_rating
     		numRatings = self.reviews.size
 			oldTotal = oldAvg * (numRatings-1)
 
@@ -24,6 +24,14 @@ class Company < ActiveRecord::Base
 
     		self.update_attribute(:avg_rating, newAvg)
     	end
+    end
+
+    def self.search(search)
+        if search
+            where('name LIKE ?', "%#{search}%")
+        else
+            scoped
+        end
     end
 
 end
