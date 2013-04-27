@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
+    @discussion = Discussion.find(params[:discussion])
     @comment = Comment.new
 
     respond_to do |format|
@@ -40,7 +41,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+    @discussion = Discussion.find(params[:discussion])
+    @comment = @discussion.comments.build(params[:comment])
 
     respond_to do |format|
       if @comment.save

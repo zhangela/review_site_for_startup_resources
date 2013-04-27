@@ -43,8 +43,7 @@ class DiscussionsController < ApplicationController
   # POST /discussions
   # POST /discussions.json
   def create
-    # @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating])
-    # @reviewable.recalculate_average(@review)
+
     @review = Review.find(params[:review_id])
     @discussion = @review.discussions.build(params[:discussion])
 

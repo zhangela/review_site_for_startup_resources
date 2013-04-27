@@ -2,6 +2,9 @@
 
   $(document).ready(function(){
 
+    var hostname = location.protocol + '//' + location.host
+
+
     $('#addDiscussionButton').click(function(){
         $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('fast');
         $('#addDiscussionButton').hide();
@@ -12,7 +15,22 @@
           $(this).remove();
           $('#addDiscussionButton').show();
 
+
+    $('body').on('click', '#createCommentButton', function(event){
+      var url = hostname+'/createComment'
+      var commentBody = $('#newCommentText').val();
+      $.post(url, data, function(d){
+
+        //add new comment to discussion
+        $(this).parent().parent().append('<p>'+data.body+'</p>')
+
+        $('#newCommentForm').fadeOut('fast', function() {
+          $(this).remove();
+          $('#addDiscussionButton').show();
+
       });
+
+      })
     }); 
 
   });
@@ -52,7 +70,7 @@
 </p>
 
 <div id="discussions">
-  <input id="addDiscussionButton" type="button" value="New Discussion" >
+  <input id="addDiscussionButton" type="button" value="New Discussion">
   <%= render "discussions/discussions" %>
 </div>
 

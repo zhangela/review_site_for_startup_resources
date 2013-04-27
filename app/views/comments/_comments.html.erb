@@ -1,0 +1,9 @@
+
+<div class="discussion">
+
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <td><%= comment.body %></td>
+    </div>
+  <% end %>
+</div>

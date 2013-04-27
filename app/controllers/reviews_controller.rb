@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @discussions = @review.discussions
     @discussion = Discussion.new
+    @comment = Comment.new
 
 
     respond_to do |format|

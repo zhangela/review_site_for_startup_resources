@@ -2,21 +2,17 @@
 
     <h2>Discussions</h2>
 
-    <table>
-      <tr>
-        <th>Body</th>
-      </tr>
 
     <% @discussions.each do |discussion| %>
     <div class="discussion">
-      <tr>
-        <td><%= simple_format discussion.body %></td>
-        <td><%= discussion.id %></td>
-        <!-- you shouldn't be able to 'show' a discussion -->
-        <td><%#= link_to "show", url_for([discussion.review, discussion]) %></td>
-       </tr>
+        <%= discussion %>
+        <% @comments = discussion.comments %>
+        <% @discussion = discussion %>
+        <div class="newComment">
+          <%= render 'comments/comments' %>
+          <%#= render 'comments/newComment' %>
+        </div>
     </div>
     <% end %>
-    </table>
 
 </div>

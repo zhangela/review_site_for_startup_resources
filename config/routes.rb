@@ -10,6 +10,10 @@ Azure::Application.routes.draw do
     resources :discussions
   end
 
+  resources :discussions do
+    resources :comments
+  end
+
   resources :partners do
     resources :reviews
   end
@@ -21,6 +25,8 @@ Azure::Application.routes.draw do
   end
 
   devise_for :users
+
+  match '/createComments' => 'comments#create' 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
