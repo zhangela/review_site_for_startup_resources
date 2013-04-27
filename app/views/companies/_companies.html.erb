@@ -1,7 +1,7 @@
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
 
-  <table>
+<!--   <table>
     <tr>
       <th><%=sortable "name" %></th>
       <th><%= sortable "category" %></th>
@@ -11,17 +11,19 @@
       <th></th>
       <th></th>
       <th></th>
-    </tr>
+    </tr> -->
 
   <% @companies.each do |company| %>
-    <tr>
-      <td><%= link_to company.name, company %></td>
-      <td><%= company.category %></td>
-      <td><%= company.avg_rating %></td>
-      <td><%= company.description %></td>
-      <td><%= company.url %></td>
-    </tr>
+
+      <div class = "entry">
+        <h3><%= link_to company.name, company %></h3>
+<!--       <td><%= company.category %></td>
+      <td><%= company.avg_rating %></td> -->
+        <div class = "description"><%= company.description %></div>
+        <div class = "url"><%= company.url %></div>
+    </div>
+
   <% end %>
-  </table>
+<!--   </table> -->
 
   <%= will_paginate @companies %>

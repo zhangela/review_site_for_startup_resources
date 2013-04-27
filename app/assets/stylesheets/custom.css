@@ -6,23 +6,37 @@ body{
 	float: right;
 }
 
-.categories{
+.leftpanel{
 	float: left;
 	width: 200px;
-	height: 400px;
-	background-color: #b6cce8;
+	height: 800px;
+}
+
+.categories{
+	background-color: #edeceb;
+	border-radius: 5px;
 	padding: 10px;
-	margin-right:20px;
+	margin-right:100px;
 }
 
 .rightpanel{
 	padding: 10px;
 	margin: 20px;
 	margin-left: 100px;
+	width: 800px;
 	
 }
 
 #companies{
 	padding: 10px;
 	margin: 20px;
+}
+
+.entry{
+	margin: 10px;
+	padding: 10px;
+}
+
+.description{
+	word-wrap: break-word;
 }
