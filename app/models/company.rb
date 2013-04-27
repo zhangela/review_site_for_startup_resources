@@ -1,11 +1,9 @@
 class Company < ActiveRecord::Base
     before_save :default_values
 
-    attr_accessible :avg_rating, :description, :name, :url
+    attr_accessible :avg_rating, :description, :name, :url, :category
     has_many :reviews, :as => :reviewable
     has_many :partners
-
-    belongs_to :category
 
     def default_values
         self.avg_rating ||= -1
