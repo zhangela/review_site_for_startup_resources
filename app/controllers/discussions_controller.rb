@@ -14,6 +14,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1.json
   def show
     @discussion = Discussion.find(params[:id])
+    @review = @discussion.review
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,6 +25,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/new
   # GET /discussions/new.json
   def new
+    @review = Review.find(params[:review_id])
     @discussion = Discussion.new
 
     respond_to do |format|
@@ -35,20 +37,24 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1/edit
   def edit
     @discussion = Discussion.find(params[:id])
+    @review = @discussion.review
   end
 
   # POST /discussions
   # POST /discussions.json
   def create
-    @discussion = Discussion.new(params[:discussion])
+    # @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating])
+    # @reviewable.recalculate_average(@review)
+    @review = Review.find(params[:review_id])
+    @discussion = @review.discussions.build(params[:discussion])
 
     respond_to do |format|
       if @discussion.save
-        format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
-        format.json { render json: @discussion, status: :created, location: @discussion }
+        format.html { redirect_to @review, notice: 'Discussion was successfully created.' }
+        format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
-        format.json { render json: @discussion.errors, status: :unprocessable_entity }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,6 +63,7 @@ class DiscussionsController < ApplicationController
   # PUT /discussions/1.json
   def update
     @discussion = Discussion.find(params[:id])
+    @review = @discussion.review
 
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
@@ -73,10 +80,11 @@ class DiscussionsController < ApplicationController
   # DELETE /discussions/1.json
   def destroy
     @discussion = Discussion.find(params[:id])
+    @review = @discussion.review
     @discussion.destroy
 
     respond_to do |format|
-      format.html { redirect_to discussions_url }
+      format.html { redirect_to review_discussions_url(@review) }
       format.json { head :no_content }
     end
   end
