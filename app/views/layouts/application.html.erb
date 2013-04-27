@@ -4,17 +4,25 @@
   <title>Azure</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag	"jquery.rating" %>
+  
+  <%= stylesheet_link_tag	"bootstrap" %>
+  <%= stylesheet_link_tag	"custom" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery.rating.pack" %>
   <%= csrf_meta_tags %>
-
+   <header class="navbar navbar-fixed-top" style ="float:right">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'shared/nav' %>
+        </div>
+      </nav>
+    </header>
 
 </head>
 <body>
 
 
 <ul>
-<%= render "shared/nav" %>
 </ul>
 
 <%= yield %>
