@@ -1,5 +1,5 @@
 Azure::Application.routes.draw do
-  resources :discussion_threads
+  resources :comments
 
   get "home/index"
 
