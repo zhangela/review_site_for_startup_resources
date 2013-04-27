@@ -1,9 +1,5 @@
 Azure::Application.routes.draw do
-  
-  devise_for :admins
-  
-
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  resources :discussion_threads
 
   get "home/index"
 
