@@ -35,7 +35,8 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:company])
+    @category = Category.find(params[:category_id])
+    @company = @category.companies.create(params[:company])
 
     if @company.save
       flash[:notice] = "Successfully created company."
