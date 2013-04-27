@@ -1,11 +1,20 @@
 <h1> Companies </h1>
 
-<%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-  <div id="companies"><%= render 'companies' %></div>
-<% end %>
+<div class = "leftpanel">
+<div class = "categories">
+	categories
+</div>
+</div>
 
-<%= link_to 'New Company', new_company_path %>
+<div class = "rightpanel">
+	<div class = "searchbar">
+	<%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
+	  <p><%= text_field_tag :search, params[:search],:placeholder => "Search" %></p>
+	 </div>
+	 <br />
+	 <br />
+	  <div id="companies"><%= render 'companies' %></div>
+	<% end %>
+
+	<%= link_to 'New Company', new_company_path %>
+</div>
