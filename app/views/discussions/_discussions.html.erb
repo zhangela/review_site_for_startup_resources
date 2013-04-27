@@ -5,12 +5,15 @@
     <table>
       <tr>
         <th>Body</th>
+        <th>Show</th>
       </tr>
 
     <% @discussions.each do |discussion| %>
     <div class="discussion">
       <tr>
         <td><%= simple_format discussion.body %></td>
+        <td><%= discussion.id %></td>
+        <td><%= link_to "show", url_for([discussion.review, discussion]) %></td>
        </tr>
     </div>
     <% end %>
