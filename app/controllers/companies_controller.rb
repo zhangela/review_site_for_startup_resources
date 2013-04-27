@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new
+    @company = Company.new(params[:company])
 
     if @company.save
       flash[:notice] = "Successfully created company."
