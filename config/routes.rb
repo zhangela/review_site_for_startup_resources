@@ -1,4 +1,6 @@
 Azure::Application.routes.draw do
+  resources :discussion_threads
+
   get "home/index"
 
   devise_for :admins

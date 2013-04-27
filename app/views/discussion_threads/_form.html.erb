@@ -1,0 +1,17 @@
+<%= form_for(@discussion_thread) do |f| %>
+  <% if @discussion_thread.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discussion_thread.errors.count, "error") %> prohibited this discussion_thread from being saved:</h2>
+
+      <ul>
+      <% @discussion_thread.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
