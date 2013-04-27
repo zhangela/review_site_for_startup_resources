@@ -13,10 +13,9 @@
       <th></th>
     </tr>
 
-  <% @category.companies.each do |company| %>
+  <% @companies.each do |company| %>
     <tr>
       <td><%= company.name %></td>
-      <td><%= company.category.title %></td>
       <td><%= company.avg_rating %></td>
       <td><%= company.description %></td>
       <td><%= company.url %></td>
