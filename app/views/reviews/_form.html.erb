@@ -19,11 +19,13 @@
   </div>
   <div class="field">
     <%= f.label :rating %><br />
-    <input name="star1" type="radio" class="star">    
-    <input name="star1" type="radio" class="star">
-    <input name="star1" type="radio" class="star">
-    <input name="star1" type="radio" class="star">
-    <input name="star1" type="radio" class="star">
+    <%#= f.radio_button :rating, options_for_select%>
+    <%#= f.radio_button :rating, {:class=>'star'})%>
+    <input name="rating" type="radio" class="star" value="1">    
+    <input name="rating" type="radio" class="star" value="2">
+    <input name="rating" type="radio" class="star" value="3">
+    <input name="rating" type="radio" class="star" value="4">
+    <input name="rating" type="radio" class="star" value="5">
   </div>
   <div class="field">
     <%= f.label :body %><br />
