@@ -3,7 +3,7 @@
 
   <table>
     <tr>
-      <th><%= sortable "name" %></th>
+      <th><%=sortable "name" %></th>
       <th><%= sortable "category" %></th>
       <th><%= sortable "avg_rating" %></th>
       <th>Description</th>
@@ -15,14 +15,12 @@
 
   <% @companies.each do |company| %>
     <tr>
-      <td><%= company.name %></td>
+      <td><%= link_to company.name, company %></td>
       <td><%= company.category %></td>
       <td><%= company.avg_rating %></td>
       <td><%= company.description %></td>
       <td><%= company.url %></td>
-      <td><%= link_to 'Show', company %></td>
       <td><%= link_to 'Edit', edit_company_path(company) %></td>
-      <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </table>
