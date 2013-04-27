@@ -75,7 +75,6 @@ GEM
     multi_json (1.7.2)
     nested_form (0.3.2)
     nokogiri (1.5.9)
-    nokogiri (1.5.9-x86-mingw32)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.5)
