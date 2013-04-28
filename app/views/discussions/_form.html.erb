@@ -1,5 +1,5 @@
 
-<div id="newDiscussionForm">
+<div id="newDiscussionForm" class="well">
 <%= form_for [@review, @review.discussions.build] do |f| %>
   <% if @discussion.errors.any? %>
     <div id="error_explanation">
@@ -13,14 +13,17 @@
     </div>
   <% end %>
 
-<!--   <div class="field">
-    <%#= f.label :body %><br />
-    <%#= f.text_area :body %>
-  </div> -->
+  <div class="field">
+    <%= label_tag 'private', 'Private', :class=>"checkbox inline" %>
+    <%= f.check_box :private %>
+  </div>
+  <div class="field">
+    <textarea name="body" rows="4" cols="50"></textarea>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Post" %>
   </div>
 
-  <input type="button" id="cancelDiscussionButton" value="Cancel">
+  <input type="button" class="cancelDiscussionButton" value="Cancel">
 <% end %>
 </div>

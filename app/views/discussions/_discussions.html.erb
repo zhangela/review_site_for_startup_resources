@@ -2,14 +2,20 @@
 
     <h2>Discussions</h2>
 
-    <% @discussions.each do |discussion| %>
-      <% discussionId = 'discussion-'+discussion.id.to_s %>
-      <div id='<%=discussionId%>' class="well discussion">
-        <% @comments = discussion.comments %>
-        <% @discussion = discussion %>
-        <%= render 'comments/comments' %>
-        <%= render 'comments/newComment' %>
-    </div>
+    <% if @discussions.size != 1 %>
+        <% @discussions.each do |discussion| %>
+        <% discussionId = 'discussion-'+discussion.id.to_s %>
+        <div id='<%=discussionId%>' class="well discussion">
+            <% @comments = discussion.comments %>
+            <% @discussion = discussion %>
+            <%= render 'comments/comments' %>
+            <%= render 'comments/newComment' %>
+        </div>
+        <% end %>
+    <% else %>
+        <div class="well">
+            <b>No one has posted comments on this review</b>
+        </div>
     <% end %>
 
 </div>

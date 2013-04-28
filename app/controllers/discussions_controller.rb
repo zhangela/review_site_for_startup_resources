@@ -45,7 +45,12 @@ class DiscussionsController < ApplicationController
   def create
 
     @review = Review.find(params[:review_id])
+
     @discussion = @review.discussions.build(params[:discussion])
+    @discussion.from_user_id = current_user.id
+    @discussion.to_user_id = @review.user_id
+
+    @comment = @discussion.comments.build(:body=>params[:body])
 
     respond_to do |format|
       if @discussion.save
