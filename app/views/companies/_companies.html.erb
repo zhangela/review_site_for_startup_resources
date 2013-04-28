@@ -20,7 +20,7 @@
 <!--       <td><%= company.category %></td>
       <td><%= company.avg_rating %></td> -->
         <div class = "description"><%= company.description %></div>
-        <div class = "url"><%= company.url %></div>
+        <a href = "<%= company.url %>" target="_blank" style ="color:#00aedb"><%= company.url %></a>
     </div>
 
   <% end %>

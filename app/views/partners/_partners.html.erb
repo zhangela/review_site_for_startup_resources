@@ -5,24 +5,19 @@
  <table>
   <tr>
     <th>Name</th>
-    <th>Avg rating</th>
-    <th>ID</th>
-    <th></th>
-    <th></th>
+<!--     <th>Avg rating</th> -->
+
   </tr>
 
 <% @partners.each do |partner| %>
   <tr>
     <td><%= partner.name %></td>
-    <% if partner.avg_rating < 0 %>
+<!--     <% if partner.avg_rating < 0 %>
         <td>Not enough data.</td>
     <% else %>
         <td><%= partner.avg_rating %></td>
-    <% end %>
-    <td><%= partner.id %></td>
+    <% end %> -->
     <td><%= link_to 'Show', partner %></td>
-    <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
-    <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

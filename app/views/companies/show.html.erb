@@ -34,11 +34,9 @@
 
 </script>
 
-<div id="company_info">
-	<p>Company Info Goes Here</p>
-	<%= @company.category %>
-	<%= @company.name %>
-
+<div id="companyinfo">
+	<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
+	<p><%= @company.description %></p>
 </div>
 
 <div id="partners" >

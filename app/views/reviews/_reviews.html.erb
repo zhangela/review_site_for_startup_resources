@@ -1,19 +1,18 @@
 <div id="reviews">
 
-    <h2>Comments</h2>
+    <h2>Reviews</h2>
 
-    <table>
+<!--     <table>
       <tr>
         <th>Title</th>
         <th>Rating</th>
         <th>Body</th>
         <th>User</th>
-      </tr>
+      </tr> -->
 
     <% @reviews.each do |review| %>
     <div class="review">
-      <tr>
-        <td><%= simple_format review.title %></td>
+        <%= simple_format review.title %>
         <td><%= review.rating %></td>
         <td><%= simple_format review.body %></td>
         <td><%= review.user %></td>
