@@ -1,4 +1,5 @@
 class Discussion < ActiveRecord::Base
   belongs_to :review
-  attr_accessible :body, :review_id
+  attr_accessible :review_id, :to_user_id, :from_user_id, :private
+  has_many :comments
 end

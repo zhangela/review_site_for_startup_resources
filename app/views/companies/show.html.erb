@@ -37,9 +37,10 @@
 <div id="companyinfo">
 	<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
 	<p><%= @company.description %></p>
+
 </div>
 
-<div id="partners" >
+<div class="partners" >
 	<%= render "partners/partners" %>
 	<input id="addPartnerButton" type="button" value="Add Partner">
 
@@ -75,8 +76,9 @@
 </div>
 
 <div id="reviews">
-	<input id="addReviewButton" type="button" value="New Review">
 	<%= render "reviews/reviews" %>
+	<input id="addReviewButton" type="button" value="New Review">
+
 </div>
 
 <div id="navigation">

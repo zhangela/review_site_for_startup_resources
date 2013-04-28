@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
+    @discussion = Discussion.find(params[:discussion])
     @comment = Comment.new
 
     respond_to do |format|
@@ -40,7 +41,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+    @discussion = Discussion.find(params[:discussion])
+    @comment = @discussion.comments.build(params[:comment])
 
     respond_to do |format|
       if @comment.save
@@ -48,6 +50,19 @@ class CommentsController < ApplicationController
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def createComment
+    @discussion = Discussion.find(params[:discussion_id])
+    @comment = @discussion.comments.build(params[:comment])
+
+    respond_to do |format|
+      if @comment.save
+        format.json { render json: @comment, status: :created, location: @comment }
+      else
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

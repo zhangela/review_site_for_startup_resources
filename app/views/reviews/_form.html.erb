@@ -14,11 +14,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= label_tag 'title', 'What did you think overall? (e.g, good, bad, ugly?)' %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :rating %><br />
+    <%= label_tag 'rating', 'How would you rate from 1 to 5?' %><br />
     <%#= f.radio_button :rating, options_for_select%>
     <%#= f.radio_button :rating, {:class=>'star'})%>
     <input name="rating" type="radio" class="star" value="1">    
@@ -28,7 +28,7 @@
     <input name="rating" type="radio" class="star" value="5">
   </div>
   <div class="field">
-    <%= f.label :body %><br />
+    <%= label_tag 'body', 'Got anything specific to say?' %><br />
     <%= f.text_area :body %>
   </div>
 

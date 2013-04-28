@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427223855) do
+ActiveRecord::Schema.define(:version => 20130428043658) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -51,8 +51,11 @@ ActiveRecord::Schema.define(:version => 20130427223855) do
 
   create_table "discussions", :force => true do |t|
     t.integer  "review_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "to_user_id"
+    t.boolean  "private"
+    t.integer  "from_user_id"
   end
 
   add_index "discussions", ["review_id"], :name => "index_discussions_on_review_id"

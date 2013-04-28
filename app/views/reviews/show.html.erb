@@ -2,24 +2,42 @@
 
   $(document).ready(function(){
 
+    var hostname = location.protocol + '//' + location.host
+
+
     $('#addDiscussionButton').click(function(){
         $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('fast');
         $('#addDiscussionButton').hide();
     });
 
-    $('body').on('click', '#cancelDiscussionButton', function(event){
+    $('body').on('click', '.cancelDiscussionButton', function(event){
       $('#newDiscussionForm').fadeOut('fast', function() {
           $(this).remove();
           $('#addDiscussionButton').show();
+      });
+    });
 
+  $('body').on('click', '.createCommentButton', function(event){
+      var url = hostname+'/createComment'
+      var commentBody = $(this).parent().find('.newCommentText').val();
+      var strid = $(this).parent().parent().attr("id");
+      var id = strid.split('-')[1];
+      var comment = {body: commentBody};
+      var data = {comment: comment, discussion_id: id};
+      $.post(url, data, function(d){
+        $('#discussion-'+id).find('.comments').append('<p>'+d.body+'</p>');
+        $('#discussion-'+id).find('.newCommentText').val('');
       });
     }); 
+    
 
   });
+
 </script>
 
 
 <p id="notice"><%= notice %></p>
+
 
 <p>
   <b>Title:</b>
@@ -37,8 +55,8 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @review.user %>
+  <b>Poster:</b>
+  <%= @review.user.email %>
 </p>
 
 <p>
@@ -52,7 +70,7 @@
 </p>
 
 <div id="discussions">
-  <input id="addDiscussionButton" type="button" value="New Discussion" >
+  <input id="addDiscussionButton" type="button" value="New Comment">
   <%= render "discussions/discussions" %>
 </div>
 

@@ -5,8 +5,7 @@
  <table>
   <tr>
     <th>Name</th>
-<!--     <th>Avg rating</th> -->
-
+    <th>Avg rating</th>
   </tr>
 
 <% @partners.each do |partner| %>
@@ -16,7 +15,9 @@
         <td>Not enough data.</td>
     <% else %>
         <td><%= partner.avg_rating %></td>
+
     <% end %> -->
+
     <td><%= link_to 'Show', partner %></td>
   </tr>
 <% end %>
