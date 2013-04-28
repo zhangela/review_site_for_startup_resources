@@ -1,13 +1,13 @@
 <div id="discussionentry">
 
     <h2>Discussions</h2>
-    <% if @discussions.size >= 1 %>
+    <% if @discussions.size > 1 %>
         <% @discussions.each do |discuss| %>
             <% if not discuss.id.nil? %>
                 <% if discuss.private %>
                     <% if current_user.id == discuss.to_user_id || current_user.id == discuss.from_user_id %>
                         <% discussionId = 'discussion-'+discuss.id.to_s %>
-                        <div id='<%=discussionId%>' class="well discussion">
+                        <div id='<%=discussionId%>' class=" privateDiscuss">
                         <% @comments = discuss.comments %>
                         <%= render 'comments/comments' %>
                         <%= render'comments/newComment' %>
@@ -20,10 +20,6 @@
                     <%= render :partial => 'comments/comments', :comments => discuss.comments%>
                     <%= render'comments/newComment' %>
                 <% end %>
-            <% else %>
-                <div class="well">
-                  <b>No one has posted comments on this review</b>
-                </div>
             <% end %>
         <% end %>
     <% else %>
