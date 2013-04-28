@@ -2,16 +2,14 @@
 
     <h2>Discussions</h2>
 
-
     <% @discussions.each do |discussion| %>
-    <div class="discussion">
+      <% discussionId = 'discussion '+discussion.id.to_s %>
+      <div id='<%=discussionId%>' >
         <%= discussion %>
         <% @comments = discussion.comments %>
         <% @discussion = discussion %>
-        <div class="newComment">
-          <%= render 'comments/comments' %>
-          <%#= render 'comments/newComment' %>
-        </div>
+        <%= render 'comments/comments' %>
+        <%= render 'comments/newComment' %>
     </div>
     <% end %>
 

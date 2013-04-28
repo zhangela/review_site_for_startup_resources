@@ -10,30 +10,31 @@
         $('#addDiscussionButton').hide();
     });
 
-    $('body').on('click', '#cancelDiscussionButton', function(event){
+    $('body').on('click', '.cancelDiscussionButton', function(event){
       $('#newDiscussionForm').fadeOut('fast', function() {
           $(this).remove();
           $('#addDiscussionButton').show();
+      });
+    });
 
-
-    $('body').on('click', '#createCommentButton', function(event){
+  $('body').on('click', '.createCommentButton', function(event){
       var url = hostname+'/createComment'
-      var commentBody = $('#newCommentText').val();
+      var commentBody = $(this).parent().find('.newCommentText').val();
+      var strid = $(this).parent().parent().attr("id");
+      var id = strid.split(' ')[1];
+      var comment = {body: commentBody};
+      var data = {comment: comment, discussion_id: id};
       $.post(url, data, function(d){
 
-        //add new comment to discussion
-        $(this).parent().parent().append('<p>'+data.body+'</p>')
-
-        $('#newCommentForm').fadeOut('fast', function() {
-          $(this).remove();
-          $('#addDiscussionButton').show();
+        $('body').append('<p>hi</p>');
+        $('#discussion '+id).append('<p>'+d.body+'</p>');
 
       });
-
-      })
     }); 
+    
 
   });
+
 </script>
 
 

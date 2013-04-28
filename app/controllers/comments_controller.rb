@@ -55,6 +55,19 @@ class CommentsController < ApplicationController
     end
   end
 
+  def createComment
+    @discussion = Discussion.find(params[:discussion_id])
+    @comment = @discussion.comments.build(params[:comment])
+
+    respond_to do |format|
+      if @comment.save
+        format.json { render json: @comment, status: :created, location: @comment }
+      else
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PUT /comments/1
   # PUT /comments/1.json
   def update
