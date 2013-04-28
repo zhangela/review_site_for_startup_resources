@@ -5,22 +5,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<<<<<<< HEAD
-<p>
-  <b>Name:</b>
-  <%= @partner.name %>
-  <span><%= link_to 'Edit', edit_partner_path(@partner) %></span>
-  <b>Company:</b>
-  <%= @partner.company.name %>
-  <span><%= link_to 'Go to Company', company_path(@partner.company) %></span>
-  <b>Company:</b>
-  <%= @partner.company.name %><br>
-  <span><%= link_to 'Go to Company', company_path(@partner.company) %></span>
 
-</p>
-=======
 <div class = "mainpanel">
->>>>>>> a165f4efc60bf0b1951ef89ef388b5e35dbb558b
 
   <h3><%= @partner.name %></h3>
 <p>
@@ -32,11 +18,8 @@
 	</p>
 <%= render "reviews/reviews" %>
 <%= render "reviews/form" %>
-<<<<<<< HEAD
 
 
 <%= link_to 'Edit', edit_partner_path(@partner) %> 
 </div>
-=======
-</div>
->>>>>>> 567b2271b7bebc75ee35fe58fc9efc800dc97e80
+
