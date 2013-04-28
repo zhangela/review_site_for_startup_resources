@@ -4,6 +4,13 @@
   <b>Name:</b>
   <%= @partner.name %>
   <span><%= link_to 'Edit', edit_partner_path(@partner) %></span>
+  <b>Company:</b>
+  <%= @partner.company.name %>
+  <span><%= link_to 'Go to Company', company_path(@partner.company) %></span>
+  <b>Company:</b>
+  <%= @partner.company.name %><br>
+  <span><%= link_to 'Go to Company', company_path(@partner.company) %></span>
+
 </p>
 
 <p>
@@ -17,5 +24,6 @@
 
 <%= render "reviews/reviews" %>
 <%= render "reviews/form" %>
+
 
 <%= link_to 'Edit', edit_partner_path(@partner) %> 

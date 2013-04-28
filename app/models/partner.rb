@@ -21,7 +21,7 @@ class Partner < ActiveRecord::Base
     		numRatings = self.reviews.size
 			oldTotal = oldAvg * (numRatings-1)
 
-    		newAvg = (oldTotal + review.rating) / (numRatings + 1)
+    		newAvg = (oldTotal + review.rating) / (numRatings)
 
     		self.update_attribute(:avg_rating, newAvg)
     	end
