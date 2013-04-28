@@ -1,21 +1,26 @@
 <div id="discussionentry">
 
     <h2>Discussions</h2>
-
     <% if @discussions.size >= 1 %>
         <% @discussions.each do |discussion| %>
+
             <% if @discussion.private %>
-
                 <% if current_user.id == @discussion.to_user_id || current_user.id == @discussion.from_user_id %>
-
-                     <% discussionId = 'discussion-'+discussion.id.to_s %>
+                    <% discussionId = 'discussion-'+discussion.id.to_s %>
                     <div id='<%=discussionId%>' class="well discussion">
-                        <% @comments = discussion.comments %>
-                        <% @discussion = discussion %>
-                        <%= render 'comments/comments' %>
-                        <%= render 'comments/newComment' %>
+                    <% @comments = discussion.comments %>
+                    <% @discussion = discussion %>
+                    <%= render 'comments/comments' %>
+                    <%= render 'comments/newComment' %>
                     </div>
                 <% end %>
+            <% else %>
+                <% discussionId = 'discussion-'+discussion.id.to_s %>
+                <div id='<%=discussionId%>' class="well discussion">
+                <% @comments = discussion.comments %>
+                <% @discussion = discussion %>
+                <%= render 'comments/comments' %>
+                <%= render 'comments/newComment' %>
             <% end %>
         <% end %>
     <% else %>
