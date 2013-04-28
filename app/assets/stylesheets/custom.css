@@ -94,3 +94,7 @@ body{
 	margin-top: 20px;
 	margin-left: 0px;
 }
+
+a:hover{
+	color:none;
+}

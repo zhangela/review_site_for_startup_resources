@@ -35,8 +35,7 @@
 </script>
 
 <div id="navigation">
-	<%= link_to '< Back to Results', companies_path %>
-</div>
+	<%= link_to_function '< Back to Results', "history.back()" %>
 <div id="companyinfo">
 	<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
 	<p><%= @company.description %></p>
