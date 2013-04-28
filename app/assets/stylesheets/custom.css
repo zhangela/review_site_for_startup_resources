@@ -96,5 +96,7 @@ body{
 }
 
 a:hover{
-	color:none;
+	text-decoration: none;
+	background-color: transparent;
+	color: #C0392B;
 }
