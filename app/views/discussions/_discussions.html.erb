@@ -1,8 +1,8 @@
-<div id="discussions">
+<div id="discussionentry">
 
     <h2>Discussions</h2>
 
-    <% if @discussions.size != 1 %>
+    <% if @discussions.size >= 1 %>
         <% @discussions.each do |discussion| %>
         <% discussionId = 'discussion-'+discussion.id.to_s %>
         <div id='<%=discussionId%>' class="well discussion">

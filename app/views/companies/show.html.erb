@@ -41,8 +41,10 @@
 </div>
 
 <div class="partners" >
+	<h3>Partners</h3>
+	<input class="customButton" id = "addPartnerButton" type="button" value="Add Partner" style= "float:left">
+	<br/>
 	<%= render "partners/partners" %>
-	<input id="addPartnerButton" type="button" value="Add Partner">
 
 
 	<div id="addPartnerForm" style="display: none;">
@@ -76,7 +78,8 @@
 </div>
 
 <div id="reviews">
-	 <h3 style = "margin-left:100px">Reviews</h3><input id="addReviewButton" type="button" value="New Review" style = "margin-left:100px">
+	 <h3 style = "margin-left:100px">Reviews</h3>
+	 <input class ="customButton" id = "addReviewButton" type="button" value="New Review" style = "margin-left:100px">
 	<%= render "reviews/reviews" %></div>
 	
 </div>

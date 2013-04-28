@@ -45,10 +45,6 @@ body{
 	word-wrap: break-word;
 }
 
-#partners, #addPartnerForm{
-	float:right;
-}
-
 #companyinfo{
 	width: 700px;
 	margin-left: 200px;
@@ -68,4 +64,31 @@ body{
 
 #reviewform{
 	margin-left: 500px;
+}
+
+.mainpanel{
+	margin-left: 20%;
+	width: 700px;
+}
+
+#discussionentry{
+	width: 600px;
+}
+
+.customButton{
+	width: 150px;
+	box-shadow: none;
+	background-color: #1ABC9C;
+	border: none;
+	color: #ECF0F1;
+	border-radius: 5px;
+}
+.partners{
+		margin-right: 20px;
+	float:right;
+	width: 200px;
+}
+#partners{
+	float:left;
+	margin-top: 10px;
 }

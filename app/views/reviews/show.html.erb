@@ -37,22 +37,13 @@
 
 
 <p id="notice"><%= notice %></p>
+<div class = "mainpanel">
+<div id = "reviewinfo">
+  <h3><%= '"' + @review.title + '"'%></h3>
+  <div id = "reviewbody">
+    <p><%= @review.body %></p>
+  </div>
 
-
-<p>
-  <b>Title:</b>
-  <%= @review.title %>
-</p>
-
-<p>
-  <b>Rating:</b>
-  <%= @review.rating %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @review.body %>
-</p>
 
 
 <p>
@@ -64,10 +55,11 @@
   <b>Reviewable type:</b>
   <%= @review.reviewable_type %>
 </p>
+</div>
 
 <div id="discussions">
-  <input id="addDiscussionButton" type="button" value="New Comment">
+  <input class="customButton" type="button" value="New Discussion">
   <%= render "discussions/discussions" %>
 </div>
 
-
+</div>
