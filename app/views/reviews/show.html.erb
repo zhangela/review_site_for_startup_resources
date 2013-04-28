@@ -10,14 +10,14 @@
         $('#addDiscussionButton').hide();
     });
 
-    $('body').on('click', '.cancelDiscussionButton', function(event){
+    $('body').on('click', '#cancelDiscussionButton', function(event){
       $('#newDiscussionForm').fadeOut('fast', function() {
           $(this).remove();
           $('#addDiscussionButton').show();
       });
     });
 
-  $('body').on('click', '.createCommentButton', function(event){
+  $('body').on('click', '#createCommentButton', function(event){
       var url = hostname+'/createComment'
       var commentBody = $(this).parent().find('.newCommentText').val();
       var strid = $(this).parent().parent().attr("id");
@@ -34,7 +34,9 @@
   });
 
 </script>
-
+<div id="navigation">
+  <%= link_to '< Back to Company', company_path %>
+</div>
 
 <p id="notice"><%= notice %></p>
 <div class = "mainpanel">
@@ -58,7 +60,7 @@
 </div>
 
 <div id="discussions">
-  <input class="customButton" type="button" value="New Discussion">
+  <input class="customButton" type="button" id = "addDiscussionButton" value="New Discussion">
   <%= render "discussions/discussions" %>
 </div>
 

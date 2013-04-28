@@ -34,15 +34,19 @@
 
 </script>
 
+<div id="navigation">
+	<%= link_to '< Back to Results', companies_path %>
+</div>
 <div id="companyinfo">
 	<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
 	<p><%= @company.description %></p>
 
 </div>
 
+
 <div class="partners" >
 	<h3>Partners</h3>
-	<input class="customButton" id = "addPartnerButton" type="button" value="Add Partner" style= "float:left">
+	<input class="customButton" id = "addPartnerButton" type="button" value="Add Partner" style= "float:center">
 	<br/>
 	<%= render "partners/partners" %>
 
@@ -71,7 +75,7 @@
 		    <%= f.submit %>
 		  </div>
 		<% end %>
-		<input type="button" id="cancelPartnerForm" value="Cancel">
+		<input type="button" class = "customButton"id="cancelPartnerForm" value="Cancel">
 
 	</div>
 
@@ -84,7 +88,3 @@
 	
 </div>
 
-<div id="navigation">
-	<%= link_to 'Edit', edit_company_path(@company) %> |
-	<%= link_to 'Back', companies_path %>
-</div>

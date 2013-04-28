@@ -76,7 +76,7 @@ body{
 }
 
 .customButton{
-	width: 150px;
+	min-width: 150px;
 	box-shadow: none;
 	background-color: #1ABC9C;
 	border: none;
@@ -84,11 +84,13 @@ body{
 	border-radius: 5px;
 }
 .partners{
-		margin-right: 20px;
+	margin-right: 20px;
 	float:right;
 	width: 200px;
+	text-align: center;
 }
 #partners{
-	float:left;
-	margin-top: 10px;
+	text-align: center;
+	margin-top: 20px;
+	margin-left: 0px;
 }

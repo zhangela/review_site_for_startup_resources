@@ -1,21 +1,21 @@
+<div id="navigation">
+  <%= link_to '< Back to Company', company_path %>
+</div>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @partner.name %>
-  <span><%= link_to 'Edit', edit_partner_path(@partner) %></span>
-</p>
+<div class = "mainpanel">
 
+  <h3><%= @partner.name %></h3>
 <p>
-  <b>Avg rating:</b>
     <% if @partner.avg_rating < 0 %>
-        Not enough data.
+        Not yet rated!
     <% else %>
         <%= @partner.avg_rating %>
     <% end %>
-</p>
-
+	</p>
 <%= render "reviews/reviews" %>
 <%= render "reviews/form" %>
 
 <%= link_to 'Edit', edit_partner_path(@partner) %> 
+</div>
