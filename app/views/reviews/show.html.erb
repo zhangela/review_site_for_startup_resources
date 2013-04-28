@@ -35,7 +35,8 @@
 
 </script>
 <div id="navigation">
-  <%= link_to '< Back to Company', company_path %>
+  <% @id = @review.reviewable_id%>
+  <%= link_to '< Back to Company', company_path(@id) %>
 </div>
 
 <p id="notice"><%= notice %></p>
@@ -51,11 +52,6 @@
 <p>
   <b>Reviewable:</b>
   <%= @review.reviewable_id %>
-</p>
-
-<p>
-  <b>Reviewable type:</b>
-  <%= @review.reviewable_type %>
 </p>
 </div>
 

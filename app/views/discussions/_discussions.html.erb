@@ -2,25 +2,28 @@
 
     <h2>Discussions</h2>
     <% if @discussions.size >= 1 %>
-        <% @discussions.each do |discussion| %>
-
-            <% if @discussion.private %>
-                <% if current_user.id == @discussion.to_user_id || current_user.id == @discussion.from_user_id %>
-                    <% discussionId = 'discussion-'+discussion.id.to_s %>
+        <% @discussions.each do |discuss| %>
+            <% if not discuss.id.nil? %>
+                <% if discuss.private %>
+                    <% if current_user.id == discuss.to_user_id || current_user.id == discuss.from_user_id %>
+                        <% discussionId = 'discussion-'+discuss.id.to_s %>
+                        <div id='<%=discussionId%>' class="well discussion">
+                        <% @comments = discuss.comments %>
+                        <%= render 'comments/comments' %>
+                        <%= render'comments/newComment' %>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <% discussionId = 'discussion-'+discuss.id.to_s %>
                     <div id='<%=discussionId%>' class="well discussion">
-                    <% @comments = discussion.comments %>
-                    <% @discussion = discussion %>
-                    <%= render 'comments/comments' %>
-                    <%= render 'comments/newComment' %>
-                    </div>
+                    <% @comments  = discuss.comments %>
+                    <%= render :partial => 'comments/comments', :comments => discuss.comments%>
+                    <%= render'comments/newComment' %>
                 <% end %>
             <% else %>
-                <% discussionId = 'discussion-'+discussion.id.to_s %>
-                <div id='<%=discussionId%>' class="well discussion">
-                <% @comments = discussion.comments %>
-                <% @discussion = discussion %>
-                <%= render 'comments/comments' %>
-                <%= render 'comments/newComment' %>
+                <div class="well">
+                  <b>No one has posted comments on this review</b>
+                </div>
             <% end %>
         <% end %>
     <% else %>

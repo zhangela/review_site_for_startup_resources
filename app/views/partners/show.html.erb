@@ -1,5 +1,6 @@
 <div id="navigation">
-  <%= link_to '< Back to Company', company_path %>
+ 	<% @id = @partner.company_id%>
+  <%= link_to '< Back to Company', company_path(@id) %>
 </div>
 
 <p id="notice"><%= notice %></p>
@@ -31,7 +32,11 @@
 	</p>
 <%= render "reviews/reviews" %>
 <%= render "reviews/form" %>
+<<<<<<< HEAD
 
 
 <%= link_to 'Edit', edit_partner_path(@partner) %> 
 </div>
+=======
+</div>
+>>>>>>> 567b2271b7bebc75ee35fe58fc9efc800dc97e80
