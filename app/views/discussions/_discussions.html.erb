@@ -3,7 +3,7 @@
     <h2>Discussions</h2>
 
     <% @discussions.each do |discussion| %>
-      <% discussionId = 'discussion '+discussion.id.to_s %>
+      <% discussionId = 'discussion-'+discussion.id.to_s %>
       <div id='<%=discussionId%>' >
         <%= discussion %>
         <% @comments = discussion.comments %>

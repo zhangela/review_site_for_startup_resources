@@ -21,14 +21,12 @@
       var url = hostname+'/createComment'
       var commentBody = $(this).parent().find('.newCommentText').val();
       var strid = $(this).parent().parent().attr("id");
-      var id = strid.split(' ')[1];
+      var id = strid.split('-')[1];
       var comment = {body: commentBody};
       var data = {comment: comment, discussion_id: id};
       $.post(url, data, function(d){
-
-        $('body').append('<p>hi</p>');
-        $('#discussion '+id).append('<p>'+d.body+'</p>');
-
+        $('#discussion-'+id).find('.comments').append('<p>'+d.body+'</p>');
+        $('#discussion-'+id).find('.newCommentText').val('');
       });
     }); 
     
