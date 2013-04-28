@@ -5,6 +5,7 @@
 
 <p id="notice"><%= notice %></p>
 
+
 <div class = "mainpanel">
 
   <h3><%= @partner.name %></h3>
@@ -17,4 +18,8 @@
 	</p>
 <%= render "reviews/reviews" %>
 <%= render "reviews/form" %>
+
+
+<%= link_to 'Edit', edit_partner_path(@partner) %> 
 </div>
+
