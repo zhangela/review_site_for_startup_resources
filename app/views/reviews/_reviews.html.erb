@@ -1,16 +1,9 @@
 <div id="reviews">
-
-    <h2>Reviews</h2>
-
-
     <% @reviews.each do |review| %>
     <div class="review">
-        <b class="reviewTitle"><%= '"'+review.title+'"' %></b><br>
+        <b class="reviewTitle"><%= link_to '"'+review.title+'"', review %></b><br>
         <%= review.rating %>
         <%= simple_format review.body %>
-        <%= review.user.email %>
-        <%= link_to "show", review %>
-
     </div>
     <% end %>
 

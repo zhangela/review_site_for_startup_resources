@@ -11,8 +11,6 @@
 	<%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
 	  <p><%= text_field_tag :search, params[:search],:placeholder => "Search" %></p>
 	 </div>
-	 <br />
-	 <br />
 	  <div id="companies"><%= render 'companies' %></div>
 	<% end %>
 
