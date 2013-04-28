@@ -34,10 +34,14 @@
 
 </script>
 
-<div id="company_info">
-	<p>Company Info Goes Here</p>
-	<%= @company.category %>
-	<%= @company.name %>
+<div id="company_info" class="well">
+	<h1><%= @company.name %></h1>
+	<div class="categories"><%= @company.category %></div>
+	<div class="description"><%= @company.description %></div>
+	<div class="contact-info">
+		<label>Contact Information:</label>
+		<%= @company.url %>
+	</div>
 
 </div>
 

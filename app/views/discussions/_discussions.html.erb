@@ -4,8 +4,7 @@
 
     <% @discussions.each do |discussion| %>
       <% discussionId = 'discussion-'+discussion.id.to_s %>
-      <div id='<%=discussionId%>' >
-        <%= discussion %>
+      <div id='<%=discussionId%>' class="well discussion">
         <% @comments = discussion.comments %>
         <% @discussion = discussion %>
         <%= render 'comments/comments' %>

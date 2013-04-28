@@ -6,7 +6,6 @@
   <tr>
     <th>Name</th>
     <th>Avg rating</th>
-    <th>ID</th>
     <th></th>
     <th></th>
   </tr>
@@ -19,7 +18,6 @@
     <% else %>
         <td><%= partner.avg_rating %></td>
     <% end %>
-    <td><%= partner.id %></td>
     <td><%= link_to 'Show', partner %></td>
     <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
     <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
