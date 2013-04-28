@@ -4,6 +4,7 @@ body{
 
 .searchbar{
 	float: right;
+	margin-bottom: 10px;
 }
 
 .leftpanel{
@@ -23,20 +24,73 @@ body{
 	padding: 10px;
 	margin: 20px;
 	margin-left: 100px;
-	width: 800px;
+	width: 900px;
 	
 }
 
 #companies{
-	padding: 10px;
+	padding: 20px;
 	margin: 20px;
 }
 
 .entry{
 	margin: 10px;
+	margin-left: 80px;
 	padding: 10px;
+	background-color: #F8F8F8 ;
+	border-radius: 5px;
 }
 
 .description{
 	word-wrap: break-word;
+}
+
+#companyinfo{
+	width: 700px;
+	margin-left: 200px;
+	word-wrap: break-word;
+}
+#reviews{
+	margin: 10px;
+	margin-left: 100px;
+}
+.review{
+	margin-top: 10px;
+	padding: 10px;
+	background-color: #F8F8F8 ;
+	border-radius: 5px;
+	width: 700px;
+}
+
+#reviewform{
+	margin-left: 500px;
+}
+
+.mainpanel{
+	margin-left: 20%;
+	width: 700px;
+}
+
+#discussionentry{
+	width: 600px;
+}
+
+.customButton{
+	min-width: 150px;
+	box-shadow: none;
+	background-color: #1ABC9C;
+	border: none;
+	color: #ECF0F1;
+	border-radius: 5px;
+}
+.partners{
+	margin-right: 20px;
+	float:right;
+	width: 200px;
+	text-align: center;
+}
+#partners{
+	text-align: center;
+	margin-top: 20px;
+	margin-left: 0px;
 }

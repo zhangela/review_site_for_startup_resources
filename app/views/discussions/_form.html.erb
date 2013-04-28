@@ -21,9 +21,9 @@
     <textarea name="body" rows="4" cols="50"></textarea>
   </div>
   <div class="actions">
-    <%= f.submit "Post" %>
+    <%= f.submit "Post", :class => "customButton" %>
   </div>
 
-  <input type="button" class="cancelDiscussionButton" value="Cancel">
+  <input type="button" class = "customButton" id="cancelDiscussionButton" value="Cancel">
 <% end %>
 </div>

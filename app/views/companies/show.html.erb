@@ -34,20 +34,21 @@
 
 </script>
 
-<div id="company_info" class="well">
-	<h1><%= @company.name %></h1>
-	<div class="categories"><%= @company.category %></div>
-	<div class="description"><%= @company.description %></div>
-	<div class="contact-info">
-		<label>Contact Information:</label>
-		<%= @company.url %>
-	</div>
+<div id="navigation">
+	<%= link_to '< Back to Results', companies_path %>
+</div>
+<div id="companyinfo">
+	<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
+	<p><%= @company.description %></p>
 
 </div>
 
+
 <div class="partners" >
+	<h3>Partners</h3>
+	<input class="customButton" id = "addPartnerButton" type="button" value="Add Partner" style= "float:center">
+	<br/>
 	<%= render "partners/partners" %>
-	<input id="addPartnerButton" type="button" value="Add Partner">
 
 
 	<div id="addPartnerForm" style="display: none;">
@@ -74,19 +75,16 @@
 		    <%= f.submit %>
 		  </div>
 		<% end %>
-		<input type="button" id="cancelPartnerForm" value="Cancel">
+		<input type="button" class = "customButton"id="cancelPartnerForm" value="Cancel">
 
 	</div>
 
 </div>
 
 <div id="reviews">
-	<%= render "reviews/reviews" %>
-	<input id="addReviewButton" type="button" value="New Review">
-
+	 <h3 style = "margin-left:100px">Reviews</h3>
+	 <input class ="customButton" id = "addReviewButton" type="button" value="New Review" style = "margin-left:100px">
+	<%= render "reviews/reviews" %></div>
+	
 </div>
 
-<div id="navigation">
-	<%= link_to 'Edit', edit_company_path(@company) %> |
-	<%= link_to 'Back', companies_path %>
-</div>

@@ -1,4 +1,4 @@
-<div id="addReviewForm">
+<div id="addReviewForm" style = "margin-left:100px; width = 600px">
 
 <%= form_for [@reviewable, Review.new] do |f| %>
   <% if @review.errors.any? %>
@@ -13,8 +13,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= label_tag 'title', 'What did you think overall? (e.g, good, bad, ugly?)' %><br />
+  <div class="field" style = "width = 600px">
+    <%= label_tag 'title', 'What did you think overall?' %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -27,9 +27,10 @@
     <input name="rating" type="radio" class="star" value="4">
     <input name="rating" type="radio" class="star" value="5">
   </div>
+
   <div class="field">
-    <%= label_tag 'body', 'Got anything specific to say?' %><br />
-    <%= f.text_area :body %>
+    <%= label_tag 'body', 'Any specific comments?' %><br />
+    <%= f.text_area :body, :rows => 4, :columns => 100%>
   </div>
 
   <div class="actions">

@@ -10,14 +10,14 @@
         $('#addDiscussionButton').hide();
     });
 
-    $('body').on('click', '.cancelDiscussionButton', function(event){
+    $('body').on('click', '#cancelDiscussionButton', function(event){
       $('#newDiscussionForm').fadeOut('fast', function() {
           $(this).remove();
           $('#addDiscussionButton').show();
       });
     });
 
-  $('body').on('click', '.createCommentButton', function(event){
+  $('body').on('click', '#createCommentButton', function(event){
       var url = hostname+'/createComment'
       var commentBody = $(this).parent().find('.newCommentText').val();
       var strid = $(this).parent().parent().attr("id");
@@ -34,30 +34,19 @@
   });
 
 </script>
-
+<div id="navigation">
+  <%= link_to '< Back to Company', company_path %>
+</div>
 
 <p id="notice"><%= notice %></p>
+<div class = "mainpanel">
+<div id = "reviewinfo">
+  <h3><%= '"' + @review.title + '"'%></h3>
+  <div id = "reviewbody">
+    <p><%= @review.body %></p>
+  </div>
 
 
-<p>
-  <b>Title:</b>
-  <%= @review.title %>
-</p>
-
-<p>
-  <b>Rating:</b>
-  <%= @review.rating %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @review.body %>
-</p>
-
-<p>
-  <b>Poster:</b>
-  <%= @review.user.email %>
-</p>
 
 <p>
   <b>Reviewable:</b>
@@ -68,10 +57,11 @@
   <b>Reviewable type:</b>
   <%= @review.reviewable_type %>
 </p>
+</div>
 
 <div id="discussions">
-  <input id="addDiscussionButton" type="button" value="New Comment">
+  <input class="customButton" type="button" id = "addDiscussionButton" value="New Discussion">
   <%= render "discussions/discussions" %>
 </div>
 
-
+</div>
