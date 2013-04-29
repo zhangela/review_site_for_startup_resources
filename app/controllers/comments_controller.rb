@@ -43,6 +43,7 @@ class CommentsController < ApplicationController
   def create
     @discussion = Discussion.find(params[:discussion])
     @comment = @discussion.comments.build(params[:comment])
+    @comment.update_attributes(:poster_email => current_user.email)
 
     respond_to do |format|
       if @comment.save
