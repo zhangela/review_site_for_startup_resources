@@ -3,5 +3,5 @@ Group Project
 
 ###Heroku URL
 
-Please put it here: http://intense-wave-5400.herokuapp.com/users/sign_in
+Please put it here: http://intense-wave-5400.herokuapp.com/
 
