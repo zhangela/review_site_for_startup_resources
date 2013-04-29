@@ -1,5 +1,6 @@
-<div id="addReviewForm" style = "margin-left:100px; width = 600px">
+<div id="addReviewForm" class="review">
 
+<h4>New Review</h4>
 <%= form_for [@reviewable, Review.new] do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -13,15 +14,15 @@
     </div>
   <% end %>
 
-  <div class="field" style = "width = 600px">
-    <%= label_tag 'title', 'What did you think overall?' %><br />
+  <div class="field" style = "width = 320px">
+    <%= label_tag 'title', 'What did you think overall?' %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= label_tag 'rating', 'How would you rate from 1 to 5?' %><br />
+    <%= label_tag 'rating', 'How would you rate from 1 to 5?' %>
     <%#= f.radio_button :rating, options_for_select%>
     <%#= f.radio_button :rating, {:class=>'star'})%>
-    <input name="rating" type="radio" class="star" value="1">    
+    <input name="rating" type="radio" class="star" value="1">
     <input name="rating" type="radio" class="star" value="2">
     <input name="rating" type="radio" class="star" value="3">
     <input name="rating" type="radio" class="star" value="4">
@@ -29,16 +30,15 @@
   </div>
 
   <div class="field">
-    <%= label_tag 'body', 'Any specific comments?' %><br />
-    <%= f.text_area :body, :rows => 4, :columns => 100%>
+    <%= label_tag 'body', 'Any specific comments?' %>
+    <%= f.text_area :body, :rows => 4 %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.submit "Add Review", :class => "customButton" %>
   </div>
 
+<input type="button" value="Cancel" id="cancelNewReviewButton" class="cancelButton">
 <% end %>
-
-<input type="button" value="Cancel" id="cancelNewReviewButton">
 
 </div>

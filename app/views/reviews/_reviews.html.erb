@@ -3,7 +3,7 @@
     <% @reviews.each do |review| %>
     <div class="review">
         <b class="reviewTitle"><%= link_to '"'+review.title+'"', review %></b><br>
-        <%= review.rating %>
+        <span class="stars"><%= review.rating %></span>
         <%= simple_format review.body %>
     </div>
     <% end %>

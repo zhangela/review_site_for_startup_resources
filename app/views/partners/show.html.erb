@@ -1,25 +1,53 @@
+<script>
+
+  $(document).ready(function(){
+
+    $('#addReviewButton').click(function(){
+        $('#partner_reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>').hide().fadeIn('fast');
+        $('#addReviewButton').hide();
+    });
+
+    $('body').on('click', '#cancelNewReviewButton', function(event){
+      $('#addReviewForm').fadeOut('fast', function() {
+          $(this).remove();
+          $('#addReviewButton').show();
+      });
+    });
+  });
+
+</script>
+
+
 <div id="navigation">
- 	<% @id = @partner.company_id%>
+  <% @id = @partner.company_id%>
   <%= link_to '< Back to Company', company_path(@id) %>
 </div>
 
-<p id="notice"><%= notice %></p>
+<div class="container">
+    <p id="notice"><%= notice %></p>
 
 
-<div class = "mainpanel">
+    <div style="margin-left: 100px;">
+      <h3 style="margin-bottom: 0px;"><%= @partner.name %></h3>
+      <%= link_to 'Edit Partner', edit_partner_path(@partner) %>
 
-  <h3><%= @partner.name %></h3>
-<p>
-    <% if @partner.avg_rating < 0 %>
-        Not yet rated!
-    <% else %>
-        <%= @partner.avg_rating %>
-    <% end %>
-	</p>
-<%= render "reviews/reviews" %>
-<%= render "reviews/form" %>
+      <p style="margin-top: 10px;">
 
+      <% if @partner.avg_rating < 0 %>
+      <b>Average Rating:</b> Not yet rated!
+      <% else %>
+      <b>Average Rating:</b> <span class="stars"><%= @partner.avg_rating %></span>
+      <% end %>
+      </p>
+  </div>
 
-<%= link_to 'Edit', edit_partner_path(@partner) %> 
+<div id="partner_reviews">
+    <input class="customButton" type="button" id = "addReviewButton" value="New Review" style="margin-left: 100px; color: white;">
+
+    <br>
+
+    <%= render "reviews/reviews" %>
+</div>
+
 </div>
 
