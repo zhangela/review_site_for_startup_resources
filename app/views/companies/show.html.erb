@@ -1,12 +1,13 @@
 
 <script>
 
-	$(document).ready(function(){
+$(document).ready(function(){
 
 		//Render add partner form
 		$('#addPartnerButton').click(function(){
+			$('#addReviewForm').remove();
 			//use partners form to add a new partner
-			$('#partners').append('<%= escape_javascript( render(:partial=>"partners/form")).html_safe %>');
+			$('#partners').prepend('<%= escape_javascript( render(:partial=>"partners/form")).html_safe %>');
 			$('#addPartnerButton').hide();
 		});
 
@@ -18,7 +19,8 @@
 
 		//Render add review form
 		$('#addReviewButton').click(function(){
-			$('#reviews').append('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
+			$('#addPartnerForm').remove();
+			$('#reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
 			$('#addReviewButton').hide();
 		});
 
@@ -34,57 +36,44 @@
 
 </script>
 
-<div id="navigation">
-	<%= link_to '< Back to Results', root_url %>
-</div>
-<div id="companyinfo">
-	<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
-	<p><%= @company.description %></p>
 
-</div>
+<div class="container">
+	<div id="navigation">
+		<%= link_to '< Back to Results', root_url %>
+	</div>
+	<div id="companyinfo">
+		<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
+		<p><%= @company.description %></p>
+
+	</div>
+
+	<div class="row">
+
+		<div class="span6">
+			<div id="reviews" style="float: left; text-allign: left;">
+				<h3>Reviews</h3>
+
+				<input class ="customButton" id = "addReviewButton" type="button" value="New Review">
+
+				<%= render "reviews/reviews" %>
 
 
-<div class="partners" >
-	<h3>Partners</h3>
-	<input class="customButton" id = "addPartnerButton" type="button" value="Add Partner" style= "float:center">
-	<br/>
-	<%= render "partners/partners" %>
+			</div>
+
+		</div>
+
+		<div class="span6" style="float: right; text-allign: right;">
+
+			<div class="partners"  style="float: right; text-allign: right;">
+				<h3>Partners</h3>
 
 
-	<div id="addPartnerForm" style="display: none;">
-		<h2>Add a Partner </h2>
+				<input class="customButton" id = "addPartnerButton" type="button" value="Add Partner">
 
-		<%= form_for [@company, @company.partners.build] do |f| %>
-		  <% if @partner.errors.any? %>
-		    <div id="error_explanation">
-		      <h2><%= pluralize(@partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
-
-		      <ul>
-		      <% @partner.errors.full_messages.each do |msg| %>
-		        <li><%= msg %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
-
-		  <div class="field">
-		    <%= f.label :name %><br />
-		    <%= f.text_field :name %>
-		  </div>
-		  <div class="actions">
-		    <%= f.submit %>
-		  </div>
-		<% end %>
-		<input type="button" class = "customButton"id="cancelPartnerForm" value="Cancel">
+				<%= render "partners/partners" %>
+			</div>
+		</div>
 
 	</div>
 
 </div>
-
-<div id="reviews">
-	 <h3 style = "margin-left:100px">Reviews</h3>
-	 <input class ="customButton" id = "addReviewButton" type="button" value="New Review" style = "margin-left:100px">
-	<%= render "reviews/reviews" %></div>
-	
-</div>
-

@@ -8,6 +8,20 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+
+
+span.stars, span.stars span {
+    display: block;
+    background: url(stars.png) 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+
+
 .clearfix {
   *zoom: 1;
 }
@@ -1104,13 +1118,13 @@ input[type="color"],
 }
 
 input,
-textarea,
 .uneditable-input {
   width: 206px;
 }
 
 textarea {
-  height: auto;
+  height: 100px;
+  width: 500px;
 }
 
 textarea,

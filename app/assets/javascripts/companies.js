@@ -1,5 +1,4 @@
 
-
 $(function() {
   $("#companies th a, #companies .pagination a").live("click", function() {
     $.getScript(this.href);

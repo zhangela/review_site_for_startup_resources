@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130429022523) do
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
     t.string   "category"
+    t.string   "location"
   end
 
   create_table "discussions", :force => true do |t|
