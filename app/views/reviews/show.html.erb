@@ -28,19 +28,21 @@
         $('#discussion-'+id).find('.comments').append('<p>'+d.body+'</p>');
         $('#discussion-'+id).find('.newCommentText').val('');
       });
-    }); 
-    
+    });
+
 
   });
 
 </script>
+
+<div class = "container">
+
 <div id="navigation">
   <% @id = @review.reviewable_id%>
   <%= link_to '< Back to Company', company_path(@id) %>
 </div>
 
 <p id="notice"><%= notice %></p>
-<div class = "mainpanel">
 <div id = "reviewinfo">
   <h3><%= '"' + @review.title + '"'%></h3>
   <div id = "reviewbody">
