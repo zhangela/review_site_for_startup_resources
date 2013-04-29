@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
     before_save :default_values
 
-    attr_accessible :avg_rating, :description, :name, :url, :category
+    attr_accessible :avg_rating, :description, :name, :url, :category, :location
     has_many :reviews, :as => :reviewable
     has_many :partners
 
@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
     	if(self.avg_rating == -1)
     		self.update_attribute(:avg_rating, review.rating)
     	else
-			oldAvg = self.avg_rating 
+			oldAvg = self.avg_rating
     		numRatings = self.reviews.size
 			oldTotal = oldAvg * (numRatings-1)
 
