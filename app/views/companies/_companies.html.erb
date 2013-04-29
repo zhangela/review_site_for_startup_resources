@@ -18,7 +18,22 @@
       <div class = "entry">
         <h3><%= link_to company.name, company %></h3>
 <!--       <td><%= company.category %></td> -->
-      <td><%= company.avg_rating %></td>
+      <td>
+        <% if company.avg_rating < 0 %>
+        Not yet rated!
+        <% else %>
+          <label>Rating:</label>
+          <%= company.avg_rating %>
+<!--           <div class='rating'>
+          <input name="starrating" type="radio" class="star" disabled="disabled"/>
+          <input name="starrating" type="radio" class="star" disabled="disabled"/>
+          <input name="starrating" type="radio" class="star" disabled="disabled"/>
+          <input name="starrating" type="radio" class="star" disabled="disabled"/>
+          <input name="starrating" type="radio" class="star" disabled="disabled"/>
+          </div> -->
+        <% end %>
+
+      </td>
         <div class = "description"><%= company.description %></div>
         <a href = "<%= company.url %>" target="_blank" style ="color:#00aedb"><%= company.url %></a>
     </div>
