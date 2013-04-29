@@ -1104,13 +1104,13 @@ input[type="color"],
 }
 
 input,
-textarea,
 .uneditable-input {
   width: 206px;
 }
 
 textarea {
-  height: auto;
+  height: 100px;
+  width: 500px;
 }
 
 textarea,

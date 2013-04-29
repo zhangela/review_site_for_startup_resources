@@ -1,33 +1,31 @@
-<%= form_for @company do |f| %>
+<%= form_for @company do |f|%>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    Company Name<br />
+    <%= f.text_field :name, :placeholder => "Y Combinator" %>
   </div>
 
   <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
+    Category <br />
+    <%= f.text_field :category, :placeholder => "VC, Accelerator, Law, ..." %>
   </div>
 
   <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
+    Website URL<br />
+    <%= f.text_field :url, :placeholder => "http://ycombinator.com/" %>
   </div>
 
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    Location<br />
+    <%= f.text_field :location, :placeholder => "Mountain View, CA" %>
   </div>
-
 
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    Short Description<br />
+    <%= f.text_area :description, :placeholder => "An American seed accelerator that provides seed money, advice, and connections at two 3-mounnth programs per year in exchange for ~6% equity." %>
   </div>
 
-
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.submit "Add Company", :class => "btn btn-primary" %>
   </div>
 <% end %>
