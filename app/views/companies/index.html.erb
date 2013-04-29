@@ -1,22 +1,99 @@
+<div class="container">
 
+    <div class="row">
+        <div class="span2">
+            <br>
+            <br>
 
-<div class = "leftpanel">
-<!-- <div class = "categories">
-	
+            <h3>Sort by... </h3>
 
-</div> -->
+            <div class = "categories">
+               Categories
+           </div>
+
+           <div class = "categories">
+               Ranking
+           </div>
+
+           <div class = "categories">
+               Company Name
+           </div>
+
+            <h3>Filter by... </h3>
+
+            <h4> Categories </h4>
+
+            <div class = "categories">
+               Accelerators & Incubators
+           </div>
+
+            <div class = "categories">
+               Angel Investment
+           </div>
+
+            <div class = "categories">
+               Finance
+           </div>
+
+            <div class = "categories">
+               Law
+           </div>
+
+           <div class = "categories">
+               Venture Capital
+           </div>
+
+            <h4> Ranking </h4>
+
+            <span class="stars">5</span>
+            <span class="stars">4</span>
+            <span class="stars">3</span>
+            <span class="stars">2</span>
+            <span class="stars">1</span>
+            <span class="stars">0</span>
+
+<!--            <h4> Categories </h4>
+
+            <div class = "categories">
+               Accelerators & Incubators
+           </div>
+
+            <div class = "categories">
+               Angel Investment
+           </div>
+
+            <div class = "categories">
+               Finance
+           </div>
+
+            <div class = "categories">
+               Law
+           </div>
+
+           <div class = "categories">
+               Venture Capital
+           </div> -->
+
+       </div>
+
+       <div class = "span10">
+            <h1> Companies </h1>
+
+           <div class = "searchbar">
+               <%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
+               <p><%= text_field_tag :search, params[:search],:placeholder => "Search" %></p>
+           </div>
+
+           <div class="customButton" style="width: 50px; height: 25px; text-align: center; float: center; padding: 5px; padding-bottom: 0px;">
+            <%= link_to 'Add Company', new_company_path, :style => "color: white; float: center; text-align: center; font-size: 16px; " %>
+        </div>
+
+           <div id="companies"><%= render 'companies' %></div>
+           <% end %>
+
+       </div>
+   </div>
+
 </div>
-
-<div class = "rightpanel">
-	<div class = "searchbar">
-	<%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
-	  <p><%= text_field_tag :search, params[:search],:placeholder => "Search" %></p>
-	 </div>
-	  <div id="companies"><%= render 'companies' %></div>
-	<% end %>
-
-	<%= link_to 'New Company', new_company_path %>
-</div>
-
 
 
