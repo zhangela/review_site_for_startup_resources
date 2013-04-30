@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429022523) do
+ActiveRecord::Schema.define(:version => 20130430203103) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130429022523) do
     t.string   "url"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "category_id"
     t.string   "category"
     t.string   "location"
   end
@@ -70,6 +71,27 @@ ActiveRecord::Schema.define(:version => 20130429022523) do
   end
 
   add_index "partners", ["company_id"], :name => "index_partners_on_company_id"
+
+  create_table "profiles", :force => true do |t|
+    t.text     "about"
+    t.string   "contactnum"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "reviews", :force => true do |t|
     t.string   "title"
