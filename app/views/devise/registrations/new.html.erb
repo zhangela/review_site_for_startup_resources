@@ -1,21 +1,37 @@
-<h2>Sign up</h2>
+<style type="text/css">
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+</style>
 
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email%></div>
+<div class="container">
+  <div class="form-signin">
+    <h2 class="form-signin-heading">Sign up</h2>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div>
+      <%= f.text_field :name, :autofocus => true, :placeholder => "Your Name" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+      <div>
+        <%= f.text_field :email, :placeholder => "Email" %></div>
 
-<%= render "devise/shared/links" %>
+        <div>
+          <%= f.password_field :password, :placeholder => "Password" %></div>
+
+          <div>
+            <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %></div>
+
+            <div><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
+            <% end %>
+
+            <%= render "devise/shared/links" %>
+
+          </div>
+        </div>
+
