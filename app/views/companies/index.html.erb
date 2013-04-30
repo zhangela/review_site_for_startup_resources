@@ -1,3 +1,23 @@
+<script>
+$.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+}
+
+$(function() {
+    $('span.stars').stars();
+});
+
+</script>
+
 <div class="container">
 
     <div class="row">
@@ -8,15 +28,19 @@
             <h3>Sort by... </h3>
 
             <div class = "categories">
-               Categories
+               <%= sortable "category", "Category" %>
            </div>
 
            <div class = "categories">
-               Ranking
+               <%= sortable "avg_rating", "Rating" %>
            </div>
 
            <div class = "categories">
-               Company Name
+               <%= sortable "location", "Location" %>
+           </div>
+
+           <div class = "categories">
+               <%= sortable "name", "Company Name" %>
            </div>
 
             <h3>Filter by... </h3>
@@ -28,7 +52,7 @@
            </div>
 
             <div class = "categories">
-               Angel Investment
+               Angel Investors
            </div>
 
             <div class = "categories">
