@@ -72,9 +72,20 @@ $(document).ready(function(){
 	<div id="navigation">
 		<%= link_to '< Back to Results', root_url %>
 	</div>
-	<div id="companyinfo">
-		<h2 style ="text-align:center"><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
-		<p><%= @company.description %></p>
+	<div id="companyinfo" style ="text-align:left">
+		<h2><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %></a></h2>
+		<div style="font-size: 18px; line-height: 25px; margin-top: 20px;">
+		<b>Website: </b><a href = "<%= url_with_protocol (@company.url) %>" target="_blank" style ="color:#00aedb"><%= @company.url %></a> <br>
+      <b>Category: </b><td><%= @company.category %></td> <br>
+      <b>Location: </b><td><%= @company.location %></td> <br>
+      <b>Rating: </b>
+      <% if @company.avg_rating < 0 %>
+        <td>Not yet rated! </td>
+      <% else %>
+        <td><%= @company.avg_rating %></td>
+        <% end %> <br>
+	<b>Description: </b><td><%= @company.description %></td>
+</div>
 	</div>
 	<div id="map-canvas" style="width: 400px; height: 300px; float:right"></div>
 	</div>

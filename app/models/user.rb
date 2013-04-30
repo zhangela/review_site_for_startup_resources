@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   #  :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable # :confirmable
+  validates_format_of :email, :with => /(.*)@mit.edu/i, :message => "Must be mit.edu email address"
   has_many :reviews
   has_one :profile
   # Setup accessible (or protected) attributes for your model

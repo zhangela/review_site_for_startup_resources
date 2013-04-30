@@ -7,7 +7,9 @@
 
   <div class="field">
     Category <br />
-    <%= f.text_field :category, :placeholder => "VC, Accelerator, Law, ..." %>
+    <%#= f.text_field :category, :placeholder => "VC, Accelerator, Law, ..." %>
+
+    <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
   </div>
 
   <div class="field">
