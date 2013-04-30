@@ -33,4 +33,12 @@ class Company < ActiveRecord::Base
         end
     end
 
+        def self.filter(condition)
+        if condition
+            where('category LIKE ?', "%#{condition}%")
+        else
+            scoped
+        end
+    end
+
 end
