@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable,
   #  :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable#, :validatable # :confirmable
-  #validates_format_of :email, :with => /(.*)@mit.edu/i, :message => "Must be mit.edu email address"
+         :recoverable, :rememberable, :trackable, :validatable # :confirmable
+  validates_format_of :email, :with => /(.*)@mit.edu/i, :message => "Must be mit.edu email address"
   has_many :reviews
 
   # Setup accessible (or protected) attributes for your model
