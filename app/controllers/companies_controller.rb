@@ -27,6 +27,13 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
+  def self.filter_by_category(opts = {})
+     filter = opts[:filter]
+     company = Company.arel_table
+
+     self.where(:category => filter)
+   end 
+
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
