@@ -148,10 +148,10 @@ a:hover{
 	width: inherit;
 }
 
-input,
-textarea,
+
+.form-signin textarea,
 .uneditable-input {
-  width: inherit;
+	width: inherit;
    }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -163,4 +163,18 @@ textarea,
 	height: auto;
 	margin-bottom: 15px;
 	padding: 7px 9px;
+}
+
+.navbar .brand{
+	font-weight: none;
+	text-shadow:none;
+	color: #1ABC9C;
+	padding: 0;
+	padding-top: 5px;
+	font-size: 30px;
+}
+.navbar .nav li a{
+	text-shadow:none;
+	color: #ECF0F1;
+	font-weight: none;
 }
