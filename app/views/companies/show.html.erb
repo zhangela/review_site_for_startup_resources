@@ -67,6 +67,7 @@ $(document).ready(function(){
 </script>
 <body onload = "initialize()">
 <div class="container">
+
 	<div class = "toppanel">
 	<div id="navigation">
 		<%= link_to '< Back to Results', root_url %>
@@ -84,7 +85,7 @@ $(document).ready(function(){
 				<h3>Reviews</h3>
 
 				<input class ="customButton" id = "addReviewButton" type="button" value="New Review">
-
+				
 				<%= render "reviews/reviews" %>
 
 
