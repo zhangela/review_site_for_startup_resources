@@ -11,7 +11,3 @@ $.fn.stars = function() {
         $(this).html($span);
     });
 }
-
-$(function() {
-    $('span.stars').stars();
-});
