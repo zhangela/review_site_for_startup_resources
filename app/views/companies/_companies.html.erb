@@ -13,32 +13,25 @@
       <th></th>
     </tr> -->
 
-  <% @companies.each do |company| %>
+    <% @companies.each do |company| %>
 
-      <div class = "entry">
-        <h3><%= link_to company.name, company %></h3>
+    <div class = "entry">
+      <h3><%= link_to company.name, company %></h3>
+      <% if company.avg_rating < 0 %>
+      <td>Not yet rated! </td> <br>
+      <% else %>
+      <span class="stars"> <%= company.avg_rating %> </span>
+      <% end %>
+      <br>
       <a href = "<%= company.url %>" target="_blank" style ="color:#00aedb"><%= company.url %></a> <br>
       <b>Category: </b><td><%= company.category %></td> <br>
       <b>Location: </b><td><%= company.location %></td> <br>
-      <b>Rating: </b>
-      <% if company.avg_rating < 0 %>
-        <td>Not yet rated! </td>
-      <% else %>
-        <td><%= company.avg_rating %></td>
-        <!--           <div class='rating'>
-          <input name="starrating" type="radio" class="star" disabled="disabled"/>
-          <input name="starrating" type="radio" class="star" disabled="disabled"/>
-          <input name="starrating" type="radio" class="star" disabled="disabled"/>
-          <input name="starrating" type="radio" class="star" disabled="disabled"/>
-          <input name="starrating" type="radio" class="star" disabled="disabled"/>
-          </div> -->
+      <div class = "description">
+        <br>
+        <%= company.description %></div>
+      </div>
+
       <% end %>
-        <div class = "description">
-          <br>
-          <%= company.description %></div>
-    </div>
+      <!--   </table> -->
 
-  <% end %>
-<!--   </table> -->
-
-  <%= will_paginate @companies %>
+      <%= will_paginate @companies %>

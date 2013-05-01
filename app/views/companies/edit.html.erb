@@ -1,6 +1,11 @@
-<h1>Editing company</h1>
+<div class="container">
+  <div class="form-edit">
+
+<h1>Edit <%= @company.name %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @company %> |
-<%= link_to 'Back', companies_path %>
+<%= button_to 'Cancel', company_path(@company), :style => "color: white; height: 100%; width: 100px;", :class => "cancelButton", :method => :get %>
+
+</div>
+<div>

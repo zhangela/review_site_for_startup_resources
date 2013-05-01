@@ -6,7 +6,13 @@ class CompaniesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @companies = Company.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    if params[:category]
+      @companies = Company.filter(params[:category]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    elsif params[:rating]
+      @companies = Company.filter_by_rating(params[:rating]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    else
+      @companies = Company.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    end
   end
 
   # GET /companies/1
@@ -32,7 +38,7 @@ class CompaniesController < ApplicationController
      company = Company.arel_table
 
      self.where(:category => filter)
-   end 
+   end
 
   # GET /companies/1/edit
   def edit
