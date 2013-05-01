@@ -215,6 +215,16 @@ a:hover{
 	padding: 7px 9px;
 }
 
+
+.field_with_errors {
+	background-color: red;
+	display: table;
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+
 .navbar .brand{
 	font-weight: none;
 	text-shadow:none;
