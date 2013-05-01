@@ -6,4 +6,13 @@ class RegistrationsController < Devise::RegistrationsController
         puts "built"
         @user.save!
     end
+  def create
+  	super
+  	@user = User.create( params[:user] )
+  end
+  def show
+  	@user = User.find(current_user.id)
+  	puts "inshow"
+  end
+
 end

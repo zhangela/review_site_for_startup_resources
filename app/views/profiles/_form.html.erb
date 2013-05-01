@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.label :picture_url, "Upload Your Avatar:" %>
+    <div class ="actions">
+    <%= f.filepicker_field :picture_url, services: ["COMPUTER", "FACEBOOK"], :class => "customButton"%> 
+    </div>
+  </div>
+
   <div class="field">
     <%= f.label :about %><br />
     <%= f.text_area :about %>
@@ -20,7 +27,8 @@
     <%= f.text_field :contactnum %>
   </div>
 
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "submit", :class => "customButton" %>
   </div>
 <% end %>

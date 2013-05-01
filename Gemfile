@@ -7,6 +7,8 @@ gem 'will_paginate', '~> 3.0.0'
 gem 'devise'
 gem 'rails_admin'
 gem 'heroku'
+gem 'filepicker-rails'
+gem 'best_in_place'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
