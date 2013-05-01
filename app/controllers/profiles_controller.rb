@@ -1,7 +1,23 @@
 class ProfilesController < ApplicationController
   before_filter :authenticate_user!
 
+  before_filter :load
+  respond_to :json
+ 
+  # Load is needed so that @user is not nil(for some reason AJAX note creation does not work without it)
+  def load
+    @user = current_user
+  end
 
+  # Helper method to allow in-place editing of ntoe
+  def in_place_update
+     @profile = Profile.find(params[:id])
+     @profile.update_attributes(:name, params[:text])
+
+     respond_to do |format|
+      format.js
+     end
+  end
   # GET /profiles
   # GET /profiles.json
   def index
@@ -17,19 +33,18 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
-    @users = @profile.user
+    @users = User.find(current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @profile }
+      format.json { respond_with_bip(@profile) }
     end
   end
 
   # GET /profiles/new
   # GET /profiles/new.json
   def new
-    @user.profile = Profile.new
-    @profile = @user.profile
+    @profile = Profile.new
   end
 
   # GET /profiles/1/edit
@@ -41,6 +56,7 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     # Buidles a profile in association witht eh user
+    @user = User.find(current_user.id)
     @profile = @user.build_profile(params[:user])
 
     respond_to do |format|

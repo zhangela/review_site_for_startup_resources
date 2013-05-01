@@ -1,22 +1,24 @@
 <div class ="userleft">
-<p id="notice"><%= notice %></p>
 
+</div>
+<%= filepicker_image_tag @profile.picture_url, w: 300, h: 300, fit: 'clip' %>
+<div class = "userright">
+<p id="notice"><%= notice %></p>
+<div class = "inplaceform" id = "<%= @profile.id %>">
 <p><%= @users.name %></p>
 <p>
   <b>About:</b>
-  <%= @profile.about %>
+  <%= best_in_place @profile, :about %>
 </p>
 
 <p>
   <b>Contactnum:</b>
-  <%= @profile.contactnum %>
+  <%= best_in_place @profile, :contactnum %>
 </p>
 
 <p>
   <b>User:</b>
   <%= @profile.user_id %>
 </p>
-
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> 
+</div>
 </div>
