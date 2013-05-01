@@ -8,6 +8,8 @@ class CompaniesController < ApplicationController
   def index
     if params[:category]
       @companies = Company.filter(params[:category]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    elsif params[:rating]
+      @companies = Company.filter_by_rating(params[:rating]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
     else
       @companies = Company.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
     end

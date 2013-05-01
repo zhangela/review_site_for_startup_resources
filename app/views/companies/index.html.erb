@@ -59,11 +59,24 @@
 
             <h4> Ranking </h4>
 
-            <span class="stars">4</span>
-            <span class="stars">3</span>
-            <span class="stars">2</span>
-            <span class="stars">1</span>
-            <span class="stars">0</span>
+            <%= link_to (content_tag :span, "5", :class => "stars"),
+            :controller => "companies", :action => "index", :rating => 5 %>
+
+            <%= link_to (content_tag :span, "4", :class => "stars"),
+            :controller => "companies", :action => "index", :rating => 4 %>
+
+            <%= link_to (content_tag :span, "3", :class => "stars"),
+            :controller => "companies", :action => "index", :rating => 3 %>
+
+            <%= link_to (content_tag :span, "2", :class => "stars"),
+            :controller => "companies", :action => "index", :rating => 2 %>
+
+            <%= link_to (content_tag :span, "1", :class => "stars"),
+            :controller => "companies", :action => "index", :rating => 1 %>
+
+            <%= link_to (content_tag :span, "0", :class => "stars"),
+            :controller => "companies", :action => "index" %>
+
 
             <div style="margin-top: 10px; margin-bottom: 10px;">
             <%= link_to "(Show All)", :controller => "companies", :action => "index" %>

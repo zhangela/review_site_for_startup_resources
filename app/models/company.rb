@@ -43,4 +43,12 @@ class Company < ActiveRecord::Base
         end
     end
 
+
+            def self.filter_by_rating(condition)
+        if condition
+            where('avg_rating >= ?', "#{condition}")
+        else
+            scoped
+        end
+    end
 end
