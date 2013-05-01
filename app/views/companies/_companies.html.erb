@@ -20,7 +20,7 @@
       <% if company.avg_rating < 0 %>
       <td>Not yet rated! </td> <br>
       <% else %>
-      <span class="stars"> <% company.avg_rating %> </span>
+      <span class="stars"> <%= company.avg_rating %> </span>
       <% end %>
       <br>
       <a href = "<%= company.url %>" target="_blank" style ="color:#00aedb"><%= company.url %></a> <br>

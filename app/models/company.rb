@@ -29,7 +29,7 @@ class Company < ActiveRecord::Base
 
     def self.search(search)
         if search
-            where('name LIKE ?', "%#{search}%")
+            where('name LIKE ? OR location LIKE ? OR description LIKE ? OR category LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
         else
             scoped
         end
