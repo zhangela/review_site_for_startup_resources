@@ -1,6 +1,16 @@
-<div class ="userleft">
+<% if @profile.picture_url != nil %>
+	<%= filepicker_image_tag @profile.picture_url, :class => "profilepic" %>
+<% else %>
+	<img src="/assets/img/default-avatar.jpg" class = "profilepic">
+<% end %>
+
+<%= render 'form' %>
+
+<!-- <div class ="userleft">
+
 
 </div>
+
 <%= filepicker_image_tag @profile.picture_url, w: 300, h: 300, fit: 'clip' %>
 <div class = "userright">
 <p id="notice"><%= notice %></p>
@@ -21,4 +31,4 @@
   <%= @profile.user_id %>
 </p>
 </div>
-</div>
+</div> -->

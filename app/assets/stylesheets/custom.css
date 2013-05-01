@@ -7,6 +7,13 @@ body{
 	margin-bottom: 10px;
 }
 
+.profilepic{
+	margin:40px;
+	padding:20px;
+	width: 250px;
+	height: 280px;
+}
+
 .test{
 	width: 200px;
 }

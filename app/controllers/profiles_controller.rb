@@ -33,6 +33,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
+    puts "hi"
+    puts @profile.user_id
     @users = User.find(current_user.id)
 
     respond_to do |format|
@@ -58,6 +60,9 @@ class ProfilesController < ApplicationController
     # Buidles a profile in association witht eh user
     @user = User.find(current_user.id)
     @profile = @user.build_profile(params[:user])
+    @profile.update_attributes(params[:profile])
+    puts "in create"
+    p @profile.picture_url
 
     respond_to do |format|
       if @profile.save
