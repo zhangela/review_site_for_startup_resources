@@ -46,9 +46,15 @@ body{
 
 #companyinfo{
 	word-wrap: break-word;
-	text-align: center;
+	text-align: left;
 	width: 500px;
 	float: left;
+}
+
+#companyinfo_detail {
+	font-size: 18px;
+	line-height: 25px;
+	margin-top: 20px;
 }
 
 .company{
@@ -97,6 +103,7 @@ body{
 
 .customButton{
 	min-width: 150px;
+	min-height: 25px;
 	box-shadow: none;
 	background-color: #1ABC9C;
 	border: none;
@@ -105,13 +112,18 @@ body{
 	margin-bottom: 10px;
 }
 
-.cancelButton{
+.cancelButton
+{
 	min-width: 150px;
+	height: 25px;
 	box-shadow: none;
 	background-color: #C2C2C2;
 	border: none;
-	color: white;
+	color: white !important;
 	border-radius: 5px;
+	padding-top: 2px;
+	text-align: center;
+
 }
 
 .partners{
@@ -131,6 +143,47 @@ a:hover{
 	color: #C0392B;
 }
 
+.form-edit {
+	max-width: 600px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	margin-bottom: 0px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.form-edit .form-edit-heading,
+.form-edit .checkbox {
+	margin-bottom: 10px;
+}
+.form-edit input[type="text"]{
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+
+.form-edit .textarea{
+	font-size: 16px;
+	height: auto;
+	width: 500px;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+
+.form-edit .form-subtitle {
+	margin-top: 0px;
+	float: top;
+	height: 80px;
+	vertical-align: middle;
+	text-align: top;
+}
+
 .form-signin {
 	text-align: center;
 	max-width: 300px;
@@ -145,21 +198,17 @@ a:hover{
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 	box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
-.form-signin input{
-	width: inherit;
-}
 
 
-.form-signin textarea,
-.uneditable-input {
-	width: inherit;
-   }
+
 .form-signin .form-signin-heading,
-.form-signin .checkbox {
+.form-signin .checkbox
+.form-edit .form-edit-heading,
+.form-edit .checkbox  {
 	margin-bottom: 10px;
 }
 .form-signin input[type="text"],
-.form-signin input[type="password"] {
+.form-signin input[type="password"]{
 	font-size: 16px;
 	height: auto;
 	margin-bottom: 15px;

@@ -5,6 +5,8 @@ class Company < ActiveRecord::Base
     has_many :reviews, :as => :reviewable
     has_many :partners
 
+    validates_presence_of :description, :name, :url, :category, :location
+
     def default_values
         self.avg_rating ||= -1
     end
