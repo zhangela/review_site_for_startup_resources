@@ -10,9 +10,11 @@ body{
 .profilepic{
 	margin:40px;
 	padding:20px;
-	width: 250px;
-	height: 280px;
+	width: 50%;
+	max-width: 200px;
+	height: 50%;
 }
+
 
 .test{
 	width: 200px;
