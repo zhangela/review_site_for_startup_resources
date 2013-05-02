@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20130430231401) do
+ActiveRecord::Schema.define(:version => 20130502191223) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -45,11 +44,12 @@ ActiveRecord::Schema.define(:version => 20130430231401) do
     t.text     "description"
     t.decimal  "avg_rating"
     t.string   "url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "category_id"
     t.string   "category"
     t.string   "location"
+    t.boolean  "add_from_crunchbase"
   end
 
   create_table "discussions", :force => true do |t|

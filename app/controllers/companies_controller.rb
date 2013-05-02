@@ -59,13 +59,37 @@ require 'crunchbase'
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:company])
+
+    puts "CREATE"
+    puts params[:add_from_crunchbase]
+    puts params[:name]
+    if params[:add_from_crunchbase] && params[:name]
+      Crunchbase::API.key = 'qcmsjxr83x7dyqhd9ppp4zev'
+      crunchbase_name = params[:name]
+      crunchbase_company = Crunchbase::Company.get("highland-capital-partners")
+      @company = Company.new
+      @company.description = params[:description]
+      @company.url = crunchbase_company.crunchbase_url
+      @company.name = crunchbase_company.name
+      @company.location = "California"
+      @company.category = params[:category]
+
+
+      puts "COMPANY"
+      puts @company.url
+      puts @company.name
+      puts @company.location
+      puts @company.category
+    else
+      @company = Company.new(params[:company])
+    end
 
     if @company.save
       flash[:notice] = "Successfully created company."
       redirect_to @company
     else
       render :action => 'new'
+      puts "not saved"
     end
   end
 
