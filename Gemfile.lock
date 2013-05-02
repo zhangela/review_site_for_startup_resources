@@ -45,6 +45,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    crunchbase (0.3.0)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -177,6 +178,7 @@ PLATFORMS
 DEPENDENCIES
   best_in_place
   coffee-rails (~> 3.2.1)
+  crunchbase
   devise
   filepicker-rails
   heroku

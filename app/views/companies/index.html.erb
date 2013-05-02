@@ -1,3 +1,11 @@
+<script>
+
+$(function() {
+    $('span.stars').stars();
+});
+
+</script>
+
 <div class="container">
 
     <div class="row">
@@ -30,7 +38,7 @@
             <h4> Categories </h4>
 
             <div class = "categories">
-               <%= link_to "Accelerators & Incubators", :controller => "companies", :action => "index",:category => "Accelerators & Incubators" %>
+               <%= link_to "Accelerators & Incubators", :controller => "companies", :action => "index", :category => "Accelerators & Incubators" %>
            </div>
 
             <div class = "categories">
@@ -112,6 +120,7 @@
            <div class = "searchbar">
                <%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
                <p><%= text_field_tag :search, params[:search],:placeholder => "Search" %></p>
+               <% end %>
            </div>
 
            <div class="customButton" style="width: 50px; height: 25px; text-align: center; float: center; padding: 5px; padding-bottom: 0px;">
@@ -119,7 +128,6 @@
         </div>
 
            <div id="companies"><%= render 'companies' %></div>
-           <% end %>
 
        </div>
    </div>
