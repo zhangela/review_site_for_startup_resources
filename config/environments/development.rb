@@ -35,9 +35,14 @@ Azure::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.assets.initialize_on_precompile = false
+  config.serve_static_assets = false
+
+  
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.action_mailer.delivery_method = :smtp
+
+
 
   # Set up email. 
   config.action_mailer.smtp_settings = {

@@ -18,11 +18,11 @@
 
     <h1><%= current_user.name %></h1>
 
-        <%= button_to "Edit Profile", edit_profile_path(@profile), :class => "customButton" %>
+        <%= button_to "Edit Profile", edit_profile_path, :class => "customButton" %>
 
     <p>
       <h3>About Me:</h3>
-      <%= best_in_place @profile, :about, value: "Enter"%>
+      <%= best_in_place @profile, :about %>
     </p>
     <p>
       <h3>Number:</h3>
