@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
 
-require 'crunchbase'
+  require 'crunchbase'
 
 
   # GET /companies
@@ -45,11 +45,11 @@ require 'crunchbase'
   end
 
   def self.filter_by_category(opts = {})
-     filter = opts[:filter]
-     company = Company.arel_table
+   filter = opts[:filter]
+   company = Company.arel_table
 
-     self.where(:category => filter)
-   end
+   self.where(:category => filter)
+ end
 
   # GET /companies/1/edit
   def edit
@@ -60,26 +60,21 @@ require 'crunchbase'
   # POST /companies.json
   def create
 
-    puts "CREATE"
-    puts params[:add_from_crunchbase]
-    puts params[:name]
     if params[:add_from_crunchbase] && params[:name]
-      Crunchbase::API.key = 'qcmsjxr83x7dyqhd9ppp4zev'
-      crunchbase_name = params[:name]
-      crunchbase_company = Crunchbase::Company.get("highland-capital-partners")
+
+      name = params[:name]
+      name = name.to_s.gsub(/[^0-9a-zA-Z ]/i, '')
+
+      description = params[:description]
+      description = description.to_s.gsub(/[^0-9a-zA-Z,.!:;""''?@#$&*() ]/i, '')
+
       @company = Company.new
-      @company.description = params[:description]
-      @company.url = crunchbase_company.crunchbase_url
-      @company.name = crunchbase_company.name
-      @company.location = "California"
-      @company.category = params[:category]
+      @company.description = description
+      @company.name = name
+      @company.url = params[:company][:url]
+      @company.location = params[:company][:location]
+      @company.category = params[:company][:category]
 
-
-      puts "COMPANY"
-      puts @company.url
-      puts @company.name
-      puts @company.location
-      puts @company.category
     else
       @company = Company.new(params[:company])
     end

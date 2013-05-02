@@ -13,29 +13,19 @@
 </style>
 
 <div class="container">
-
     <div class="form-edit">
-
         <div id="div_search_crunchbase">
-
             <div class="control-group">
-
                 <h2 class="form-edit-heading">Add Company</h2>
                 <table>
                     <td>
                        <%= form_tag new_company_path, :method => 'get', :id => "input_search_crunchbase" do %>
-
-
                        <th><%= text_field_tag :search, params[:search],:placeholder => "What's the name of the company?", :class=>"input-block-level", :style => "width: 400px;" %></th>
                        <th><%= submit_tag "Search", :class => "customButton", :style => "height: 38px; margin-bottom: 16px; min-width: 80px; margin-left: 5px; margin-right: 5px;" %></th>
                        <% end %>
-
                        <th><%= button_to 'Cancel', companies_path, :style => "height: 38px; margin-bottom: 16px; min-width: 80px; ", :class => "cancelButton", :method => :get %></th>
-
                    </td>
-
                </table>
-
            </div>
 
            <div id="crunchbase_companies">
@@ -50,48 +40,61 @@
                 <div><b>Crunchbase URL:</div> <div></b> <a href=<%= company.crunchbase_url %>><%= company.crunchbase_url %></a></div><br>
                 <div><b>Overview: </b></div><div><%= truncate(company.overview, :length => 300, :omission => '...') %></div>
 
-                <%= form_tag url_for(:controller => 'companies', :action => 'create'), :method => 'post' do %>
-                <div>
-                    <%= hidden_field :add_from_crunchbase, params[:add_from_crunchbase], :value => true %>
-                    <%= hidden_field :name, params[:name], :value => "highland-capital-partners" %>
-                    <%= hidden_field :description, params[:description], :value => company.overview %>
 
-                    <div class="field">
-                        Category <br />
+                <%= form_for @company do |f|%>
 
-                        <%= select_tag :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
-                    </div>
 
-                    <%= submit_tag "Add Company", :class => "customButton" %>
-                </div>
-                <% end %>
 
-                <br>
+            <div class="field">
+                Category <br />
+                <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
             </div>
 
+            <div class="field">
+                Website URL<br />
+                <%= f.text_field :url, :placeholder => "http://ycombinator.com/" %>
+            </div>
+
+            <div class="field">
+                Location<br />
+                <%= f.text_field :location, :placeholder => "Mountain View, CA" %>
+            </div>
+
+            <%= hidden_field :add_from_crunchbase, params[:add_from_crunchbase], :value => true %>
+            <%= hidden_field :description, params[:description], :value => company.overview %>
+            <%= hidden_field :name, params[:name], :value => company.name %>
+
+            <div>
+                <%= f.submit :class => "customButton" %>
+            </div>
             <% end %>
 
             <br>
-            <% end %>
-
-
-            <a id="show_add_form" style="cursor: hand; cursor: pointer;" onclick="$('#add_company_form').show(500); $('#div_search_crunchbase').hide(500); ">Didn't see the company you are looking for? Click here.</a>
-
         </div>
 
+        <% end %>
+
+        <br>
+        <% end %>
+
+
+        <a id="show_add_form" style="cursor: hand; cursor: pointer;" onclick="$('#add_company_form').show(500); $('#div_search_crunchbase').hide(500); ">Didn't see the company you are looking for? Click here.</a>
 
     </div>
 
-    <div id="add_company_form" style="display: none;">
 
-        <div id="navigation">
-            <a style="cursor:hand; cursor:pointer;" onclick="$('#add_company_form').hide(500); $('#div_search_crunchbase').show(500);">&lt; Back to search by company name</a>
-        </div>
+</div>
 
-        <h2 class="form-edit-heading">Add Company</h2>
-        <%= render 'form' %>
-        <%= button_to 'Cancel', companies_path, :style => "color: white; height: 100%; width: 100px;", :class => "cancelButton", :method => :get %>
+<div id="add_company_form" style="display: none;">
+
+    <div id="navigation">
+        <a style="cursor:hand; cursor:pointer;" onclick="$('#add_company_form').hide(500); $('#div_search_crunchbase').show(500);">&lt; Back to search by company name</a>
     </div>
+
+    <h2 class="form-edit-heading">Add Company</h2>
+    <%= render 'form' %>
+    <%= button_to 'Cancel', companies_path, :style => "color: white; height: 100%; width: 100px;", :class => "cancelButton", :method => :get %>
+</div>
 
 
 </div>
