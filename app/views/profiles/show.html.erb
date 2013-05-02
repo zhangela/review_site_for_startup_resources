@@ -1,0 +1,61 @@
+<div class="container">
+
+<div class="row">
+
+  <div class="span5">
+    <% if @profile.picture_url != nil %>
+    <%= filepicker_image_tag @profile.picture_url, :class => "profilepic" %>
+    <% else %>
+    <img src="/assets/img/default-avatar.jpg" class = "profilepic">
+    <% end %>
+    <div style="margin-left: 55px;">
+      <%= render 'form' %>
+    </div>
+  </div>
+
+  <div class="span7" style="margin-top: 40px; margin-left: 20px;">
+
+    <h1><%= current_user.name %></h1>
+
+        <%= button_to "Edit Profile", edit_profile_path(@profile), :class => "customButton" %>
+
+    <p>
+      <h3>About Me:</h3>
+      <%= best_in_place @profile, :about, value: "Enter"%>
+    </p>
+    <p>
+      <h3>Number:</h3>
+      <%= best_in_place @profile, :contactnum %>
+    </p>
+
+  </div>
+</div>
+
+<!-- <div class ="userleft">
+
+
+</div>
+
+<%= filepicker_image_tag @profile.picture_url, w: 300, h: 300, fit: 'clip' %>
+<div class = "userright">
+<p id="notice"><%= notice %></p>
+<div class = "inplaceform" id = "<%= @profile.id %>">
+<p><%= @users.name %></p>
+<p>
+  <b>About:</b>
+  <%= best_in_place @profile, :about %>
+</p>
+
+<p>
+  <b>Contactnum:</b>
+  <%= best_in_place @profile, :contactnum %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @profile.user_id %>
+</p>
+</div>
+</div> -->
+
+</div>

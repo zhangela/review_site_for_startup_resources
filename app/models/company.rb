@@ -5,6 +5,8 @@ class Company < ActiveRecord::Base
     has_many :reviews, :as => :reviewable
     has_many :partners
 
+    validates_presence_of :description, :name, :url, :category, :location
+
     def default_values
         self.avg_rating ||= -1
     end
@@ -27,10 +29,26 @@ class Company < ActiveRecord::Base
 
     def self.search(search)
         if search
-            where('name LIKE ?', "%#{search}%")
+            where('name LIKE ? OR location LIKE ? OR description LIKE ? OR category LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
         else
             scoped
         end
     end
 
+        def self.filter(condition)
+        if condition
+            where('category LIKE ?', "%#{condition}%")
+        else
+            scoped
+        end
+    end
+
+
+            def self.filter_by_rating(condition)
+        if condition
+            where('avg_rating >= ?', "#{condition}")
+        else
+            scoped
+        end
+    end
 end

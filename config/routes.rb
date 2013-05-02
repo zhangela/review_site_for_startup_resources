@@ -1,6 +1,8 @@
 Azure::Application.routes.draw do
   
 
+  resources :profiles
+
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 

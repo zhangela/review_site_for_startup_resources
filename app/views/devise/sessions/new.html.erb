@@ -1,32 +1,23 @@
-<style type="text/css">
-      body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-      }
-
-</style>
-
-
 <div class="container">
-    <div class="form-signin">
-<h2 class="form-signin-heading">Sign in</h2>
+  <div class="form-signin">
+    <h2 class="form-signin-heading">Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true, :class => "input-block-level" %></div>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div>
+      <%= f.text_field :email, :autofocus => true, :class => "input-controls-level", :placeholder => "Email" %>
+    </div>
 
-  <div><%= f.label :password %>
-  <%= f.password_field :password, :class => "input-block-level" %></div>
+      <div>
+        <%= f.password_field :password, :class => "input-controls-level", :placeholder => "Password" %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me, :class => "checkbox" %> Remember me </div>
-  <% end -%>
+        <% if devise_mapping.rememberable? -%>
+        <div><%= f.check_box :remember_me, :class => "checkbox" %> Remember me </div>
+        <% end -%>
 
-  <div><%= f.submit "Sign in", :class => "btn btn-primary" %></div>
-<% end %>
+        <div><%= f.submit "Sign in", :class => "btn btn-primary" %></div>
+        <% end %>
 
-<%= render "devise/shared/links" %>
+        <%= render "devise/shared/links" %>
 
-</form>
-</div>
+      </div>
+    </div>

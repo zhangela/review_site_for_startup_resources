@@ -3,5 +3,7 @@ Group Project
 
 ###Heroku URL
 
-Please put it here: http://intense-wave-5400.herokuapp.com/
+PRODUCTION URL: http://intense-wave-5400.herokuapp.com/
+
+DEVELOPMENT/TESTING URL: http://startmartapp.herokuapp.com/
 

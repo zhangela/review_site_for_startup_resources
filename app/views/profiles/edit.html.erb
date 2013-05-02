@@ -1,0 +1,60 @@
+<style type="text/css">
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+</style>
+
+<div class="form-edit">
+<h1>Editing profile</h1>
+
+<%= form_for(@profile) do |f| %>
+<% if @profile.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+  <ul>
+    <% @profile.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div>
+  <%= f.label :picture_url, "Upload Your Avatar:" %>
+  <div class ="actions">
+    <%= f.filepicker_field :picture_url, services: ["COMPUTER", "FACEBOOK"], :class => "customButton" %>
+  </div>
+</div>
+
+
+<div>
+  <%= f.label :contactnum, "Phone Number:" %>
+  <div class ="actions">
+    <%= f.text_field :contactnum %>
+  </div>
+</div>
+
+<div>
+  <%= f.label :about, "About Me:" %>
+  <div class ="actions">
+    <%= f.text_area :about, :class => "textarea", :style => "height: 100px;" %>
+  </div>
+</div>
+
+<div class="actions">
+  <%= f.submit "submit", :class => "customButton" %>
+</div>
+<% end %>
+
+
+
+
+<%= link_to 'Show', @profile %> |
+<%= link_to 'Back', profiles_path %>
+
+
+</div>
