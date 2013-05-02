@@ -50,7 +50,7 @@ class DiscussionsController < ApplicationController
     @discussion.from_user_id = current_user.id
     @discussion.to_user_id = @review.user_id
 
-    @comment = @discussion.comments.build(:body=>params[:body])
+    @comment = @discussion.comments.build(:body=>params[:body], :user_id=> current_user.id)
 
     respond_to do |format|
       if @discussion.save
