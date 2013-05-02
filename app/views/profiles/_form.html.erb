@@ -1,25 +1,26 @@
 <%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<% if @profile.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @profile.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div>
-    <%= f.label :picture_url, "Upload Your Avatar:" %>
-    <div class ="actions">
-    <%= f.filepicker_field :picture_url, services: ["COMPUTER", "FACEBOOK"], :class => "customButton"%> 
-    </div>
+<div>
+  <%= f.label :picture_url, "Upload Your Avatar:" %>
+  <div class ="actions">
+    <%= f.filepicker_field :picture_url, services: ["COMPUTER", "FACEBOOK"], class: "customButton" %>
   </div>
-  <div class="actions">
-    <%= f.submit "submit", :class => "customButton" %>
-  </div>
+</div>
+
+<div class="actions">
+  <%= f.submit "submit", :class => "customButton" %>
+</div>
 <% end %>
 
 
