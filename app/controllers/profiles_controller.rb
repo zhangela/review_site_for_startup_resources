@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_filter :authenticate_user!
 
   before_filter :load
-  respond_to :json
+  respond_to :html, :json
  
   # Load is needed so that @user is not nil(for some reason AJAX note creation does not work without it)
   def load
@@ -79,16 +79,8 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
-
-    respond_to do |format|
-      if @profile.update_attributes(params[:profile])
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
-    end
+    @profile.update_attributes(params[:profile])
+    respond_with @profile
   end
 
   # DELETE /profiles/1
