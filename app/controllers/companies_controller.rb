@@ -1,4 +1,9 @@
 class CompaniesController < ApplicationController
+
+
+require 'crunchbase'
+
+
   # GET /companies
   # GET /companies.json
 
@@ -31,6 +36,12 @@ class CompaniesController < ApplicationController
   # GET /companies/new.json
   def new
     @company = Company.new
+
+    if params[:search]
+      Crunchbase::API.key = 'qcmsjxr83x7dyqhd9ppp4zev'
+      @crunchbase_companies = Crunchbase::Search.find(params[:search]).first(10)
+    end
+
   end
 
   def self.filter_by_category(opts = {})
@@ -89,6 +100,19 @@ class CompaniesController < ApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+
+
+  def search_crunchbase
+    companies = Array.new
+    result = JSON.parse(open("http://api.crunchbase.com/v/1/company/" + params[:crunchbase_search] + "ycombinator.js?api_key=qcmsjxr83x7dyqhd9ppp4zev").read)
+    result.each do |company|
+      companies << company["name"]
+    end
+
+    @crunchbase_companies = result
+    @crunchbase_companies_names = companies
   end
 
 end
