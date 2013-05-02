@@ -16,9 +16,10 @@
                 <% else %>
                     <% discussionId = 'discussion-'+discuss.id.to_s %>
                     <div id='<%=discussionId%>' class="well discussion">
-                    <% @comments  = discuss.comments %>
-                    <%= render :partial => 'comments/comments', :comments => discuss.comments%>
-                    <%= render'comments/newComment' %>
+                        <% @comments  = discuss.comments %>
+                        <%= render :partial => 'comments/comments', :comments => discuss.comments%>
+                        <%= render'comments/newComment' %>
+                    </div>
                 <% end %>
             <% end %>
         <% end %>

@@ -42,8 +42,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @discussion = Discussion.find(params[:discussion])
-    @comment = @discussion.comments.build(params[:comment])
-    @comment.update_attributes(:poster_email => current_user.email)
+    @comment = @discussion.comments.build(params[:comment], :user_id => current_user.id)
 
     respond_to do |format|
       if @comment.save
@@ -59,6 +58,7 @@ class CommentsController < ApplicationController
   def createComment
     @discussion = Discussion.find(params[:discussion_id])
     @comment = @discussion.comments.build(params[:comment])
+    @comment.update_attributes(:user_id => current_user.id)
 
     respond_to do |format|
       if @comment.save

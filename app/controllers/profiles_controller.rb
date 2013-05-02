@@ -61,9 +61,7 @@ class ProfilesController < ApplicationController
     @user = User.find(current_user.id)
     @profile = @user.build_profile(params[:user])
     @profile.update_attributes(params[:profile])
-    puts "in create"
-    p @profile.picture_url
-
+    
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
