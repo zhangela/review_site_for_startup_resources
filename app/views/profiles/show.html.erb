@@ -1,11 +1,11 @@
-<% if @profile.picture_url != nil %>
-	<%= filepicker_image_tag @profile.picture_url, :class => "profilepic" %>
-<% else %>
-	<img src="/assets/img/default-avatar.jpg" class = "profilepic">
-<% end %>
 
-<%= render 'form' %>
+	<% if @profile.picture_url %>
+		<%= filepicker_image_tag @profile.picture_url, :class => "profilepic" %>
+	<% else %>
+		<img src="/assets/img/default-avatar.jpg" class = "profilepic">
+	<% end %>
 
+	<%= render 'form' %>
 
   <p>
   <b>about:</b>
