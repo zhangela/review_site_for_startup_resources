@@ -4,20 +4,13 @@ class ProfilesController < ApplicationController
   before_filter :load
   respond_to :html, :json
  
-  # Load is needed so that @user is not nil(for some reason AJAX note creation does not work without it)
+
+
+  # Load is needed so that @user is not nil
   def load
     @user = current_user
   end
 
-  # Helper method to allow in-place editing of ntoe
-  def in_place_update
-     @profile = Profile.find(params[:id])
-     @profile.update_attributes(:name, params[:text])
-
-     respond_to do |format|
-      format.js
-     end
-  end
   # GET /profiles
   # GET /profiles.json
   def index
@@ -33,8 +26,6 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
-    puts "hi"
-    puts @profile.user_id
     @users = User.find(current_user.id)
 
     respond_to do |format|
@@ -92,4 +83,6 @@ class ProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end
