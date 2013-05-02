@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable # :confirmable
   validates_format_of :email, :with => /(.*)@mit.edu/i, :message => "Must be mit.edu email address"
   has_many :reviews
+  has_many :comments
   has_one :profile
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :name, :remember_me, :avatar
