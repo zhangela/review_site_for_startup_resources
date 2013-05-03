@@ -238,6 +238,7 @@ a:hover{
 }
 
 .navbar .brand{
+	margin-left: 25px;
 	font-weight: none;
 	text-shadow:none;
 	color: #1ABC9C;
