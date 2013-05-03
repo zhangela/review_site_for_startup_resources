@@ -1,3 +1,11 @@
+<script>
+
+$(function() {
+    $('#filter_by_rating span.stars').stars();
+});
+
+</script>
+
 <div class="container">
 
     <div class="row">
@@ -59,6 +67,7 @@
 
             <h4> Ranking </h4>
 
+            <div id="filter_by_rating">
             <%= link_to (content_tag :span, "5", :class => "stars"),
             :controller => "companies", :action => "index", :rating => 5 %>
 
@@ -76,6 +85,8 @@
 
             <%= link_to (content_tag :span, "0", :class => "stars"),
             :controller => "companies", :action => "index" %>
+
+          </div>
 
 
             <div style="margin-top: 10px; margin-bottom: 10px;">
