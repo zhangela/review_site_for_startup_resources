@@ -1,0 +1,12 @@
+<h1>Activities </h1>
+
+<% @activities.each do |activity| %>
+  <div class="activity">
+  	<% if activity.trackable_type == "Comment"%>
+  	<% review = activity.parameters[:discussion_id] %>
+	    <%=  link_to activity.owner.name, profile_path(activity.owner_id) if activity.owner %>
+	    added a comment to <%= link_to activity.parameters[:title], review_path(activity.key)%>
+	   <!--  <%= link_to activity.trackable.discussion_id, activity.trackable.discussion %> -->
+    <%end %>
+  </div>
+<% end %>
