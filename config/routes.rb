@@ -34,6 +34,7 @@ Azure::Application.routes.draw do
   devise_for :users
 
   post 'createComment' => 'comments#createComment' 
+  post 'getUser' => 'comments#getUser'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
