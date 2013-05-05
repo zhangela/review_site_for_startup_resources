@@ -1,4 +1,14 @@
 class CommentsController < ApplicationController
+
+  before_filter :authenticate_user!
+
+  before_filter :load
+ 
+  # Load is needed so that @user is not nil(for some reason AJAX note creation does not work without it)
+  def load
+    @user = current_user
+  end
+
   # GET /comments
   # GET /comments.json
   def index
@@ -42,7 +52,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @discussion = Discussion.find(params[:discussion])
-    @comment = @discussion.comments.build(params[:comment], :user_id => current_user.id)
+    @comment = @discussion.comments.build(params[:comment], :user_id => @user.id)
 
     respond_to do |format|
       if @comment.save
@@ -58,7 +68,7 @@ class CommentsController < ApplicationController
   def createComment
     @discussion = Discussion.find(params[:discussion_id])
     @comment = @discussion.comments.build(params[:comment])
-    @comment.update_attributes(:user_id => current_user.id)
+    @comment.update_attributes(:user_id => @user.id)
 
     respond_to do |format|
       if @comment.save
