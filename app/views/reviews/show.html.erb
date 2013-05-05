@@ -35,10 +35,11 @@
 
 </script>
 
+
 <script>
 
 $(function() {
-    $('span.stars').stars();
+    $('#reviewinfo span.stars').stars();
 });
 
 </script>
@@ -53,9 +54,10 @@ $(function() {
 <p id="notice"><%= notice %></p>
 <div id = "reviewinfo">
   <h3><%= '"' + @review.title + '"'%></h3>
+  <span class="stars"><%= @review.rating %></span> <br>
   <div id = "reviewbody">
     <p><%= @review.body %></p>
-  </div>
+  </div><br>
 
 
 

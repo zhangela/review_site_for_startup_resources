@@ -1,5 +1,38 @@
-    <div class="company_detail" class="review" style="display:none;">
-        <div><b>Crunchbase URL:</div> <div></b> <a href=<%= company.crunchbase_url %>><%= company.crunchbase_url %></a></div><br>
-        <div><b>Overview: </b></div><div><%= company.overview %></div>
+<div>
+    <div><b>Crunchbase URL: </b></div>
+    <a href=<%= company.crunchbase_url %>><%= company.crunchbase_url %></a>
+</div>
 
-    </div>
+<br>
+
+<div>
+    <div><b>Overview: </b></div>
+    <%= truncate(company.overview, :length => 300, :omission => '...') %>
+</div>
+
+<br>
+
+<%= form_for @company do |f|%>
+<div class="field">
+    <div><b> Category: </b></div>
+    <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
+</div>
+
+<div class="field">
+    <div><b>Website URL: </b></div>
+    <%= f.text_field :url, :placeholder => "http://ycombinator.com/" %>
+</div>
+
+<div class="field">
+    <div><b>Location: </b></div>
+    <%= f.text_field :location, :placeholder => "Mountain View, CA" %>
+</div>
+
+<%= hidden_field :add_from_crunchbase, params[:add_from_crunchbase], :value => true %>
+<%= hidden_field :description, params[:description], :value => company.overview %>
+<%= hidden_field :name, params[:name], :value => company.name %>
+
+<div>
+    <%= f.submit :class => "customButton" %>
+</div>
+<% end %> <!-- end form_for -->

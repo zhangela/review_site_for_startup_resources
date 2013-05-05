@@ -1,7 +1,7 @@
 <script>
 
 $(function() {
-    $('span.stars').stars();
+    $('#filter_by_rating span.stars').stars();
 });
 
 </script>
@@ -67,6 +67,7 @@ $(function() {
 
             <h4> Ranking </h4>
 
+            <div id="filter_by_rating">
             <%= link_to (content_tag :span, "5", :class => "stars"),
             :controller => "companies", :action => "index", :rating => 5 %>
 
@@ -84,6 +85,8 @@ $(function() {
 
             <%= link_to (content_tag :span, "0", :class => "stars"),
             :controller => "companies", :action => "index" %>
+
+          </div>
 
 
             <div style="margin-top: 10px; margin-bottom: 10px;">
@@ -133,5 +136,4 @@ $(function() {
    </div>
 
 </div>
-
 
