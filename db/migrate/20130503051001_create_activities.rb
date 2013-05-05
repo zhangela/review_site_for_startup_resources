@@ -1,5 +1,5 @@
 # Migration responsible for creating a table with activities
-class CreateActivities < ActiveRecord::Migration
+class CreateActivity < ActiveRecord::Migration
   # Create table
   def self.up
     create_table :activities do |t|
@@ -21,3 +21,4 @@ class CreateActivities < ActiveRecord::Migration
     drop_table :activities
   end
 end
+
