@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
     before_save :default_values
 
-    attr_accessible :avg_rating, :description, :name, :url, :category, :location
+    attr_accessible :avg_rating, :description, :name, :url, :category, :location, :add_from_crunchbase
     has_many :reviews, :as => :reviewable
     has_many :partners
 

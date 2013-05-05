@@ -1,51 +1,111 @@
+<style>
+
+.company_name_link:hover {
+  color: #C0392B ;
+  cursor: hand;
+  cursor: pointer;
+}
+
+.company_name_link {
+  color: black;
+  font-size: 14px;
+}
+
+</style>
+
+<script>
+$( document ).ready( function() {
+
+    $('.company_name_link').click( function() {
+        $(this).parent().children('.company_detail').slideToggle(400);
+    });
+
+});
+</script>
+
 <div class="container">
-
     <div class="form-edit">
+        <div id="div_search_crunchbase">
+            <div class="control-group">
+                <h2 class="form-edit-heading">Add Company</h2>
+                <table>
+                    <td>
+                     <%= form_tag new_company_path, :method => 'get', :id => "input_search_crunchbase" do %>
+                     <th><%= text_field_tag :search, params[:search],:placeholder => "What's the name of the company?", :class=>"input-block-level", :style => "width: 400px;" %></th>
+                     <th><%= submit_tag "Search", :class => "customButton", :style => "height: 38px; margin-bottom: 16px; min-width: 80px; margin-left: 5px; margin-right: 5px;" %></th>
+                     <% end %>
+                     <th><%= button_to 'Cancel', companies_path, :style => "height: 38px; margin-bottom: 16px; min-width: 80px; ", :class => "cancelButton", :method => :get %></th>
+                 </td>
+             </table>
+         </div>
 
+         <div id="crunchbase_companies">
 
-        <div class="control-group">
+            <% if @crunchbase_companies %>
+            <h4 style="color:#1abc9c;">Is it one of these?</h4>
+            <ul>
+                <% @crunchbase_companies.each do |company| %>
+                <li>
+                    <a class="company_name_link"><%= company.name %></a>
+                    <div class="company_detail review" style="display:none;">
+                        <div>
+                            <div><b>Crunchbase URL: </b></div>
+                            <a href=<%= company.crunchbase_url %>><%= company.crunchbase_url %></a>
+                        </div>
 
-            <h2 class="form-edit-heading">Add Company</h2>
-            <table>
-                <td>
-                 <%= form_tag new_company_path, :method => 'get', :id => "input_search_crunchbase" do %>
+                        <br>
 
+                        <div>
+                            <div><b>Overview: </b></div>
+                            <%= truncate(company.overview, :length => 300, :omission => '...') %>
+                        </div>
 
-                 <th><%= text_field_tag :search, params[:search],:placeholder => "What's the name of the company?", :class=>"input-block-level", :style => "width: 400px;" %></th>
-                 <th><%= submit_tag "Search", :class => "customButton", :style => "height: 38px; margin-bottom: 16px; min-width: 80px; margin-left: 5px; margin-right: 5px;" %></th>
-                 <% end %>
+                        <br>
 
-                 <th><%= button_to 'Cancel', companies_path, :style => "height: 38px; margin-bottom: 16px; min-width: 80px; ", :class => "cancelButton", :method => :get %></th>
+                        <%= form_for @company do |f|%>
+                        <div class="field">
+                            <div><b> Category: </b></div>
+                            <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
+                        </div>
 
-             </td>
+                        <div class="field">
+                            <div><b>Website URL: </b></div>
+                            <%= f.text_field :url, :placeholder => "http://ycombinator.com/" %>
+                        </div>
 
-         </table>
+                        <div class="field">
+                            <div><b>Location: </b></div>
+                            <%= f.text_field :location, :placeholder => "Mountain View, CA" %>
+                        </div>
 
-     </div>
+                        <%= hidden_field :add_from_crunchbase, params[:add_from_crunchbase], :value => true %>
+                        <%= hidden_field :description, params[:description], :value => company.overview %>
+                        <%= hidden_field :name, params[:name], :value => company.name %>
 
-     <div id="crunchbase_companies">
+                        <div>
+                            <%= f.submit :class => "customButton" %>
+                        </div>
+                        <% end %> <!-- end form_for -->
 
-        <% if @crunchbase_companies %>
-        <% @crunchbase_companies.each do |company| %>
-        <div><%= company.name %></div>
-        <% end %>
+                    </div><!-- end company_details -->
+                </li>
+                <% end %> <!-- end for each company, do -->
+                <% end %> <!-- end if crunchbase_companies -->
+            </ul>
 
-        <br>
-        <% end %>
+            <a id="show_add_form" style="cursor: hand; cursor: pointer; font-size: 18px;" onclick="$('#add_company_form').show(500); $('#div_search_crunchbase').hide(500); ">Didn't see the company you are looking for? Click here.</a>
 
-        <a href=<%= new_company_path %> id="show_add_form">Didn't see the company you are looking for? Click here.</a>
+        </div> <!-- end crunchbase companies -->
+    </div> <!-- end div search crunchbase -->
 
-    </div>
-
-
-
-
-    <div id="add_company_form">
+    <div id="add_company_form" style="display: none;">
+        <div id="navigation">
+            <a style="cursor:hand; cursor:pointer;" onclick="$('#add_company_form').hide(500); $('#div_search_crunchbase').show(500);">&lt; Back to search by company name</a>
+        </div>
         <h2 class="form-edit-heading">Add Company</h2>
         <%= render 'form' %>
         <%= button_to 'Cancel', companies_path, :style => "color: white; height: 100%; width: 100px;", :class => "cancelButton", :method => :get %>
     </div>
 
-
-</div>
-</div>
+</div> <!-- end form-edit -->
+</div><!-- end container -->

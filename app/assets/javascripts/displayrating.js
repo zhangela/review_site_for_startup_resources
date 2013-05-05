@@ -11,3 +11,4 @@ $.fn.stars = function() {
         $(this).html($span);
     });
 }
+

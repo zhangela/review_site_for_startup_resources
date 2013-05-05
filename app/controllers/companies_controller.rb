@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
 
-require 'crunchbase'
+  require 'crunchbase'
 
 
   # GET /companies
@@ -45,11 +45,11 @@ require 'crunchbase'
   end
 
   def self.filter_by_category(opts = {})
-     filter = opts[:filter]
-     company = Company.arel_table
+   filter = opts[:filter]
+   company = Company.arel_table
 
-     self.where(:category => filter)
-   end
+   self.where(:category => filter)
+ end
 
   # GET /companies/1/edit
   def edit
@@ -59,13 +59,29 @@ require 'crunchbase'
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:company])
+
+    if params[:add_from_crunchbase] && params[:name]
+
+      name = params[:name]
+      name = name.to_s.gsub(/[^0-9a-zA-Z ]/i, '')
+
+      description = params[:description]
+      description = description.to_s.gsub(/[^0-9a-zA-Z,.!:;""''?@#$&*()- ]/i, '')
+
+      @company = Company.new
+      @company.description = description
+      @company.name = name
+      @company.url = params[:company][:url]
+      @company.location = params[:company][:location]
+      @company.category = params[:company][:category]
+
+    else
+      @company = Company.new(params[:company])
+    end
 
     if @company.save
       flash[:notice] = "Successfully created company."
       redirect_to @company
-    else
-      render :action => 'new'
     end
   end
 
