@@ -69,12 +69,8 @@ class CommentsController < ApplicationController
   def createComment
     @discussion = Discussion.find(params[:discussion_id])
     @comment = @discussion.comments.build(params[:comment])
-<<<<<<< HEAD
-    @comment.update_attributes(:user_id => @user.id)
-=======
     @comment.update_attributes(:user_id => current_user.id)
     @review = Review.find(@discussion.review_id)
->>>>>>> d4a3b75d78dfe97387533d739da73709576580b3
 
     respond_to do |format|
       if @comment.save
