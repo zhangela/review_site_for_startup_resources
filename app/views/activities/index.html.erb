@@ -1,8 +1,8 @@
 
 <h1>Activities </h1>
-
 <% @activities.each do |activity| %>
-  <div class="activity">
+	<%= activity.inspect%>
+<!--   <div class="activity">
   	<% if activity.trackable_type == "Comment" && activity.parameters[:title] && Activity.unread_by(activity.owner)%>
 	    <%=  link_to activity.owner.name, profile_path(activity.owner_id) if activity.owner %>
 	    added a new comment to <%= link_to activity.parameters[:title], review_path(activity.key)%>
@@ -10,7 +10,7 @@
 		<% if activity.trackable_type == "Comment" %>
 			<%=  link_to activity.owner.name, profile_path(activity.owner_id) if activity.owner %>
 	    	added a new discussion to your <%= link_to "review", review_path(activity.key)%>
-		<%end %>
+		<%end %> -->
 	
 	<%end %>
 	

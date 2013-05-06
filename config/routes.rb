@@ -14,7 +14,7 @@ Azure::Application.routes.draw do
 
   resources :companies
   resources :activities
-
+  match '/read' => 'activities#read'
 
   resources :reviews do
     resources :discussions
