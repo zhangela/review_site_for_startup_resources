@@ -5,6 +5,4 @@ class Review < ActiveRecord::Base
   attr_accessible :body, :rating, :reviewable_id, :reviewable_type, :title, :user_id, :review_id
   validates_presence_of :title, :rating
 
-  include PublicActivity::Model
-  tracked
 end

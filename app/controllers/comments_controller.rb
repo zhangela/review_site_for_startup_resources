@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        @comment.create_activity :create, owner: current_user, key: @discussion.review_id, parameters: {title: @review.title}
+        @comment.create_activity :create, owner: current_user, key: @discussion.review_id, parameters: {title: @review.title, read:false}
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.json { render json: @comment.errors, status: :unprocessable_entity }
