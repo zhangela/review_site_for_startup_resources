@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505172433) do
+ActiveRecord::Schema.define(:version => 20130505053014) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20130505172433) do
     t.integer  "owner_id"
     t.string   "owner_type"
     t.string   "key"
-    t.boolean  "unread"
     t.text     "parameters"
     t.integer  "recipient_id"
     t.string   "recipient_type"
@@ -82,24 +81,6 @@ ActiveRecord::Schema.define(:version => 20130505172433) do
 
   add_index "discussions", ["review_id"], :name => "index_discussions_on_review_id"
 
-  create_table "notifications", :force => true do |t|
-    t.integer  "trackable_id"
-    t.string   "trackable_type"
-    t.integer  "owner_id"
-    t.string   "owner_type"
-    t.string   "key"
-    t.boolean  "unread"
-    t.text     "parameters"
-    t.integer  "recipient_id"
-    t.string   "recipient_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "notifications", ["owner_id", "owner_type"], :name => "index_notifications_on_owner_id_and_owner_type"
-  add_index "notifications", ["recipient_id", "recipient_type"], :name => "index_notifications_on_recipient_id_and_recipient_type"
-  add_index "notifications", ["trackable_id", "trackable_type"], :name => "index_notifications_on_trackable_id_and_trackable_type"
-
   create_table "partners", :force => true do |t|
     t.string   "name"
     t.decimal  "avg_rating"
@@ -118,19 +99,6 @@ ActiveRecord::Schema.define(:version => 20130505172433) do
     t.datetime "updated_at",  :null => false
     t.string   "picture_url"
   end
-
-  create_table "rails_admin_histories", :force => true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "read_marks", :force => true do |t|
     t.integer  "readable_id"
@@ -171,10 +139,6 @@ ActiveRecord::Schema.define(:version => 20130505172433) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "name"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
