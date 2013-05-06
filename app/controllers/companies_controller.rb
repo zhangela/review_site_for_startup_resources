@@ -11,6 +11,8 @@ class CompaniesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
+    @activities = PublicActivity::Activity.order("created_at desc")
+
     if params[:category]
       @companies = Company.filter(params[:category]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
     elsif params[:rating]

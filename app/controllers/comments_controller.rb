@@ -56,6 +56,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @comment.create_activity :create, owner: current_user
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
@@ -68,10 +69,16 @@ class CommentsController < ApplicationController
   def createComment
     @discussion = Discussion.find(params[:discussion_id])
     @comment = @discussion.comments.build(params[:comment])
+<<<<<<< HEAD
     @comment.update_attributes(:user_id => @user.id)
+=======
+    @comment.update_attributes(:user_id => current_user.id)
+    @review = Review.find(@discussion.review_id)
+>>>>>>> d4a3b75d78dfe97387533d739da73709576580b3
 
     respond_to do |format|
       if @comment.save
+        @comment.create_activity :create, owner: current_user, key: @discussion.review_id, parameters: {title: @review.title}
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.json { render json: @comment.errors, status: :unprocessable_entity }

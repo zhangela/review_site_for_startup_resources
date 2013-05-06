@@ -1,6 +1,8 @@
 Azure::Application.routes.draw do
   
 
+  get "activities/index"
+
   resources :profiles
 
   devise_for :admins
@@ -11,6 +13,7 @@ Azure::Application.routes.draw do
   get "home/index"
 
   resources :companies
+  resources :activities
 
 
   resources :reviews do

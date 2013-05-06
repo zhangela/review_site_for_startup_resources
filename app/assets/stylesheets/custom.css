@@ -249,7 +249,7 @@ a:hover{
 	padding-top: 5px;
 	font-size: 30px;
 }
-.navbar .nav li a{
+.navbar .nav li a, .nav.pull-right .active a{
 	text-shadow:none;
 	color: #ECF0F1;
 	font-weight: none;

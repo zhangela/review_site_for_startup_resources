@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :comments
   has_one :profile
+
+  acts_as_reader
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :name, :remember_me, :avatar
   # attr_accessible :title, :body
