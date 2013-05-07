@@ -1,5 +1,22 @@
-<div class="comments">
+<div class="comments accordion-group">
 
+  <div class="first_comment">
+      <% comment = @comments.first %>
+      <% user = comment.user %>
+      <b><%= user.name %></b>
+       <span><%= comment.created_at %></span>
+      <p>
+      <%= comment.body %>
+      </p>
+  </div>
+
+  <div class="accordion-header">
+    <!-- add hidden input to keep track of toggling to change message -->
+    <input type="hidden" class="hidden-boolean" value='collapsed'>
+    <a class="message">Show Follow Up Comments</a>
+  </div>
+
+  <div class="follow_up_comments accordion-group collapse">
   <% @comments.each do |comment| %>
     <div class="comment">
       <div class="comment_heading">
@@ -8,7 +25,9 @@
       	<span><%= comment.created_at %></span>
       </div>
       <p>
-      <%= comment.body %>
+        <%= comment.body %>
+      </p>
     </div>
    <% end %>
+  </div>
 </div>

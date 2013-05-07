@@ -7,7 +7,7 @@
                 <% if discuss.private %>
                     <% if current_user.id == discuss.to_user_id || current_user.id == discuss.from_user_id %>
                         <% discussionId = 'discussion-'+discuss.id.to_s %>
-                        <div id='<%=discussionId%>' class=" privateDiscuss">
+                        <div id='<%=discussionId%>' class="well discussion" data-toggle="collapse">
                         <% @comments = discuss.comments %>
                         <%= render 'comments/comments' %>
                         <%= render'comments/newComment' %>
@@ -15,7 +15,7 @@
                     <% end %>
                 <% else %>
                     <% discussionId = 'discussion-'+discuss.id.to_s %>
-                    <div id='<%=discussionId%>' class="well discussion">
+                    <div id='<%=discussionId%>' class="well discussion" data-toggle="collapse">
                         <% @comments  = discuss.comments %>
                         <%= render :partial => 'comments/comments', :comments => discuss.comments%>
                         <%= render'comments/newComment' %>

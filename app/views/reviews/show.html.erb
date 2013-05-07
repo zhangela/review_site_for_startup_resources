@@ -2,11 +2,14 @@
 
   $(document).ready(function(){
 
+    //establish hostname
     var hostname = location.protocol + '//' + location.host
 
+    //start with all comments collapsed
+    // $('.accordion-group').collapse();
 
     $('#addDiscussionButton').click(function(){
-        $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('fast');
+        $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('slow');
         $('#addDiscussionButton').hide();
     });
 
@@ -25,10 +28,29 @@
       var comment = {body: commentBody};
       var data = {comment: comment, discussion_id: id};
       $.post(url, data, function(d){
-        $('#discussion-'+id).find('.comments').append('<p>'+d.body+'</p>');
+        $.post(hostname+'/getUser/', {user_id: d.user_id}, function(d2){
+         var username = d2.name;
+
+        $('#discussion-'+id).find('.comments').append('<div class="comment"><div class="comment_heading"><b> '+username+' </b><span> '+d.created_at+' </span></div><p>'+d.body+'</div>');
         $('#discussion-'+id).find('.newCommentText').val('');
+        });
       });
     });
+
+  $('body').on('click', '.accordion-header', function(event){
+    $(this).parent().find('.accordion-group').collapse('toggle');
+    var toggle = $(this).find('.hidden-boolean').val();
+
+    //if it is now not collapsed
+    if(toggle=='collapsed'){
+      $(this).find('.message').text("Hide follow up Comments");
+      $(this).find('.hidden-boolean').val('not collapsed');
+    }
+    else{
+      $(this).find('.message').text("Show follow up Comments");
+      $(this).find('.hidden-boolean').val('collapsed');
+    }
+  });
 
 
   });
@@ -56,7 +78,7 @@ $(function() {
   <h3><%= '"' + @review.title + '"'%></h3>
   <span class="stars"><%= @review.rating %></span> <br>
   <div id = "reviewbody">
-    <p><%= @review.body %></p>
+    <h4><%= @review.body %></h4>
   </div><br>
 
 

@@ -2,7 +2,12 @@ class Partner < ActiveRecord::Base
     belongs_to :company
     has_many :reviews, :as => :reviewable
 
-    attr_accessible :avg_rating, :name, :company_id
+    attr_accessible :avg_rating, :name, :company_id, :email
+
+    validates :name, :presence => true, :length => { :maximum => 100 }
+    validates :company_id, :presence => true
+    validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create }
+
 
     before_save :default_values
 
@@ -17,7 +22,7 @@ class Partner < ActiveRecord::Base
     	if(self.avg_rating == -1)
     		self.update_attribute(:avg_rating, review.rating)
     	else
-			oldAvg = self.avg_rating 
+			oldAvg = self.avg_rating
     		numRatings = self.reviews.size
 			oldTotal = oldAvg * (numRatings-1)
 

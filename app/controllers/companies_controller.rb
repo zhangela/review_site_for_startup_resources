@@ -66,8 +66,9 @@ class CompaniesController < ApplicationController
       name = params[:name]
       name = name.to_s.gsub(/[^0-9a-zA-Z ]/i, '')
 
-      description = params[:description]
+      description = params[:description].to_s
       description = description.to_s.gsub(/[^0-9a-zA-Z,.!:;""''?@#$&*()- ]/i, '')
+      description = description.to_s.gsub(/\r\n?/, "\n");
 
       @company = Company.new
       @company.description = description
@@ -83,6 +84,8 @@ class CompaniesController < ApplicationController
     if @company.save
       flash[:notice] = "Successfully created company."
       redirect_to @company
+    else
+      redirect_to new_company_path
     end
   end
 

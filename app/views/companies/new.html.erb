@@ -17,7 +17,7 @@
 $( document ).ready( function() {
 
     $('.company_name_link').click( function() {
-        $(this).parent().children('.company_detail').slideToggle(400);
+        $(this).parent().children('.company_detail').slideToggle(500);
     });
 
 });
@@ -41,7 +41,7 @@ $( document ).ready( function() {
 
          <div id="crunchbase_companies">
 
-            <% if @crunchbase_companies %>
+            <% if @crunchbase_companies && @crunchbase_companies.count > 0 %>
             <h4 style="color:#1abc9c;">Is it one of these?</h4>
             <ul>
                 <% @crunchbase_companies.each do |company| %>

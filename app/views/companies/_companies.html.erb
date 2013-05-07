@@ -36,7 +36,7 @@ $(function() {
       <b>Location: </b><td><%= company.location %></td> <br>
       <div class = "description">
         <br>
-        <%= company.description %></div>
+        <%= truncate(company.description, :length => 500, :omission => '...') %></div>
       </div>
 
       <% end %>

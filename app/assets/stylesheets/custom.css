@@ -105,7 +105,7 @@ body {
 }
 
 .toppanel{
-	height: 400px;
+	margin-bottom: 20px;
 }
 .mainpanel{
 	margin-left: 20%;
@@ -114,6 +114,12 @@ body {
 
 #discussionentry{
 	width: 600px;
+}
+
+.discussion {
+
+	background-color: #F8F8F8 ;
+
 }
 
 .customButton{
@@ -125,18 +131,19 @@ body {
 	color: white;
 	border-radius: 5px;
 	margin-bottom: 10px;
+	margin-right: 5px;
 }
 
 .cancelButton
 {
 	min-width: 150px;
-	height: 25px;
+	min-height: 25px;
 	box-shadow: none;
 	background-color: #C2C2C2;
 	border: none;
 	color: white !important;
 	border-radius: 5px;
-	padding-top: 2px;
+	margin-bottom: 10px;
 	text-align: center;
 
 }
@@ -215,7 +222,6 @@ a:hover{
 }
 
 
-
 .form-signin .form-signin-heading,
 .form-signin .checkbox
 .form-edit .form-edit-heading,
@@ -253,4 +259,8 @@ a:hover{
 	text-shadow:none;
 	color: #ECF0F1;
 	font-weight: none;
+}
+
+.comments{
+	border-top:1px;
 }
