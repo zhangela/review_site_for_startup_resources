@@ -189,7 +189,9 @@ a {
   -webkit-backface-visibility: hidden; }
   a:hover {
     color: #2ecc71;
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: hand;
+  cursor: pointer;}
 
 h1 {
   font-size: 32px;

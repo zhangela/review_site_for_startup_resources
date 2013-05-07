@@ -9,7 +9,7 @@
     // $('.accordion-group').collapse();
 
     $('#addDiscussionButton').click(function(){
-        $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('fast');
+        $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('slow');
         $('#addDiscussionButton').hide();
     });
 
@@ -47,7 +47,7 @@
       $(this).find('.hidden-boolean').val('not collapsed');
     }
     else{
-      $(this).find('.message').text("Show follow up Comments");    
+      $(this).find('.message').text("Show follow up Comments");
       $(this).find('.hidden-boolean').val('collapsed');
     }
   });
@@ -78,7 +78,7 @@ $(function() {
   <h3><%= '"' + @review.title + '"'%></h3>
   <span class="stars"><%= @review.rating %></span> <br>
   <div id = "reviewbody">
-    <p><%= @review.body %></p>
+    <h4><%= @review.body %></h4>
   </div><br>
 
 

@@ -13,9 +13,9 @@
   <div class="accordion-header">
     <!-- add hidden input to keep track of toggling to change message -->
     <input type="hidden" class="hidden-boolean" value='collapsed'>
-    <p class="message">Show Follow Up Comments</p>
+    <a class="message">Show Follow Up Comments</a>
   </div>
-  
+
   <div class="follow_up_comments accordion-group collapse">
   <% @comments.each do |comment| %>
     <div class="comment">
