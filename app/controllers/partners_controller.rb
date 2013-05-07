@@ -3,7 +3,7 @@ class PartnersController < ApplicationController
   # GET /partners.json
 
   before_filter :authenticate_user!
-  
+
   def index
     @partners = Partner.all
 
@@ -53,7 +53,7 @@ class PartnersController < ApplicationController
 
     respond_to do |format|
       if @partner.save
-        format.html { redirect_to @company, notice: 'Partner was successfully created.' }
+        format.html { redirect_to @partner}
         format.json { render json: @partner, status: :created, location: @partner }
       else
         format.html { render action: "new" }
@@ -69,7 +69,7 @@ class PartnersController < ApplicationController
 
     respond_to do |format|
       if @partner.update_attributes(params[:partner])
-        format.html { redirect_to @partner, notice: 'Partner was successfully updated.' }
+        format.html { redirect_to @partner }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
