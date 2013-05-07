@@ -17,6 +17,15 @@
 
 </script>
 
+<script>
+
+$(function() {
+    $('#partner-info span.stars').stars();
+});
+
+</script>
+
+
 
 <div class="container">
 
@@ -28,7 +37,7 @@
     <p id="notice"><%= notice %></p>
 
 
-    <div>
+    <div id="partner-info">
       <h3 style="margin-bottom: 0px;"><%= @partner.name %></h3>
       <%= link_to 'Edit Partner', edit_partner_path(@partner) %>
 
