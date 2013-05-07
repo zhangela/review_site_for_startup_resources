@@ -254,3 +254,7 @@ a:hover{
 	color: #ECF0F1;
 	font-weight: none;
 }
+
+.comments{
+	border-top:1px;
+}
