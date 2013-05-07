@@ -7,6 +7,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.string :body
       t.boolean :undread
       t.integer :review_id
+      t.string :type
 
       t.timestamps
     end
