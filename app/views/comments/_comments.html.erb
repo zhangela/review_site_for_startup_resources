@@ -3,8 +3,8 @@
   <div class="first_comment">
       <% comment = @comments.first %>
       <% user = comment.user %>
-      <b><%= user.name %></b>
-       <span><%= comment.created_at %></span>
+      <b><%= user.name %>, </b>
+       <span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
       <p>
       <%= comment.body %>
       </p>
@@ -21,8 +21,8 @@
     <div class="comment">
       <div class="comment_heading">
       	<% user = comment.user %>
-      	<b><%= user.name %></b>
-      	<span><%= comment.created_at %></span>
+      	<b><%= user.name %>, </b>
+      	<span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
       </div>
       <p>
         <%= comment.body %>
