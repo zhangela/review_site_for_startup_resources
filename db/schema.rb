@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505053014) do
+ActiveRecord::Schema.define(:version => 20130507190755) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130505053014) do
     t.integer  "company_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "email"
   end
 
   add_index "partners", ["company_id"], :name => "index_partners_on_company_id"

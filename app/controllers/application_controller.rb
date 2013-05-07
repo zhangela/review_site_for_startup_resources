@@ -12,15 +12,13 @@ class ApplicationController < ActionController::Base
 	end
 
 	def count
-  	count = 0
-  	@activities = PublicActivity::Activity.all
-  	@activities.each do |activity|
-  		if !activity.parameters[:read]
-  			count = count + 1
-  		end
+	  	count = 0
+	  	@activities = PublicActivity::Activity.all
+	  	@activities.each do |activity|
+	  		if !activity.parameters[:read]
+	  			count = count + 1
+	  		end
+	  	end
+	  	return count 
   	end
-  	p "coutn is"
-  	puts count
-  	return count 
-  end
 end
