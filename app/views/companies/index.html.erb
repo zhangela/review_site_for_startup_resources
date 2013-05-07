@@ -1,3 +1,9 @@
+<style>
+div + div {
+    margin-top: 5px;
+}
+</style>
+
 <script>
 
 $(function() {
@@ -15,19 +21,19 @@ $(function() {
 
             <h3>Sort by... </h3>
 
-            <div class = "categories">
+            <div>
                <%= sortable "category", "Category" %>
            </div>
 
-           <div class = "categories">
+           <div>
                <%= sortable "avg_rating", "Rating" %>
            </div>
 
-           <div class = "categories">
+           <div>
                <%= sortable "location", "Location" %>
            </div>
 
-           <div class = "categories">
+           <div>
                <%= sortable "name", "Company Name" %>
            </div>
 
@@ -37,27 +43,27 @@ $(function() {
 
             <h4> Categories </h4>
 
-            <div class = "categories">
+            <div>
                <%= link_to "Accelerators & Incubators", :controller => "companies", :action => "index", :category => "Accelerators & Incubators" %>
            </div>
 
-            <div class = "categories">
+            <div>
                <%= link_to "Angel Investors", :controller => "companies", :action => "index",:category => "Angel Investors" %>
            </div>
 
-            <div class = "categories">
+            <div>
                <%= link_to "Finance", :controller => "companies", :action => "index",:category => "Finance" %>
            </div>
 
-            <div class = "categories">
+            <div>
                <%= link_to "Law", :controller => "companies", :action => "index",:category => "Law" %>
            </div>
 
-           <div class = "categories">
+           <div>
                <%= link_to "Venture Capital", :controller => "companies", :action => "index",:category => "Venture Capital" %>
            </div>
 
-           <div class = "categories">
+           <div>
                <%= link_to "Other", :controller => "companies", :action => "index",:category => "Other" %>
            </div>
 
@@ -95,23 +101,23 @@ $(function() {
 
 <!--            <h4> Categories </h4>
 
-            <div class = "categories">
+            <div>
                Accelerators & Incubators
            </div>
 
-            <div class = "categories">
+            <div>
                Angel Investment
            </div>
 
-            <div class = "categories">
+            <div>
                Finance
            </div>
 
-            <div class = "categories">
+            <div>
                Law
            </div>
 
-           <div class = "categories">
+           <div>
                Venture Capital
            </div> -->
 
@@ -126,8 +132,8 @@ $(function() {
                <% end %>
            </div>
 
-           <div class="customButton" style="width: 50px; height: 25px; text-align: center; float: center; padding: 5px; padding-bottom: 0px;">
-            <%= link_to 'Add Company', new_company_path, :style => "color: white; float: center; text-align: center; font-size: 16px; " %>
+           <div>
+            <%= button_to 'Add Company', new_company_path, :method => 'get', :class => "customButton", :style => "height: 38px;" %>
         </div>
 
            <div id="companies"><%= render 'companies' %></div>

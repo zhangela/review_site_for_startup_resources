@@ -41,7 +41,7 @@ $( document ).ready( function() {
 
          <div id="crunchbase_companies">
 
-            <% if @crunchbase_companies.count > 0 %>
+            <% if @crunchbase_companies && @crunchbase_companies.count > 0 %>
             <h4 style="color:#1abc9c;">Is it one of these?</h4>
             <ul>
                 <% @crunchbase_companies.each do |company| %>
