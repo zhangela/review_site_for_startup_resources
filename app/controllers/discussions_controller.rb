@@ -54,7 +54,8 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.save
-        @comment.create_activity :create, owner: current_user, key: @discussion.review_id
+        @notification = Notification.new(user_id: current_user, user_name: current_user.name, notify:"d", review_id: @discussion.review_id, title:@review.title,)
+        @notification.save
         format.html { redirect_to @review, notice: 'Discussion was successfully created.' }
         format.json { render json: @review, status: :created, location: @review }
       else
