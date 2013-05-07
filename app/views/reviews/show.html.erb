@@ -2,8 +2,11 @@
 
   $(document).ready(function(){
 
+    //establish hostname
     var hostname = location.protocol + '//' + location.host
 
+    //start with all comments collapsed
+    // $('.accordion-group').collapse();
 
     $('#addDiscussionButton').click(function(){
         $('#discussions').prepend('<%= escape_javascript( render(:partial=>"discussions/form")).html_safe %>').hide().fadeIn('fast');
@@ -33,6 +36,21 @@
         });
       });
     });
+
+  $('body').on('click', '.accordion-header', function(event){
+    $(this).parent().find('.accordion-group').collapse('toggle');
+    var toggle = $(this).find('.hidden-boolean').val();
+
+    //if it is now not collapsed
+    if(toggle=='collapsed'){
+      $(this).find('.message').text("Hide follow up Comments");
+      $(this).find('.hidden-boolean').val('not collapsed');
+    }
+    else{
+      $(this).find('.message').text("Show follow up Comments");    
+      $(this).find('.hidden-boolean').val('collapsed');
+    }
+  });
 
 
   });
