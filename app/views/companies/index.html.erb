@@ -1,3 +1,9 @@
+<style>
+div + div {
+    margin-top: 5px;
+}
+</style>
+
 <script>
 
 $(function() {
@@ -126,8 +132,8 @@ $(function() {
                <% end %>
            </div>
 
-           <div class="customButton" style="width: 50px; height: 25px; text-align: center; float: center; padding: 5px; padding-bottom: 0px;">
-            <%= link_to 'Add Company', new_company_path, :style => "color: white; float: center; text-align: center; font-size: 16px; " %>
+           <div>
+            <%= button_to 'Add Company', new_company_path, :method => 'get', :class => "customButton", :style => "height: 38px;" %>
         </div>
 
            <div id="companies"><%= render 'companies' %></div>
