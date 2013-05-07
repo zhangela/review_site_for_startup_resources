@@ -11,7 +11,6 @@ gem 'heroku'
 gem 'filepicker-rails'
 gem 'best_in_place'
 gem 'unread'
-gem 'public_activity'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

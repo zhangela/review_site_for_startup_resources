@@ -1,21 +1,22 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  include PublicActivity::StoreController
   before_filter :notifications
   helper_method :count
 
   private
 	def notifications
-	  @activities = PublicActivity::Activity.order("created_at desc")
-	  @num_unread = count 
+		if current_user
+		  @notifications = Notification.unread_by(current_user)
+		  @num_unread = count 
+		 end
 	end
 
 	def count
 	  	count = 0
-	  	@activities = PublicActivity::Activity.all
-	  	@activities.each do |activity|
-	  		if !activity.parameters[:read]
+	  	@notifications = Notification.all
+	  	@notifications.each do |notification|
+	  		if notification.unread?(current_user)
 	  			count = count + 1
 	  		end
 	  	end

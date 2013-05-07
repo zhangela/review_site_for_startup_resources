@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  user_id: 1
+  title: MyString
+  body: MyString
+  undread: false
+  review_id: 1
+
+two:
+  type: 
+  user_id: 1
+  title: MyString
+  body: MyString
+  undread: false
+  review_id: 1
