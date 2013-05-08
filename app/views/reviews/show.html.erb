@@ -86,6 +86,15 @@ $(function() {
 
 <p id="notice"><%= notice %></p>
 <div id = "reviewinfo">
+  <% if current_user == @review.user %>
+          <% if @review.public_name == "Anonymous" %>
+            <b>You posted an ANONYMOUS review:</b>
+          <% else %>
+            <b>You posted a review:</b>
+          <% end %>
+        <% else %>
+          <b><%= @review.public_name %> posted a review:<b>
+        <% end %>
   <h3><%= '"' + @review.title + '"'%></h3>
   <span class="stars"><%= @review.rating %></span> <br>
   <div id = "reviewbody">
