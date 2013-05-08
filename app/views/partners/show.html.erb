@@ -39,7 +39,8 @@ $(function() {
 
     <div id="partner-info">
       <h3 style="margin-bottom: 0px;"><%= @partner.name %></h3>
-      <%= link_to 'Edit Partner', edit_partner_path(@partner) %>
+      <h4><%= @partner.email %></h4>
+      <%= button_to 'Edit Partner', edit_partner_path(@partner), :method => "get", :class => "cancelButton" %>
 
       <p style="margin-top: 10px;">
 
