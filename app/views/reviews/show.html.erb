@@ -20,7 +20,7 @@
       });
     });
 
-  $('body').on('click', '#createCommentButton', function(event){
+  $('body').on('click', '.createCommentButton', function(event){
       var url = hostname+'/createComment'
       var commentBody = $(this).parent().find('.newCommentText').val();
       if(commentBody == ""){
