@@ -20,16 +20,16 @@
 				    <%= link_to notification.user_name + " added a new comment to " + notification.title, review_path(notification.review_id)%></li>
 				    <% end %>
 				 <%end%>
-					<!-- <li>
-						<% if notification.notify == "d" %>
+					<li>
+						<% if notification.notify == "d" && notification.unread?(current_user) %>
 				    	 <%= link_to notification.user_name + " added a new discussion to your review", review_path(notification.review_id) %>
 						<%end %>
-					</li> -->
+					</li>
 
 			<% end %>
 		</ul>
 
 	<% else%>
-		<ul style = "color:white; font-size:14px"><li>No unread notifications!</li></ul>
+		<ul style = "color:white; font-size:14px; text-align:center;"><li >No unread notifications!</li></ul>
 	<%end%>
 </li>
