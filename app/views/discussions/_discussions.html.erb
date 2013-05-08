@@ -4,6 +4,7 @@
     <% if @discussions.size > 1 %>
         <% @discussions.each do |discuss| %>
             <% if not discuss.id.nil? %>
+               <% discussionId = 'discussion-'+discuss.id.to_s %>
                <div id='<%=discussionId%>' class="well discussion" data-toggle="collapse">
                 <% @comments = discuss.comments %>
                 <%= render 'comments/comments' %>
