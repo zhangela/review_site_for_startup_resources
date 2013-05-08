@@ -52,6 +52,14 @@ class ReviewsController < ApplicationController
     @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id)
     @reviewable.recalculate_average(@review)
 
+    anonymous = params[:anonymous]
+    if(anonymous)
+      public_name = "Anonymous"
+    else
+      public_name = current_user.name
+    end
+
+    @review.update_attributes(:public_name => public_name)
 
     respond_to do |format|
       if @review.save

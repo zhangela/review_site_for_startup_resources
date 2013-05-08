@@ -11,6 +11,15 @@ $(function() {
     <div class="review">
         <b class="reviewTitle"><%= link_to '"'+review.title+'"', review %></b><br>
         <span class="stars"><%= review.rating %></span>
+        <% if current_user == review.user %>
+        	<% if review.public_name == "Anonymous" %>
+        		<b>You posted an ANONYMOUS review:</b>
+        	<% else %>
+        		<b>You posted a review:</b>
+        	<% end %>
+        <% else %>
+        	<b><%= review.public_name %> posted a review:<b>
+        <% end %>
         <%= simple_format review.body %>
     </div>
     <% end %>
