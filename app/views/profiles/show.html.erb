@@ -23,8 +23,11 @@
     </p>
 <!--     <p>
       <h4>Number:</h4>
-      <%= best_in_place @profile, :contactnum %>
+      <%#= best_in_place @profile, :contactnum %>
     </p> -->
+
+
+            <%= button_to "Edit Profile Info", edit_profile_path(@profile), :class => "cancelButton", :method => :get %>
 
     <br />
     <h2>Recent Comments:</h2>

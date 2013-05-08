@@ -27,7 +27,7 @@ $( document ).ready( function() {
     <div class="form-edit">
         <div id="div_search_crunchbase">
             <div class="control-group">
-                <h2 class="form-edit-heading">Add Company</h2>
+                <h2 class="form-edit-heading">Add Firm</h2>
                 <table>
                     <td>
                      <%= form_tag new_company_path, :method => 'get', :id => "input_search_crunchbase" do %>
@@ -102,7 +102,7 @@ $( document ).ready( function() {
         <div id="navigation">
             <a style="cursor:hand; cursor:pointer;" onclick="$('#add_company_form').hide(500); $('#div_search_crunchbase').show(500);">&lt; Back to search by company name</a>
         </div>
-        <h2 class="form-edit-heading">Add Company</h2>
+        <h2 class="form-edit-heading">Add Firm</h2>
         <%= render 'form' %>
         <%= button_to 'Cancel', companies_path, :style => "color: white; height: 100%; width: 100px;", :class => "cancelButton", :method => :get %>
     </div>
