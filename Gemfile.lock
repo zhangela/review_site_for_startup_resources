@@ -99,11 +99,6 @@ GEM
     pg (0.15.1)
     pg (0.15.1-x86-mingw32)
     polyglot (0.3.3)
-    public_activity (1.0.3)
-      actionpack (~> 3.0)
-      activesupport (~> 3.0)
-      i18n (>= 0.5.0)
-      railties (~> 3.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -191,7 +186,6 @@ DEPENDENCIES
   heroku
   jquery-rails
   pg
-  public_activity
   rails (= 3.2.8)
   rails_admin
   sass-rails (~> 3.2.3)

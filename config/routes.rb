@@ -1,7 +1,7 @@
 Azure::Application.routes.draw do
   
 
-  get "activities/index"
+  get "notifications/index"
 
   resources :profiles
 
@@ -13,8 +13,8 @@ Azure::Application.routes.draw do
   get "home/index"
 
   resources :companies
-  resources :activities
-  match '/read' => 'activities#read'
+  resources :notifications
+  match '/read' => 'notifications#read'
 
   resources :reviews do
     resources :discussions

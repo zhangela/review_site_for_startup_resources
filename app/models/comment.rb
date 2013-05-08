@@ -3,6 +3,4 @@ class Comment < ActiveRecord::Base
   belongs_to :discussion
   belongs_to :user
 
-  include PublicActivity::Common
-  # tracked owner: ->(controller, model) { controller && controller.current_user }
 end

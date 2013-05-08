@@ -189,7 +189,9 @@ a {
   -webkit-backface-visibility: hidden; }
   a:hover {
     color: #2ecc71;
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: hand;
+  cursor: pointer;}
 
 h1 {
   font-size: 32px;
@@ -1060,10 +1062,12 @@ textarea[readonly] {
   cursor: default; }
 
 input,
-textarea,
 .uneditable-input {
-  width: 192px; }
+  width: 217px; }
 
+textarea {
+  width: 500px;
+}
 .checkbox,
 .radio {
   margin-bottom: 12px;

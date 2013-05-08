@@ -1,16 +1,16 @@
 
 <div id="newDiscussionForm" class="well">
-<%= form_for [@review, @review.discussions.build] do |f| %>
+  <%= form_for [@review, @review.discussions.build] do |f| %>
   <% if @discussion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
 
-      <ul>
+    <ul>
       <% @discussion.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
   <div class="field">
@@ -18,6 +18,7 @@
     <%= f.check_box :private %>
   </div>
   <div class="field">
+<<<<<<< HEAD
     <textarea name="body" rows="4" cols="50"></textarea>
   </div>
   <div class="field">
@@ -26,8 +27,24 @@
   </div>
   <div class="actions">
     <%= f.submit "Post", :class => "customButton" %>
+=======
+    <textarea name="body" class="textarea"></textarea>
+>>>>>>> b2804c975a6bc8bcf86bba1bedfc7b00ecbe7cfe
   </div>
 
-  <input type="button" class = "customButton" id="cancelDiscussionButton" value="Cancel">
-<% end %>
+  <table>
+    <th>
+      <div class="actions">
+        <%= f.submit "Post", :class => "customButton" %>
+      </div>
+    </th>
+
+    <th>
+      <div class="actions">
+
+        <input type="button" class = "cancelButton" id="cancelDiscussionButton" value="Cancel">
+      </div>
+    </th>
+  </table>
+  <% end %>
 </div>
