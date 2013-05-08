@@ -5,7 +5,7 @@
         <% @discussions.each do |discuss| %>
             <% if not discuss.id.nil? %>
                <% discussionId = 'discussion-'+discuss.id.to_s %>
-               <div id='<%=discussionId%>' class="well discussion" data-toggle="collapse">
+               <div id='<%=discussionId%>' class="well discussion">
                 <% @comments = discuss.comments %>
                 <%= render 'comments/comments' %>
                 <%= render'comments/newComment' %>
