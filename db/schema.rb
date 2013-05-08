@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20130508041522) do
 
   create_table "admins", :force => true do |t|
@@ -58,7 +59,6 @@ ActiveRecord::Schema.define(:version => 20130508041522) do
     t.datetime "updated_at",   :null => false
     t.integer  "to_user_id"
     t.string   "type"
-    t.boolean  "private"
     t.integer  "from_user_id"
     t.string   "public_name"
   end
@@ -66,14 +66,15 @@ ActiveRecord::Schema.define(:version => 20130508041522) do
   add_index "discussions", ["review_id"], :name => "index_discussions_on_review_id"
 
   create_table "notifications", :force => true do |t|
-    t.string   "notify"
+    t.string   "notification"
     t.integer  "user_id"
     t.string   "title"
     t.string   "body"
     t.boolean  "undread"
     t.integer  "review_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "notify"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "user_name"
   end
 

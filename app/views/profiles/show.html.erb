@@ -25,11 +25,11 @@
       <h4>Number:</h4>
       <%= best_in_place @profile, :contactnum %>
     </p> -->
+
     <br />
     <h2>Recent Comments:</h2>
-   
     <% @comments.each do |comment| %>
-      <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion_id) %> on <%= comment.created_at %> </p>
+      <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion_id) %> at <%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %> </p>
     <% end %>
   </div>
 </div>

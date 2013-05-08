@@ -23,20 +23,29 @@
   $('body').on('click', '#createCommentButton', function(event){
       var url = hostname+'/createComment'
       var commentBody = $(this).parent().find('.newCommentText').val();
-      var strid = $(this).parent().parent().attr("id");
-      var id = strid.split('-')[1];
-      var comment = {body: commentBody};
-      var anonymous = $(this).parent().find('.anonymous').is(':checked');
-      alert(anonymous);
-      var data = {comment: comment, discussion_id: id};
-      $.post(url, data, function(d){
-        $.post(hostname+'/getUser/', {user_id: d.user_id}, function(d2){
-         var username = d2.name;
+      if(commentBody == ""){
+        if( $(this).parent().children('.comment-body-error').length == 0){
+          $(this).parent().append("<div class='comment-body-error'><p>Must Enter a Comment!</p></div>");
+        }
+      }
+      else{
+        //remove any error messages
+        $(this).parent().find('.comment-body-error').remove();
 
-        $('#discussion-'+id).find('.comments').append('<div class="comment freshly-added"><div class="comment_heading"><b> You said: </b><span> '+d.created_at+' </span></div><p>'+d.body+'</div>');
-        $('#discussion-'+id).find('.newCommentText').val('');
+        var strid = $(this).parent().parent().attr("id");
+        var id = strid.split('-')[1];
+        var comment = {body: commentBody};
+        var anonymous = $(this).parent().find('.anonymous').is(':checked');
+        var data = {comment: comment, discussion_id: id};
+        $.post(url, data, function(d){
+          $.post(hostname+'/getUser/', {user_id: d.user_id}, function(d2){
+          var username = d2.name;
+
+          $('#discussion-'+id).find('.comments').append('<div class="comment freshly-added"><div class="comment_heading"><b> You said: </b><span> '+d.created_at+' </span></div><p>'+d.body+'</div>');
+          $('#discussion-'+id).find('.newCommentText').val('');
+          });
         });
-      });
+      }
     });
 
   $('body').on('click', '.accordion-header', function(event){
