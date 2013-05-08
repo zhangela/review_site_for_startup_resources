@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @users = User.find(current_user.id)
+    @comments = Comment.where( :user_id => @user.id).take(3)
 
     respond_to do |format|
       format.html # show.html.erb

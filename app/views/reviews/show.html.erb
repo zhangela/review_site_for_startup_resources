@@ -80,7 +80,7 @@ $(function() {
   <h3><%= '"' + @review.title + '"'%></h3>
   <span class="stars"><%= @review.rating %></span> <br>
   <div id = "reviewbody">
-    <h4><%= @review.body %></h4>
+    <h4><%= simple_format @review.body %></h4>
   </div><br>
 
 

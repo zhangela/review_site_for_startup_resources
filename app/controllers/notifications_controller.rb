@@ -54,7 +54,6 @@ class NotificationsController < ApplicationController
   end
 
    def read
-  
     Notification.mark_as_read! :all, :for => current_user
 
     redirect_to root_url

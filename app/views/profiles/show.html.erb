@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" style = "margin-top:30px; border: 1px solid #e5e5e5; background-color:#F8F8F8; border-radius: 5px">
 
 <div class="row">
 
@@ -21,11 +21,16 @@
       <h4>About:</h4>
       <%= best_in_place @profile, :about %>
     </p>
-    <p>
+<!--     <p>
       <h4>Number:</h4>
       <%= best_in_place @profile, :contactnum %>
-    </p>
-
+    </p> -->
+    <br />
+    <h2>Recent Comments:</h2>
+   
+    <% @comments.each do |comment| %>
+      <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion_id) %> on <%= comment.created_at %> </p>
+    <% end %>
   </div>
 </div>
 </div>

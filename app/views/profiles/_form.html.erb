@@ -12,14 +12,13 @@
 <% end %>
 
 <div>
-  <%= f.label :picture_url, "Upload Your Avatar:" %>
-  <div class ="actions">
+  <div class ="actions" >
     <%= f.filepicker_field :picture_url, services: ["COMPUTER", "FACEBOOK"], class: "customButton" %>
   </div>
 </div>
 
 <div class="actions">
-  <%= f.submit "submit", :class => "customButton" %>
+  <%= f.submit "Upload", :class => "customButton" %>
 </div>
 <% end %>
 
