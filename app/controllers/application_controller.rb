@@ -6,20 +6,28 @@ class ApplicationController < ActionController::Base
 
   private
 	def notifications
+		@num_unread = 0
 		if current_user
 		  @notifications = Notification.unread_by(current_user)
-		  @num_unread = count 
-		 end
-	end
+		  @relevant_notifications = []
 
-	def count
-	  	count = 0
-	  	@notifications = Notification.all
-	  	@notifications.each do |notification|
-	  		if notification.unread?(current_user)
-	  			count = count + 1
-	  		end
-	  	end
-	  	return count 
-  	end
+		  @notifications.each do |notification|
+		  	if notification.user_id != current_user.id
+		  		puts notification.user_id
+		  		puts current_user.id
+			  	@relevant_users = []
+			  	@review = Review.find(notification.review_id)
+			  	@review.discussions.each do |discussion|
+			  		discussion.comments.each do |comment|
+			  			@relevant_users << comment.user_id
+			  		end
+			  	end
+			  	if @relevant_users.include? current_user.id 
+				  		@relevant_notifications << notification
+				  		@num_unread = @num_unread + 1
+			  	end 
+			end
+		  end
+		end
+	end
 end
