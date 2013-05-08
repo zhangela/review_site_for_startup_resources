@@ -67,8 +67,15 @@ class CompaniesController < ApplicationController
       name = name.to_s.gsub(/[^0-9a-zA-Z ]/i, '')
 
       description = params[:description].to_s
-      description = description.to_s.gsub(/[^0-9a-zA-Z,.!:;""''?@#$&*()- ]/i, '')
-      description = description.to_s.gsub(/\r\n?/, "\n");
+      description.gsub!(/[^0-9a-zA-Z,.!:;""''?@#$&*()- ]/i, '')
+      description.gsub!(/\\r\\n|\\r|\\n/, "<br>")
+      # description.gsub!(/\\?/, "");
+      description.gsub!("[","")
+      description.gsub!("]","")
+      description.gsub!('"','')
+      description.gsub!('n*','')
+
+
 
       @company = Company.new
       @company.description = description
