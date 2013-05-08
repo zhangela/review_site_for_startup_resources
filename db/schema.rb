@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20130508052817) do
 
   create_table "activities", :force => true do |t|
@@ -82,15 +83,14 @@ ActiveRecord::Schema.define(:version => 20130508052817) do
   add_index "discussions", ["review_id"], :name => "index_discussions_on_review_id"
 
   create_table "notifications", :force => true do |t|
-    t.string   "notification"
+    t.string   "notify"
     t.integer  "user_id"
     t.string   "title"
     t.string   "body"
     t.boolean  "undread"
     t.integer  "review_id"
-    t.string   "notify"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "user_name"
   end
 

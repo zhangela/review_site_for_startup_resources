@@ -275,11 +275,10 @@ a:hover{
 }
 
 .comments{
-	border-top:1px;
 }
 
 .comment-body-error{
 	background-color: #FFA6A6;
-	border-radius: 3px;	
+	border-radius: 3px;
 	text-align: center;
 }
