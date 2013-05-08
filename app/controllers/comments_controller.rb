@@ -81,7 +81,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        @notification = Notification.new(user_id: current_user, user_name: current_user.name, notify:"c", review_id: @discussion.review_id, title:@review.title,)
+        @notification = Notification.new(user_id: current_user.id, user_name: current_user.name, notify:"c", review_id: @discussion.review_id, title:@review.title,)
         @notification.save
         format.json { render json: @comment, status: :created, location: @comment }
       else
