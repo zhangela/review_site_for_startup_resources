@@ -86,19 +86,20 @@ $(function() {
 
 <p id="notice"><%= notice %></p>
 <div id = "reviewinfo">
-  <% if current_user == @review.user %>
+
+  <h3><%= '"' + @review.title + '"'%></h3>
+  <span class="stars"><%= @review.rating %></span>
+  <div id = "reviewbody" style="font-size: 18px;">
+      <% if current_user == @review.user %>
           <% if @review.public_name == "Anonymous" %>
-            <b>You posted an ANONYMOUS review:</b>
+            <b>You wrote, anonymously:</b>
           <% else %>
-            <b>You posted a review:</b>
+            <b>You wrote: </b>
           <% end %>
         <% else %>
           <b><%= @review.public_name %> posted a review:<b>
         <% end %>
-  <h3><%= '"' + @review.title + '"'%></h3>
-  <span class="stars"><%= @review.rating %></span> <br>
-  <div id = "reviewbody">
-    <h4><%= simple_format @review.body %></h4>
+    <h4><%= @review.body.html_safe %></h4>
   </div><br>
 
 
