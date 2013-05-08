@@ -34,7 +34,7 @@ $(function() {
            </div>
 
            <div>
-               <%= sortable "name", "Company Name" %>
+               <%= sortable "name", "Firm Name" %>
            </div>
 
            <br>
@@ -99,32 +99,10 @@ $(function() {
             <%= link_to "(Show All)", :controller => "companies", :action => "index" %>
           </div>
 
-<!--            <h4> Categories </h4>
-
-            <div>
-               Accelerators & Incubators
-           </div>
-
-            <div>
-               Angel Investment
-           </div>
-
-            <div>
-               Finance
-           </div>
-
-            <div>
-               Law
-           </div>
-
-           <div>
-               Venture Capital
-           </div> -->
-
        </div>
 
        <div class = "span10">
-            <h1> Companies </h1>
+            <h1> Firms </h1>
 
            <div class = "searchbar">
                <%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
@@ -133,7 +111,7 @@ $(function() {
            </div>
 
            <div>
-            <%= button_to 'Add Company', new_company_path, :method => 'get', :class => "customButton", :style => "height: 38px;" %>
+            <%= button_to 'Add Firms', new_company_path, :method => 'get', :class => "customButton", :style => "height: 38px;" %>
         </div>
 
            <div id="companies"><%= render 'companies' %></div>
