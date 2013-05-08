@@ -10,6 +10,7 @@ body {
 	margin-bottom: 10px;
 }
 
+
 .profilepic{
 	margin:40px;
 	padding:20px;
@@ -272,6 +273,10 @@ a:hover{
 	text-shadow:none;
 	color: #ECF0F1;
 	font-weight: none;
+}
+
+.nav.pull-right .active a:hover{
+	color: #1ABC9C;
 }
 
 .comments{

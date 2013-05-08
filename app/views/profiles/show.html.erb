@@ -1,5 +1,5 @@
 
-<div class="container" style = "margin-top:30px; border: 1px solid #e5e5e5; background-color:#F8F8F8; border-radius: 5px">
+<div class="container" style = "margin-top:30px; padding-bottom:30px; border: 1px solid #e5e5e5; background-color:#F8F8F8; border-radius: 5px">
 
 <div class="row">
 
@@ -7,7 +7,7 @@
     <% if @profile.picture_url != nil %>
     	<%= filepicker_image_tag @profile.picture_url, :class => "profilepic" %>
     <% else %>
-    	<img src="../assets/images/default-avatar.jpg" class = "profilepic">
+    	<img src="../assets/default-avatar.jpg" class = "profilepic">
     <% end %>
     <div style="margin-left: 55px;">
       <%= render 'form' %>
@@ -19,7 +19,7 @@
     <h1><%= current_user.name %></h1>
     <p>
       <h4>About:</h4>
-      <%= best_in_place @profile, :about %>
+      <%= best_in_place @profile, :about, :nil => "Click me to edit!", :html_attrs => {:size =>"300px"} %>
     </p>
 <!--     <p>
       <h4>Number:</h4>
@@ -29,7 +29,7 @@
     <br />
     <h2>Recent Comments:</h2>
     <% @comments.each do |comment| %>
-      <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion_id) %> at <%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %> </p>
+      <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion.review_id) %> at <%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %> </p>
     <% end %>
   </div>
 </div>
