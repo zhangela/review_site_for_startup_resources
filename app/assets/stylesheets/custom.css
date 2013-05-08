@@ -264,3 +264,8 @@ a:hover{
 .comments{
 	border-top:1px;
 }
+
+.freshly-added{
+	background-color: #cccccc;
+	border-radius: 3px;
+}
