@@ -277,14 +277,10 @@ a:hover{
 .comments{
 }
 
+
 .comment_heading {
 	margin-top: 5px;
 
-}
-/*For a newly added comment by the current_user*/
-.freshly-added{
-	background-color: #cccccc;
-	border-radius: 3px;
 }
 
 .comment-body-error{

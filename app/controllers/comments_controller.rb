@@ -69,7 +69,7 @@ class CommentsController < ApplicationController
     @comment = @discussion.comments.build(params[:comment])
 
     anonymous = params[:anonymous]
-    if(anonymous)
+    if(anonymous == "true")
       public_name = "Anonymous"
     else
       public_name = @user.name
