@@ -48,7 +48,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  # POST /comments
   # POST /comments.json
   def create
     @discussion = Discussion.find(params[:discussion])
@@ -68,7 +67,16 @@ class CommentsController < ApplicationController
   def createComment
     @discussion = Discussion.find(params[:discussion_id])
     @comment = @discussion.comments.build(params[:comment])
-    @comment.update_attributes(:user_id => current_user.id)
+
+    anonymous = params[:anonymous]
+    if(anonymous)
+      public_name = "Anonymous"
+    else
+      public_name = @user.name
+    end
+
+    @comment.update_attributes(:user_id => current_user.id, :public_name => public_name)
+
     @review = Review.find(@discussion.review_id)
 
     respond_to do |format|

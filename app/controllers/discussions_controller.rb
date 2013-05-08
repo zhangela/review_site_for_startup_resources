@@ -50,7 +50,14 @@ class DiscussionsController < ApplicationController
     @discussion.from_user_id = current_user.id
     @discussion.to_user_id = @review.user_id
 
-    @comment = @discussion.comments.build(:body=>params[:body], :user_id=> current_user.id)
+    anonymous = params[:anonymous]
+    if(anonymous)
+      public_name = "Anonymous"
+    else
+      public_name = current_user.name
+    end
+
+    @comment = @discussion.comments.build(:body=>params[:body], :user_id=> current_user.id, :public_name=>public_name)
 
     respond_to do |format|
       if @discussion.save

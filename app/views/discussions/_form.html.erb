@@ -14,11 +14,18 @@
   <% end %>
 
   <div class="field">
-    <%= label_tag 'private', 'Private', :class=>"checkbox inline" %>
+    <%= label_tag 'private', 'Send Private Discussion to Poster?', :class=>"checkbox inline" %>
     <%= f.check_box :private %>
   </div>
   <div class="field">
-    <textarea name="body" class="textarea"></textarea>
+    <textarea name="body" rows="4" cols="50"></textarea>
+  </div>
+  <div class="field">
+    <%= label_tag 'anonymous', 'Post Anonymously?', :class=>"checkbox inline" %>
+    <input type="checkbox" name="anonymous">
+  </div>
+  <div class="actions">
+    <%= f.submit "Post", :class => "customButton" %>
   </div>
 
   <table>

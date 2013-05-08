@@ -1062,10 +1062,12 @@ textarea[readonly] {
   cursor: default; }
 
 input,
-textarea,
 .uneditable-input {
-  width: 500px; }
+  width: 217px; }
 
+textarea {
+  width: 500px;
+}
 .checkbox,
 .radio {
   margin-bottom: 12px;

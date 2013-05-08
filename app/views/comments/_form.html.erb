@@ -16,6 +16,10 @@
     <%= f.text_field :body %>
   </div>
 
+  <div class="field">
+    <%= label_tag 'anonymous', 'Post Anonymously?', :class=>"checkbox inline" %>
+    <%= f.check_box :anonymous %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
