@@ -275,7 +275,6 @@ a:hover{
 }
 
 .comments{
-	border-top:1px;
 }
 
 /*For a newly added comment by the current_user*/
@@ -286,6 +285,6 @@ a:hover{
 
 .comment-body-error{
 	background-color: #FFA6A6;
-	border-radius: 3px;	
+	border-radius: 3px;
 	text-align: center;
 }

@@ -7,10 +7,10 @@
       <% if current_user == comment.user %>
         <b>You said, </b>
       <% else %>
-        <b><%= comment.public_name %>, </b>     
+        <b><%= comment.public_name %>, </b>
       <% end %>
 
-       <span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
+       <span><%= comment.created_at.strftime(" at %I:%M %p on %B %d, %Y") %></span>
       <p>
       <%= comment.body %>
       </p>
@@ -37,9 +37,9 @@
             <b>You said, </b>
           <% end %>
         <% else %>
-        <b><%= comment.public_name %>, </b>     
+        <b><%= comment.public_name %>, </b>
         <% end %>
-      	<span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
+      	<span><%= comment.created_at.strftime(" at %I:%M %p on %B %d, %Y") %></span>
       </div>
       <p>
         <%= comment.body %>
