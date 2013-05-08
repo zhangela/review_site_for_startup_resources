@@ -7,10 +7,10 @@
       <% if current_user == comment.user %>
         <b>You said, </b>
       <% else %>
-        <b><%= comment.public_name %>, </b>     
+        <b><%= comment.public_name %> said, </b>
       <% end %>
 
-       <span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
+       <span><b><%= comment.created_at.strftime(" at %I:%M %p on %B %d, %Y") %></b></span>
       <p>
       <%= comment.body %>
       </p>
@@ -32,14 +32,14 @@
       	<% user = comment.user %>
       	<% if current_user == user %>
           <% if comment.public_name == "Anonymous" %>
-            <b>(ANONYMOUS POST) You said,</b>
+            <b>You said, anonymously,</b>
           <% else %>
             <b>You said, </b>
           <% end %>
         <% else %>
-        <b><%= comment.public_name %>, </b>     
+        <b><%= comment.public_name %>, </b>
         <% end %>
-      	<span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
+      	<span><b><%= comment.created_at.strftime(" at %I:%M %p on %B %d, %Y") %></b></span>
       </div>
       <p>
         <%= comment.body %>

@@ -9,9 +9,21 @@ $(function() {
 <div id="reviews">
     <% @reviews.each do |review| %>
     <div class="review">
-        <b class="reviewTitle"><%= link_to '"'+review.title+'"', review %></b><br>
+        <h4 class="reviewTitle"><%= link_to '"'+review.title+'"', review %></h4>
         <span class="stars"><%= review.rating %></span>
-        <%= simple_format review.body %>
+
+        <div style="font-size: 16px;">
+            <% if current_user == review.user %>
+            <% if review.public_name == "Anonymous" %>
+            <b>You wrote, anonymously: </b>
+            <% else %>
+            <b>You wrote: </b>
+            <% end %>
+            <% else %>
+                <b><%= review.public_name %> wrote:<b>
+            <% end %>
+            <p><%= review.body.html_safe %></p>
+        </div>
     </div>
     <% end %>
 

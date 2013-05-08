@@ -1,5 +1,5 @@
 
-<div id="newDiscussionForm" class="well">
+<div id="newDiscussionForm" class="well discussion" style="width: 560px;">
   <%= form_for [@review, @review.discussions.build] do |f| %>
   <% if @discussion.errors.any? %>
   <div id="error_explanation">
@@ -21,6 +21,7 @@
     <%= label_tag 'anonymous', 'Post Anonymously?', :class=>"checkbox inline" %>
   </div>
 
+  <br>
 
   <table>
     <th>
