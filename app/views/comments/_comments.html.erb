@@ -13,7 +13,9 @@
   <div class="accordion-header">
     <!-- add hidden input to keep track of toggling to change message -->
     <input type="hidden" class="hidden-boolean" value='collapsed'>
-    <a class="message">Show Follow Up Comments</a>
+    <% if @comments.size > 1 %>
+      <a class="message">Show Follow Up Comments</a>
+    <% end %>
   </div>
 
   <div class="follow_up_comments accordion-group collapse">
