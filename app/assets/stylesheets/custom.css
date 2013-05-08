@@ -277,6 +277,12 @@ a:hover{
 .comments{
 }
 
+
+.comment_heading {
+	margin-top: 5px;
+
+}
+
 .comment-body-error{
 	background-color: #FFA6A6;
 	border-radius: 3px;
