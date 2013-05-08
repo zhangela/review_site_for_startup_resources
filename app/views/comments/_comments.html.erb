@@ -30,8 +30,7 @@
     <div class="comment">
       <div class="comment_heading">
       	<% user = comment.user %>
-      	<b><% if current_user == user %></b>
-          <%= comment.public_name %>
+      	<% if current_user == user %>
           <% if comment.public_name == "Anonymous" %>
             <b>(ANONYMOUS POST) You said,</b>
           <% else %>

@@ -35,8 +35,8 @@
         var strid = $(this).parent().parent().attr("id");
         var id = strid.split('-')[1];
         var comment = {body: commentBody};
-        var anonymous = $(this).parent().find('.anonymous').is(':checked');
-        var data = {comment: comment, discussion_id: id};
+        var anonymous = $(this).parent().find('.anonymous').prop('checked');
+        var data = {comment: comment, discussion_id: id, anonymous: anonymous};
         $.post(url, data, function(d){
           $.post(hostname+'/getUser/', {user_id: d.user_id}, function(d2){
           var username = d2.name;
