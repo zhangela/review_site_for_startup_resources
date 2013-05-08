@@ -3,7 +3,13 @@
   <div class="first_comment">
       <% comment = @comments.first %>
       <% user = comment.user %>
-      <b><%= comment.public_name %>, </b>
+
+      <% if current_user == comment.user %>
+        <b>You said, </b>
+      <% else %>
+        <b><%= comment.public_name %>, </b>     
+      <% end %>
+
        <span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
       <p>
       <%= comment.body %>
@@ -24,7 +30,11 @@
     <div class="comment">
       <div class="comment_heading">
       	<% user = comment.user %>
-      	<b><%= comment.public_name %>, </b>
+      	<% if current_user == comment.user %>
+          <b>You said, </b>
+        <% else %>
+        <b><%= comment.public_name %>, </b>     
+        <% end %>
       	<span><%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %></span>
       </div>
       <p>
