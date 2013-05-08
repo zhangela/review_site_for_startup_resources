@@ -18,18 +18,14 @@
     <%= f.check_box :private %>
   </div>
   <div class="field">
-<<<<<<< HEAD
     <textarea name="body" rows="4" cols="50"></textarea>
   </div>
   <div class="field">
     <%= label_tag 'anonymous', 'Post Anonymously?', :class=>"checkbox inline" %>
-    <%= f.check_box :anonymous %>
+    <input type="checkbox" name="anonymous">
   </div>
   <div class="actions">
     <%= f.submit "Post", :class => "customButton" %>
-=======
-    <textarea name="body" class="textarea"></textarea>
->>>>>>> b2804c975a6bc8bcf86bba1bedfc7b00ecbe7cfe
   </div>
 
   <table>
