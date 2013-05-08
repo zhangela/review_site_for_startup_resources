@@ -261,13 +261,14 @@ a:hover{
 }
 
 .navbar .brand{
-	margin-left: 25px;
+	margin-left: 20px;
+	margin: 0;
 	font-weight: none;
 	text-shadow:none;
 	color: #1ABC9C;
 	padding: 0;
-	padding-top: 5px;
 	font-size: 30px;
+	max-height: 50px;
 }
 .navbar .nav li a, .nav.pull-right .active a{
 	text-shadow:none;
