@@ -4,23 +4,11 @@
     <% if @discussions.size > 1 %>
         <% @discussions.each do |discuss| %>
             <% if not discuss.id.nil? %>
-                <% if discuss.private %>
-                    <% if current_user.id == discuss.to_user_id || current_user.id == discuss.from_user_id %>
-                        <% discussionId = 'discussion-'+discuss.id.to_s %>
-                        <div id='<%=discussionId%>' class="well discussion" data-toggle="collapse">
-                        <% @comments = discuss.comments %>
-                        <%= render 'comments/comments' %>
-                        <%= render'comments/newComment' %>
-                        </div>
-                    <% end %>
-                <% else %>
-                    <% discussionId = 'discussion-'+discuss.id.to_s %>
-                    <div id='<%=discussionId%>' class="well discussion" data-toggle="collapse">
-                        <% @comments  = discuss.comments %>
-                        <%= render :partial => 'comments/comments', :comments => discuss.comments%>
-                        <%= render'comments/newComment' %>
-                    </div>
-                <% end %>
+               <div id='<%=discussionId%>' class="well discussion" data-toggle="collapse">
+                <% @comments = discuss.comments %>
+                <%= render 'comments/comments' %>
+                <%= render'comments/newComment' %>
+               </div>
             <% end %>
         <% end %>
     <% else %>
