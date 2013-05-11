@@ -8,7 +8,7 @@ body {
 </style>
 
 <div class="form-edit">
-<h1>Editing profile</h1>
+<h1>Editing Your Profile</h1>
 
 <%= form_for(@profile) do |f| %>
 <% if @profile.errors.any? %>
@@ -22,13 +22,6 @@ body {
   </ul>
 </div>
 <% end %>
-
-<div>
-  <%= f.label :picture_url, "Upload Your Avatar:" %>
-  <div class ="actions">
-    <%= f.filepicker_field :picture_url, services: ["COMPUTER", "FACEBOOK"], :class => "customButton" %>
-  </div>
-</div>
 
 
 <div>
