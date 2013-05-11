@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
   def create
 
     # @reviewable could be either a company or a partner
-    @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id)
+    @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id, :pros=>params[:review][:pros], :cons=>params[:review][:cons])
 
     # update the review average for the firm and the partner
     @reviewable.recalculate_average(@review)

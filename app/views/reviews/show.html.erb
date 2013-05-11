@@ -106,8 +106,14 @@ $(function() {
             <b><%= link_to @review.public_name, profile_path(@review.user) %> wrote:</b>
           <% end %>
         <% end %>
-    <h4><%= @review.body.html_safe %></h4>
-  </div><br>
+            <% if @review.pros && @review.cons %>
+            <h4><b>Pros: </b><%= @review.pros.html_safe %></h4>
+            <h4><b>Cons: </b><%= @review.cons.html_safe %></h4>
+            <% end %>
+
+            <% if @review.body %>
+                <h4><b>Detail: </b> <%= @review.body.html_safe %></h4>
+            <% end %>  </div><br>
 
       <% if current_user == @review.user %>
             <%= button_to 'Edit Review', edit_review_path(@review), :method => 'get', :class => "cancelButton" %>

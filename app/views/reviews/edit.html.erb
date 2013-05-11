@@ -33,10 +33,18 @@
         <input name="rating" type="radio" class="star" value="5">
     </div>
 
-    <br>
+  <div class="field">
+    <%= label_tag 'pros', 'What did you like?' %>
+    <%= f.text_area :pros, :rows => 4, :style => "width: 500px;" %>
+  </div>
 
     <div class="field">
-        <%= label_tag 'body', 'Any specific comments?' %>
+    <%= label_tag 'cons', "What didn't you like?" %>
+    <%= f.text_area :cons, :rows => 4, :style => "width: 500px;" %>
+  </div>
+
+    <div class="field">
+        <%= label_tag 'body', 'Addtional comments?' %>
         <%= f.text_area :body, :rows => 4, :style => "width: 500px;" %>
     </div>
 
