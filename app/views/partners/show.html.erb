@@ -4,6 +4,7 @@
 
     $('#addReviewButton').click(function(){
         $('#partner_reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>').hide().fadeIn('fast');
+        $('.star').rating();
         $('#addReviewButton').hide();
     });
 

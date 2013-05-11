@@ -24,6 +24,7 @@
 		$('#addReviewButton').click(function(){
 			$('#addPartnerForm').remove();
 			$('#reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
+			$('.star').rating();
 			$('#addReviewButton').hide();
 		});
 
