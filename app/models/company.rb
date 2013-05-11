@@ -15,19 +15,19 @@ class Company < ActiveRecord::Base
     def recalculate_average(review)
     	#if no reviews have been submitted
     	if(self.avg_rating == -1)
-    		self.update_attribute(:avg_rating, review.rating)
-    	else
-			oldAvg = self.avg_rating
-    		numRatings = self.reviews.size
-			oldTotal = oldAvg * (numRatings-1)
+            self.update_attribute(:avg_rating, review.rating)
+        else
+           oldAvg = self.avg_rating
+           numRatings = self.reviews.size
+           oldTotal = oldAvg * (numRatings-1)
 
-    		newAvg = (oldTotal + review.rating) / (numRatings)
+           newAvg = (oldTotal + review.rating) / (numRatings)
 
-    		self.update_attribute(:avg_rating, newAvg)
-    	end
-    end
+           self.update_attribute(:avg_rating, newAvg)
+       end
+   end
 
-    def self.search(search)
+   def self.search(search)
         if search
             where('name LIKE ? OR location LIKE ? OR description LIKE ? OR category LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
         else
@@ -35,7 +35,7 @@ class Company < ActiveRecord::Base
         end
     end
 
-        def self.filter(condition)
+    def self.filter_by_category(condition)
         if condition
             where('category LIKE ?', "%#{condition}%")
         else
@@ -44,7 +44,7 @@ class Company < ActiveRecord::Base
     end
 
 
-            def self.filter_by_rating(condition)
+    def self.filter_by_rating(condition)
         if condition
             where('avg_rating >= ?', "#{condition}")
         else

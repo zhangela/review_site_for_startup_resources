@@ -25,6 +25,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/new
   # GET /discussions/new.json
   def new
+
     @review = Review.find(params[:review_id])
     @discussion = Discussion.new
 

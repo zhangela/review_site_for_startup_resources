@@ -13,6 +13,7 @@
 <br>
 
 <%= form_for @company do |f|%>
+
 <div class="field">
     <div><b> Category: </b></div>
     <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>

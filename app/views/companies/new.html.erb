@@ -27,19 +27,25 @@ $( document ).ready( function() {
     <div class="form-edit">
         <div id="div_search_crunchbase">
             <div class="control-group">
+
+                <% if @failed_to_create %>
+                <h4>Firm could not be created. Please try again and fill out all the fields.</h4>
+                <% end %>
+
                 <h2 class="form-edit-heading">Add Firm</h2>
+
                 <table>
                     <td>
-                     <%= form_tag new_company_path, :method => 'get', :id => "input_search_crunchbase" do %>
-                     <th><%= text_field_tag :search, params[:search],:placeholder => "What's the name of the company?", :class=>"input-block-level", :style => "width: 400px;" %></th>
-                     <th><%= submit_tag "Search", :class => "customButton", :style => "height: 38px; margin-bottom: 16px; min-width: 80px; margin-left: 5px; margin-right: 5px;" %></th>
-                     <% end %>
-                     <th><%= button_to 'Cancel', companies_path, :style => "height: 38px; margin-bottom: 16px; min-width: 80px; ", :class => "cancelButton", :method => :get %></th>
-                 </td>
-             </table>
-         </div>
+                       <%= form_tag new_company_path, :method => 'get', :id => "input_search_crunchbase" do %>
+                       <th><%= text_field_tag :search, params[:search],:placeholder => "What's the name of the company?", :class=>"input-block-level", :style => "width: 400px;" %></th>
+                       <th><%= submit_tag "Search", :class => "customButton", :style => "height: 38px; margin-bottom: 16px; min-width: 80px; margin-left: 5px; margin-right: 5px;" %></th>
+                       <% end %>
+                       <th><%= button_to 'Cancel', companies_path, :style => "height: 38px; margin-bottom: 16px; min-width: 80px; ", :class => "cancelButton", :method => :get %></th>
+                   </td>
+               </table>
+           </div>
 
-         <div id="crunchbase_companies">
+           <div id="crunchbase_companies">
 
             <% if @crunchbase_companies && @crunchbase_companies.count > 0 %>
             <h4 style="color:#1abc9c;">Is it one of these?</h4>
