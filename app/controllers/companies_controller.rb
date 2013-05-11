@@ -28,6 +28,9 @@ class CompaniesController < ApplicationController
   # display a particular company page
   def show
     @company = Company.find(params[:id])
+
+    # because you can review either a company or a partner, both company and partner are considered a reviewable.
+    # each review belongs to this phantom reviewable object that is indeed a company
     @reviewable = @company
     @reviews = @reviewable.reviews
     @review = Review.new
