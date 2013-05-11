@@ -20,14 +20,14 @@
   </div>
   <div class="field">
     <%= label_tag 'rating', 'How would you rate from 1 to 5?' %>
-    <%#= f.radio_button :rating, options_for_select%>
-    <%#= f.radio_button :rating, {:class=>'star'})%>
     <input name="rating" type="radio" class="star" value="1">
     <input name="rating" type="radio" class="star" value="2">
     <input name="rating" type="radio" class="star" value="3">
     <input name="rating" type="radio" class="star" value="4">
     <input name="rating" type="radio" class="star" value="5">
   </div>
+
+  <br>
 
   <div class="field">
     <%= label_tag 'body', 'Any specific comments?' %>

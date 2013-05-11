@@ -109,6 +109,9 @@ $(function() {
     <h4><%= @review.body.html_safe %></h4>
   </div><br>
 
+      <% if current_user == @review.user %>
+            <%= button_to 'Edit Review', edit_review_path(@review), :method => 'get', :class => "cancelButton" %>
+      <% end %>
 
 
 </div>
