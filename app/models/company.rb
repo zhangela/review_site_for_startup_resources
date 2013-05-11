@@ -27,6 +27,7 @@ class Company < ActiveRecord::Base
        end
    end
 
+   # custom wrote search function
    def self.search(search)
         if search
             where('name LIKE ? OR location LIKE ? OR description LIKE ? OR category LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
@@ -35,6 +36,7 @@ class Company < ActiveRecord::Base
         end
     end
 
+    # custom wrote filter by category function
     def self.filter_by_category(condition)
         if condition
             where('category LIKE ?', "%#{condition}%")
@@ -43,7 +45,7 @@ class Company < ActiveRecord::Base
         end
     end
 
-
+    # custom wrote filter by rating function
     def self.filter_by_rating(condition)
         if condition
             where('avg_rating >= ?', "#{condition}")

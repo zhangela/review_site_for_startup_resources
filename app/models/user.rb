@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :name, :remember_me, :avatar
   # attr_accessible :title, :body
 
-  after_create :build_profile 
+  after_create :build_profile
 
 end
