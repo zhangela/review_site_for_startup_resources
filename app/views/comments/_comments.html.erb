@@ -5,9 +5,9 @@
       <% user = comment.user %>
 
       <% if current_user == comment.user %>
-        <b>You said, </b>
+        <b>You wrote, </b>
       <% else %>
-        <b><%= comment.public_name %> said, </b>
+        <b><%= comment.public_name %> wrote, </b>
       <% end %>
 
        <span><b><%= comment.created_at.strftime(" at %I:%M %p on %B %d, %Y") %></b></span>
@@ -32,9 +32,9 @@
       	<% user = comment.user %>
       	<% if current_user == user %>
           <% if comment.public_name == "Anonymous" %>
-            <b>You said, anonymously,</b>
+            <b>You wrote, anonymously,</b>
           <% else %>
-            <b>You said, </b>
+            <b>You wrote, </b>
           <% end %>
         <% else %>
         <b><%= comment.public_name %>, </b>
