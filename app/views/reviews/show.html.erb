@@ -42,9 +42,9 @@
           var username = d2.name;
           var displayAnon = "";
           if (anonymous == true) {
-            displayAnon = " anonymously, "
+            displayAnon = ", anonymously"
           }
-          $('#discussion-'+id).find('.comments').append('<div class="comment"><div class="comment_heading"><b> You wrote,' + displayAnon + ' a moment ago </b></div><p>'+d.body+'</div>');
+          $('#discussion-'+id).find('.comments').append('<div class="comment"><div class="comment_heading"><b> You wrote' + displayAnon + ': </b></div><p>'+d.body+'</div>');
           $('#discussion-'+id).find('.newCommentText').val('');
           });
         });
@@ -100,7 +100,11 @@ $(function() {
             <b>You wrote: </b>
           <% end %>
         <% else %>
-          <b><%= @review.public_name %> posted a review:</b>
+          <% if @review.public_name == "Anonymous" %>
+            <b><%= @review.public_name %> wrote:</b>
+          <% else %>
+            <b><%= link_to @review.public_name, profile_path(@review.user) %> wrote:</b>
+          <% end %>
         <% end %>
     <h4><%= @review.body.html_safe %></h4>
   </div><br>

@@ -1,32 +1,23 @@
 class ProfilesController < ApplicationController
+
+  # must first authentication user
   before_filter :authenticate_user!
 
+  # load current user
   before_filter :load
-  respond_to :html, :json
- 
 
+  respond_to :html, :json
 
   # Load is needed so that @user is not nil
   def load
     @user = current_user
   end
 
-  # GET /profiles
-  # GET /profiles.json
-  def index
-    @profiles = Profile.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @profiles }
-    end
-  end
-
   # GET /profiles/1
-  # GET /profiles/1.json
+  # Shows a specific profile that belongs to a current user
   def show
     @profile = Profile.find(params[:id])
-    @users = User.find(current_user.id)
+    @user = User.find(params[:id])
     @comments = Comment.where( :user_id => @user.id).take(3)
 
     respond_to do |format|
@@ -35,28 +26,22 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # GET /profiles/new
-  # GET /profiles/new.json
-  def new
-    @profile = Profile.new
-  end
-
   # GET /profiles/1/edit
+  # Shows the edit page for the current_user's profile
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(current_user.id)
   end
 
   # POST /profiles
-  # POST /profiles.json
+  # Creates the current_user's profile
   def create
     # Buidles a profile in association witht eh user
     @user = User.find(current_user.id)
     @profile = @user.build_profile(params[:user])
     @profile.update_attributes(params[:profile])
-    
+
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render json: @profile, status: :created, location: @profile }
       else
         format.html { render action: "new" }
@@ -66,23 +51,11 @@ class ProfilesController < ApplicationController
   end
 
   # PUT /profiles/1
-  # PUT /profiles/1.json
+  # Updates the current_user's profile
   def update
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(current_user.id)
     @profile.update_attributes(params[:profile])
     respond_with @profile
-  end
-
-  # DELETE /profiles/1
-  # DELETE /profiles/1.json
-  def destroy
-    @profile = Profile.find(params[:id])
-    @profile.destroy
-
-    respond_to do |format|
-      format.html { redirect_to profiles_url }
-      format.json { head :no_content }
-    end
   end
 
 

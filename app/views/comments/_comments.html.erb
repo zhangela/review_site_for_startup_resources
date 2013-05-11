@@ -1,51 +1,60 @@
 <div class="comments accordion-group">
 
   <div class="first_comment">
-      <% comment = @comments.first %>
-      <% user = comment.user %>
+    <% comment = @comments.first %>
+    <% user = comment.user %>
 
-      <% if current_user == comment.user %>
-        <b>You wrote, </b>
-      <% else %>
-        <b><%= comment.public_name %> wrote, </b>
-      <% end %>
-
-       <span><b><%= comment.created_at.strftime(" at %I:%M %p on %B %d, %Y") %></b></span>
-      <p>
-      <%= comment.body %>
-      </p>
-  </div>
-
-  <div class="accordion-header">
-    <!-- add hidden input to keep track of toggling to change message -->
-    <input type="hidden" class="hidden-boolean" value='collapsed'>
-    <% if @comments.size > 1 %>
-      <a class="message">Show Follow Up Comments</a>
-    <% end %>
-  </div>
-
-  <div class="follow_up_comments accordion-group collapse">
-  <% @comments.each do |comment| %>
-    <% if comment != @comments.first %>
-    <div class="comment">
-      <div class="comment_heading">
-      	<% user = comment.user %>
-      	<% if current_user == user %>
-          <% if comment.public_name == "Anonymous" %>
-            <b>You wrote, anonymously,</b>
-          <% else %>
-            <b>You wrote, </b>
-          <% end %>
+        <% if current_user == user %>
+        <% if comment.public_name == "Anonymous" %>
+        <b>You wrote, anonymously:</b>
         <% else %>
-        <b><%= comment.public_name %>, </b>
+        <b>You wrote: </b>
         <% end %>
-      	<span><b><%= comment.created_at.strftime(" at %I:%M %p on %B %d, %Y") %></b></span>
-      </div>
+        <% else %>
+        <% if comment.public_name == "Anonymous" %>
+        <b><%= comment.public_name %> wrote:  </b>
+        <% else %>
+        <b><%= link_to comment.public_name, profile_path(comment.user) %> wrote: </b>
+        <% end %>
+        <% end %>
       <p>
         <%= comment.body %>
       </p>
     </div>
+
+    <div class="accordion-header">
+      <!-- add hidden input to keep track of toggling to change message -->
+      <input type="hidden" class="hidden-boolean" value='collapsed'>
+      <% if @comments.size > 1 %>
+      <a class="message">Show Follow Up Comments</a>
+      <% end %>
+    </div>
+
+    <div class="follow_up_comments accordion-group collapse">
+      <% @comments.each do |comment| %>
+      <% if comment != @comments.first %>
+      <div class="comment">
+        <div class="comment_heading">
+         <% user = comment.user %>
+         <% if current_user == user %>
+         <% if comment.public_name == "Anonymous" %>
+         <b>You wrote, anonymously:</b>
+         <% else %>
+         <b>You wrote: </b>
+         <% end %>
+         <% else %>
+         <% if comment.public_name == "Anonymous" %>
+         <b><%= comment.public_name %> wrote:  </b>
+         <% else %>
+         <b><%= link_to comment.public_name, profile_path(comment.user) %> wrote: </b>
+         <% end %>
+         <% end %>
+       </div>
+       <p>
+        <%= comment.body %>
+      </p>
+    </div>
     <%end%>
-   <% end %>
+    <% end %>
   </div>
 </div>

@@ -14,13 +14,17 @@ $(function() {
 
         <div style="font-size: 16px;">
             <% if current_user == review.user %>
-            <% if review.public_name == "Anonymous" %>
-            <b>You wrote, anonymously: </b>
+                <% if review.public_name == "Anonymous" %>
+                    <b>You wrote, anonymously: </b>
+                <% else %>
+                    <b>You wrote: </b>
+                <% end %>
             <% else %>
-            <b>You wrote: </b>
-            <% end %>
-            <% else %>
-                <b><%= review.public_name %> wrote:<b>
+                <% if review.public_name == "Anonymous" %>
+                    <b><%= review.public_name %> wrote:<b>
+                <% else %>
+                    <b><%= link_to review.public_name, profile_path(review.user) %> wrote:<b>
+                <% end %>
             <% end %>
             <p><%= review.body.html_safe %></p>
         </div>

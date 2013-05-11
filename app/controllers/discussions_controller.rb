@@ -1,6 +1,5 @@
 class DiscussionsController < ApplicationController
 
-
   # POST /discussions
   # creates a new discussion that belongs to a particular review
   # a discussion is simply an object that holds a list of comments,
@@ -38,6 +37,7 @@ class DiscussionsController < ApplicationController
 
         # dicussion is created
         format.json { render json: @review, status: :created, location: @review }
+        format.html { redirect_to @review}
       else
 
         # discussion is not created, renders new with error
