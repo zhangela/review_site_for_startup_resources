@@ -7,6 +7,7 @@ class Company < ActiveRecord::Base
 
     validates_presence_of :description, :name, :url, :category, :location
 
+    # default average rating to -1 so we can check for it and display "not yet rated."
     def default_values
         self.avg_rating ||= -1
     end
