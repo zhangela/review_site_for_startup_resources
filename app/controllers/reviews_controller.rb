@@ -43,15 +43,23 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  #checks if @reviewable is type partner.
+  #If partner, must recalculate partner and total average in the partner's company 
+  def recalculate_averages
+    if @reviewable.kind_of? Partner
+        @company = @reviewable.company
+        @company.recalculate_partners_average(@review) #total partner average
+    end
+    @reviewable.recalculate_average(@review)
+  end
+
   # POST /reviews
   # POST review creation
   def create
-
     # @reviewable could be either a company or a partner
-    @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id, :pros=>params[:review][:pros], :cons=>params[:review][:cons])
-
-    # update the review average for the firm and the partner
-    @reviewable.recalculate_average(@review)
+    @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id)
+    
+    recalculate_averages
 
     anonymous = params[:anonymous]
     if(anonymous)
