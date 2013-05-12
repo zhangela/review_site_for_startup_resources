@@ -7,8 +7,9 @@ class Profile < ActiveRecord::Base
 
   private
 
+    # default values to be displayed on the profile page
   def default_values
-    self.about ||= "Double click me to edit!"
-    self.contactnum |= "Enter your contact info"
+    self.about ||= "Nothing yet!"
+    self.contactnum |= "No phone number on file :("
   end
 end

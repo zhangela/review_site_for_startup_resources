@@ -20,8 +20,6 @@
   </div>
   <div class="field">
     <%= label_tag 'rating', 'How would you rate from 1 to 5?' %>
-    <%#= f.radio_button :rating, options_for_select%>
-    <%#= f.radio_button :rating, {:class=>'star'})%>
     <input name="rating" type="radio" class="star" value="1">
     <input name="rating" type="radio" class="star" value="2">
     <input name="rating" type="radio" class="star" value="3">
@@ -29,8 +27,20 @@
     <input name="rating" type="radio" class="star" value="5">
   </div>
 
+  <br>
+
   <div class="field">
-    <%= label_tag 'body', 'Any specific comments?' %>
+    <%= label_tag 'pros', 'What did you like?' %>
+    <%= f.text_area :pros, :rows => 4, :style => "width: 500px;" %>
+  </div>
+
+    <div class="field">
+    <%= label_tag 'cons', "What didn't you like?" %>
+    <%= f.text_area :cons, :rows => 4, :style => "width: 500px;" %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'body', 'Additional comments?' %>
     <%= f.text_area :body, :rows => 4, :style => "width: 500px;" %>
   </div>
 
@@ -38,6 +48,8 @@
     <input type="checkbox" name="anonymous">
     <%= label_tag 'anonymous', 'Post Anonymously?', :class=>"checkbox inline" %>
   </div>
+
+  <br>
 
   <div>
     <%= f.submit "Add Review", :class => "customButton" %>

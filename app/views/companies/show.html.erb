@@ -2,7 +2,6 @@
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtrCKlyWSgQdGqMC1KmL2-FimUzbXWNM4&sensor=false">
 	</script>
-	
 
 	<script>
 
@@ -69,13 +68,13 @@
 	</script>
 
 
-<script>
+	<script>
 
-$(function() {
-    $('#companyinfo span.stars').stars();
-});
+	$(function() {
+		$('#companyinfo span.stars').stars();
+	});
 
-</script>
+	</script>
 
 	<body onload = "initialize()">
 		<div class="container">
@@ -85,13 +84,13 @@ $(function() {
 					<%= link_to '< Back to Company List', root_url %>
 				</div>
 				<div id="companyinfo">
-					<h2><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %> </a></h2>
+					<h2><a href = "<%= url_with_protocol (@company.url) %>" target = "_blank"><%= @company.name %> </a></h2>
 
-						<% if @company.avg_rating < 0 %>
-						Not yet rated! <br>
-						<% else %>
-						<span class="stars"><%= @company.avg_rating %></span>
-						<% end %>
+					<% if @company.avg_rating < 0 %>
+					Not yet rated! <br>
+					<% else %>
+					<span class="stars"><%= @company.avg_rating %></span>
+					<% end %>
 
 					<div id="companyinfo_detail">
 

@@ -7,6 +7,7 @@ class Company < ActiveRecord::Base
 
     validates_presence_of :description, :name, :url, :category, :location
 
+    # default average rating to -1 so we can check for it and display "not yet rated."
     def default_values
         self.avg_rating ||= -1
         self.partners_average ||= -1
@@ -36,11 +37,11 @@ class Company < ActiveRecord::Base
     def recalculate_average(review)
     	#if no reviews have been submitted
     	if(self.avg_rating == -1)
-    		self.update_attribute(:avg_rating, review.rating)
-    	else
-			oldAvg = self.avg_rating
-    		numRatings = self.reviews.size
-			oldTotal = oldAvg * (numRatings-1)
+            self.update_attribute(:avg_rating, review.rating)
+        else
+           oldAvg = self.avg_rating
+           numRatings = self.reviews.size
+           oldTotal = oldAvg * (numRatings-1)
 
     		newCompanyAvg = (oldTotal + review.rating) / (numRatings)
             partnerAvg = self.partners_average
@@ -51,7 +52,8 @@ class Company < ActiveRecord::Base
     	end
     end 
 
-    def self.search(search)
+   # custom wrote search function
+   def self.search(search)
         if search
             where('name LIKE ? OR location LIKE ? OR description LIKE ? OR category LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
         else
@@ -59,7 +61,8 @@ class Company < ActiveRecord::Base
         end
     end
 
-        def self.filter(condition)
+    # custom wrote filter by category function
+    def self.filter_by_category(condition)
         if condition
             where('category LIKE ?', "%#{condition}%")
         else
@@ -67,8 +70,8 @@ class Company < ActiveRecord::Base
         end
     end
 
-
-            def self.filter_by_rating(condition)
+    # custom wrote filter by rating function
+    def self.filter_by_rating(condition)
         if condition
             where('avg_rating >= ?', "#{condition}")
         else

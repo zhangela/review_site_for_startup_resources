@@ -1,0 +1,64 @@
+<div class="container">
+
+    <h1>Edit Review</h1>
+
+    <div id="editReviewForm" class="review">
+
+        <h4>Edit Review</h4>
+        <%= form_for @review do |f| %>
+        <% if @review.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+          <ul>
+              <% @review.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+          </ul>
+      </div>
+      <% end %>
+
+      <div class="field">
+        <%= label_tag 'title', 'What did you think overall?' %>
+        <%= f.text_field :title %>
+    </div>
+    <div class="field">
+        <%= label_tag 'rating', 'How would you rate from 1 to 5?' %>
+        <%#= f.radio_button :rating, options_for_select%>
+        <%#= f.radio_button :rating, {:class=>'star'})%>
+        <input name="rating" type="radio" class="star" value="1">
+        <input name="rating" type="radio" class="star" value="2">
+        <input name="rating" type="radio" class="star" value="3">
+        <input name="rating" type="radio" class="star" value="4">
+        <input name="rating" type="radio" class="star" value="5">
+    </div>
+
+  <div class="field">
+    <%= label_tag 'pros', 'What did you like?' %>
+    <%= f.text_area :pros, :rows => 4, :style => "width: 500px;" %>
+  </div>
+
+    <div class="field">
+    <%= label_tag 'cons', "What didn't you like?" %>
+    <%= f.text_area :cons, :rows => 4, :style => "width: 500px;" %>
+  </div>
+
+    <div class="field">
+        <%= label_tag 'body', 'Addtional comments?' %>
+        <%= f.text_area :body, :rows => 4, :style => "width: 500px;" %>
+    </div>
+
+    <div class="field">
+        <input type="checkbox" name="anonymous">
+        <%= label_tag 'anonymous', 'Post Anonymously?', :class=>"checkbox inline" %>
+    </div>
+
+    <div>
+        <%= f.submit "Edit Review", :class => "customButton" %>
+    </div>
+
+    <%= button_to "Cancel", review_path(@review), :class => "cancelButton" %>
+    <% end %>
+
+</div>
+</div>

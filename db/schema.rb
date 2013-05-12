@@ -147,6 +147,8 @@ ActiveRecord::Schema.define(:version => 20130511192837) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "public_name"
+    t.string   "pros"
+    t.string   "cons"
   end
 
   add_index "reviews", ["user_id"], :name => "index_reviews_on_user_id"

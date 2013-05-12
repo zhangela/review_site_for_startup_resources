@@ -1,3 +1,5 @@
+<!-- displays search detail for each individual company, populated by crunchbase -->
+
 <div>
     <div><b>Crunchbase URL: </b></div>
     <a href=<%= company.crunchbase_url %>><%= company.crunchbase_url %></a>
@@ -13,6 +15,9 @@
 <br>
 
 <%= form_for @company do |f|%>
+
+
+<!-- dropdown to select category -->
 <div class="field">
     <div><b> Category: </b></div>
     <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
@@ -28,6 +33,7 @@
     <%= f.text_field :location, :placeholder => "Mountain View, CA" %>
 </div>
 
+<!-- needed so that the companies#create controller method knows to populate descrpition & name from crunchbase -->
 <%= hidden_field :add_from_crunchbase, params[:add_from_crunchbase], :value => true %>
 <%= hidden_field :description, params[:description], :value => company.overview %>
 <%= hidden_field :name, params[:name], :value => company.name %>
@@ -35,4 +41,5 @@
 <div>
     <%= f.submit :class => "customButton" %>
 </div>
+
 <% end %> <!-- end form_for -->

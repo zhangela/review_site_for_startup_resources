@@ -11,6 +11,17 @@ body {
 }
 
 
+.company_name_link:hover {
+  color: #C0392B ;
+  cursor: hand;
+  cursor: pointer;
+}
+
+.company_name_link {
+  color: black;
+  font-size: 14px;
+}
+
 .profilepic{
 	margin:40px;
 	padding:20px;

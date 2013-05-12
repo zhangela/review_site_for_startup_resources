@@ -2,12 +2,10 @@ class ReviewsController < ApplicationController
 
   before_filter :load_reviewable
   before_filter :authenticate_user!
-  
-  # GET /reviews
-  # GET /reviews.json
+
+  # GET all reviews that belong to a company or partner
   def index
     @reviews = @reviewable.reviews
-    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,14 +13,12 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # GET /reviews/1
-  # GET /reviews/1.json
+  # GET a particular review and show its discussions and comments
   def show
     @review = Review.find(params[:id])
     @discussions = @review.discussions
     @discussion = Discussion.new
     @comment = Comment.new
-
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +27,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/new
-  # GET /reviews/new.json
+  # GET form for creating a review
   def new
     @review = @reviewable.reviews.new
 
@@ -42,6 +38,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1/edit
+  # GET review edit form
   def edit
     @review = Review.find(params[:id])
   end
@@ -57,9 +54,11 @@ class ReviewsController < ApplicationController
   end
 
   # POST /reviews
-  # POST /reviews.json
+  # POST review creation
   def create
+    # @reviewable could be either a company or a partner
     @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id)
+    
     recalculate_averages
 
     anonymous = params[:anonymous]
@@ -73,7 +72,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @reviewable, notice: 'Review was successfully created.' }
+        format.html { redirect_to @reviewable}
         format.json { render json: @reviewable, status: :created, location: @reviewable }
       else
         format.html { render action: "new" }
@@ -83,13 +82,16 @@ class ReviewsController < ApplicationController
   end
 
   # PUT /reviews/1
-  # PUT /reviews/1.json
+  # Update the review after submitting edit form.
   def update
     @review = Review.find(params[:id])
 
+    # update the review average for the firm and the partner
+    @reviewable.recalculate_average(@review)
+
     respond_to do |format|
       if @review.update_attributes(params[:review])
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @review}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -98,18 +100,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # DELETE /reviews/1
-  # DELETE /reviews/1.json
-  def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
-
-    respond_to do |format|
-      format.html { redirect_to reviews_url }
-      format.json { head :no_content }
-    end
-  end
-
+# load the reviewable, either company or partner
 def load_reviewable
     resource, id = request.path.split('/')[1, 2]
     @reviewable = resource.singularize.classify.constantize.find(id)

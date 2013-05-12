@@ -1,30 +1,36 @@
 class CompaniesController < ApplicationController
 
-
   require 'crunchbase'
 
-
-  # GET /companies
-  # GET /companies.json
-
+  # requires user authentication before displaying information
   before_filter :authenticate_user!
+
+  # helper methods for sorting by
   helper_method :sort_column, :sort_direction
 
-  def index
 
+  # diplay list of all companies
+  def index
+    # if user filters by category
     if params[:category]
-      @companies = Company.filter(params[:category]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+      @companies = Company.filter_by_category(params[:category]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+
+      # if user filters by rating
     elsif params[:rating]
       @companies = Company.filter_by_rating(params[:rating]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+
+      # display all companies
     else
       @companies = Company.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
     end
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
+  # display a particular company page
   def show
     @company = Company.find(params[:id])
+
+    # because you can review either a company or a partner, both company and partner are considered a reviewable.
+    # each review belongs to this phantom reviewable object that is indeed a company
     @reviewable = @company
     @reviews = @reviewable.reviews
     @review = Review.new
@@ -33,50 +39,48 @@ class CompaniesController < ApplicationController
     @partner = Partner.new
   end
 
-  # GET /companies/new
-  # GET /companies/new.json
+
+  # GET new company page
+  # create a new company. users are encouraged to first search the crunchbase database for companies,
+  # then enter more information
   def new
+
+    # if users did not enter all fields when the companies#create method is called,
+    # params[:failed_to_create] will be true and it will display message telling user to fill out all the fields
+    if params[:failed_to_create]
+      @failed_to_create = true
+    end
+
     @company = Company.new
 
+    # if the user searches for teh company, show the top 10 results from crunchbase
     if params[:search]
-      Crunchbase::API.key = 'qcmsjxr83x7dyqhd9ppp4zev'
       @crunchbase_companies = Crunchbase::Search.find(params[:search]).first(10)
     end
 
   end
 
-  def self.filter_by_category(opts = {})
-   filter = opts[:filter]
-   company = Company.arel_table
-
-   self.where(:category => filter)
- end
-
-  # GET /companies/1/edit
+  # GET company edit page
   def edit
     @company = Company.find(params[:id])
   end
 
-  # POST /companies
-  # POST /companies.json
+  # POST companies
+  # creates the company object from values in the company create form
   def create
 
+    # if company is added from crunchbase and :name is defined (not always the case due to Crunchbase limitations)
     if params[:add_from_crunchbase] && params[:name]
 
+      # cleans the name so that only alphanumeric and space characters are preserved
       name = params[:name]
       name = name.to_s.gsub(/[^0-9a-zA-Z ]/i, '')
 
+      # cleans the description to strip special & markup characters from crunchbase API
       description = params[:description].to_s
-      description.gsub!(/[^0-9a-zA-Z,.!:;""''?@#$&*()- ]/i, '')
-      description.gsub!(/\\r\\n|\\r|\\n/, "<br>")
-      # description.gsub!(/\\?/, "");
-      description.gsub!("[","")
-      description.gsub!("]","")
-      description.gsub!('"','')
-      description.gsub!('n*','')
+      description = clean_description(description)
 
-
-
+      # sets the company parameters
       @company = Company.new
       @company.description = description
       @company.name = name
@@ -84,62 +88,52 @@ class CompaniesController < ApplicationController
       @company.location = params[:company][:location]
       @company.category = params[:company][:category]
 
+      # if the company is not added from crunchbase (AKA user manually entered all information)
     else
       @company = Company.new(params[:company])
     end
 
     if @company.save
-      flash[:notice] = "Successfully created company."
       redirect_to @company
     else
-      redirect_to new_company_path
+      # redirect back to new with parameter :failed_to_create
+      redirect_to new_company_path(:failed_to_create => :true)
     end
   end
 
   # PUT /companies/1
-  # PUT /companies/1.json
+  # update the company info
   def update
     @company = Company.find(params[:id])
 
     if @company.update_attributes(params[:company])
-      flash[:notice] = "Successfully updated company."
       redirect_to @company
     else
       render :action => 'edit'
     end
   end
 
-  # DELETE /companies/1
-  # DELETE /companies/1.json
-  def destroy
-    @company = Company.find(params[:id])
-    @company.destroy
-    flash[:notice] = "Successfully destroyed company."
-    redirect_to companies_url
-  end
-
-
   private
 
+  # sorts the columns
   def sort_column
     Company.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
 
+  # sorts by direction
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
-
-
-  def search_crunchbase
-    companies = Array.new
-    result = JSON.parse(open("http://api.crunchbase.com/v/1/company/" + params[:crunchbase_search] + "ycombinator.js?api_key=qcmsjxr83x7dyqhd9ppp4zev").read)
-    result.each do |company|
-      companies << company["name"]
-    end
-
-    @crunchbase_companies = result
-    @crunchbase_companies_names = companies
+  # cleans company description imported from crunchbase
+  def clean_description (value)
+    cleaned_value = value
+    cleaned_value.gsub!(/\\r\\n|\\r|\\n/, "<br>")
+    cleaned_value.gsub!("[","")
+    cleaned_value.gsub!("]","")
+    cleaned_value.gsub!('"','')
+    cleaned_value.gsub!('n*','')
+    return cleaned_value
   end
 
 end

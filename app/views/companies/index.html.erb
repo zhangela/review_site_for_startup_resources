@@ -1,123 +1,125 @@
 <style>
+/* margin between divs, mostly for the left sidebar. page specific */
 div + div {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 </style>
 
 <script>
-
 $(function() {
-    $('#filter_by_rating span.stars').stars();
+  $('#filter_by_rating span.stars').stars();
 });
-
 </script>
 
 <div class="container">
-
-    <div class="row">
-        <div class="span2">
-            <br>
-            <br>
-
-            <h3>Sort by... </h3>
-
-            <div>
-               <%= sortable "category", "Category" %>
-           </div>
-
-           <div>
-               <%= sortable "avg_rating", "Rating" %>
-           </div>
-
-           <div>
-               <%= sortable "location", "Location" %>
-           </div>
-
-           <div>
-               <%= sortable "name", "Firm Name" %>
-           </div>
-
-           <br>
-
-            <h3>Filter by... </h3>
-
-            <h4> Categories </h4>
-
-            <div>
-               <%= link_to "Accelerators & Incubators", :controller => "companies", :action => "index", :category => "Accelerators & Incubators" %>
-           </div>
-
-            <div>
-               <%= link_to "Angel Investors", :controller => "companies", :action => "index",:category => "Angel Investors" %>
-           </div>
-
-            <div>
-               <%= link_to "Finance", :controller => "companies", :action => "index",:category => "Finance" %>
-           </div>
-
-            <div>
-               <%= link_to "Law", :controller => "companies", :action => "index",:category => "Law" %>
-           </div>
-
-           <div>
-               <%= link_to "Venture Capital", :controller => "companies", :action => "index",:category => "Venture Capital" %>
-           </div>
-
-           <div>
-               <%= link_to "Other", :controller => "companies", :action => "index",:category => "Other" %>
-           </div>
-
-           <div style="margin-bottom: 10px;">
-            <%= link_to "(Show All)", :controller => "companies", :action => "index" %>
-          </div>
-
-            <h4> Ranking </h4>
-
-            <div id="filter_by_rating">
-            <%= link_to (content_tag :span, "5", :class => "stars"),
-            :controller => "companies", :action => "index", :rating => 5 %>
-
-            <%= link_to (content_tag :span, "4", :class => "stars"),
-            :controller => "companies", :action => "index", :rating => 4 %>
-
-            <%= link_to (content_tag :span, "3", :class => "stars"),
-            :controller => "companies", :action => "index", :rating => 3 %>
-
-            <%= link_to (content_tag :span, "2", :class => "stars"),
-            :controller => "companies", :action => "index", :rating => 2 %>
-
-            <%= link_to (content_tag :span, "1", :class => "stars"),
-            :controller => "companies", :action => "index", :rating => 1 %>
-
-            <%= link_to (content_tag :span, "0", :class => "stars"),
-            :controller => "companies", :action => "index" %>
-
-          </div>
+  <div class="row">
+    <div class="span2">
+      <br>
+      <br>
 
 
-            <div style="margin-top: 10px; margin-bottom: 10px;">
-            <%= link_to "(Show All)", :controller => "companies", :action => "index" %>
-          </div>
+      <!-- for sorting. uses the sortable function from will_paginate -->
+      <h3>Sort by... </h3>
 
-       </div>
+      <div>
+       <%= sortable "category", "Category" %>
+     </div>
 
-       <div class = "span10">
-            <h1> Firms </h1>
+     <div>
+       <%= sortable "avg_rating", "Rating" %>
+     </div>
 
-           <div class = "searchbar">
-               <%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
-               <p><%= text_field_tag :search, params[:search],:placeholder => "Search" %></p>
-               <% end %>
-           </div>
+     <div>
+       <%= sortable "location", "Location" %>
+     </div>
 
-           <div>
-            <%= button_to 'Add Firms', new_company_path, :method => 'get', :class => "customButton", :style => "height: 38px;" %>
-        </div>
+     <div>
+       <%= sortable "name", "Firm Name" %>
+     </div>
 
-           <div id="companies"><%= render 'companies' %></div>
+     <br>
 
-       </div>
+
+    <!-- for filtering by category or rating. custom wrote filtering method -->
+     <h3>Filter by... </h3>
+
+     <h4> Categories </h4>
+
+     <div>
+       <%= link_to "Accelerators & Incubators", :controller => "companies", :action => "index", :category => "Accelerators & Incubators" %>
+     </div>
+
+     <div>
+       <%= link_to "Angel Investors", :controller => "companies", :action => "index",:category => "Angel Investors" %>
+     </div>
+
+     <div>
+       <%= link_to "Finance", :controller => "companies", :action => "index",:category => "Finance" %>
+     </div>
+
+     <div>
+       <%= link_to "Law", :controller => "companies", :action => "index",:category => "Law" %>
+     </div>
+
+     <div>
+       <%= link_to "Venture Capital", :controller => "companies", :action => "index",:category => "Venture Capital" %>
+     </div>
+
+     <div>
+       <%= link_to "Other", :controller => "companies", :action => "index",:category => "Other" %>
+     </div>
+
+     <div>
+      <%= link_to "(Show All)", :controller => "companies", :action => "index" %>
+    </div>
+
+    <h4> Rating </h4>
+
+    <div id="filter_by_rating">
+      <%= link_to (content_tag :span, "5", :class => "stars"),
+      :controller => "companies", :action => "index", :rating => 5 %>
+
+      <%= link_to (content_tag :span, "4", :class => "stars"),
+      :controller => "companies", :action => "index", :rating => 4 %>
+
+      <%= link_to (content_tag :span, "3", :class => "stars"),
+      :controller => "companies", :action => "index", :rating => 3 %>
+
+      <%= link_to (content_tag :span, "2", :class => "stars"),
+      :controller => "companies", :action => "index", :rating => 2 %>
+
+      <%= link_to (content_tag :span, "1", :class => "stars"),
+      :controller => "companies", :action => "index", :rating => 1 %>
+
+      <%= link_to (content_tag :span, "0", :class => "stars"),
+      :controller => "companies", :action => "index" %>
+
+    </div>
+
+
+    <div>
+      <%= link_to "(Show All)", :controller => "companies", :action => "index" %>
+    </div>
+
+  </div>
+
+  <div class = "span10">
+    <h1> Firms </h1>
+
+    <div class = "searchbar">
+     <%= form_tag companies_path, :method => 'get', :id => "companies_search" do %>
+      <p><%= text_field_tag :search, params[:search],:placeholder => "Search" %></p>
+     <% end %>
    </div>
+
+   <div>
+    <%= button_to 'Add Firm', new_company_path, :method => 'get', :class => "customButton", :style => "height: 38px;" %>
+  </div>
+
+  <div id="companies"><%= render 'companies' %></div>
+
+</div>
+</div>
 
 </div>
 

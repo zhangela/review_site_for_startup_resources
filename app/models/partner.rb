@@ -11,6 +11,8 @@ class Partner < ActiveRecord::Base
 
     before_save :default_values
 
+
+    # default average rating to -1 so we can check for it and display "not yet rated."
     def default_values
         self.avg_rating ||= -1
     end
@@ -22,14 +24,14 @@ class Partner < ActiveRecord::Base
     	if(self.avg_rating == -1)
     		self.update_attribute(:avg_rating, review.rating)
     	else
-			oldAvg = self.avg_rating
-    		numRatings = self.reviews.size
-			oldTotal = oldAvg * (numRatings-1)
+         oldAvg = self.avg_rating
+         numRatings = self.reviews.size
+         oldTotal = oldAvg * (numRatings-1)
 
-    		newAvg = (oldTotal + review.rating) / (numRatings)
+         newAvg = (oldTotal + review.rating) / (numRatings)
 
-    		self.update_attribute(:avg_rating, newAvg)
-    	end
-    end
+         self.update_attribute(:avg_rating, newAvg)
+     end
+ end
 
 end
