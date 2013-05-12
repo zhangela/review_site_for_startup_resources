@@ -101,7 +101,7 @@ class ReviewsController < ApplicationController
   # Update the review after submitting edit form.
   def update
     @review = Review.find(params[:id])
-
+    @reviewable = @review.reviewable
     # update the review average for the firm and the partner
     recalculate_averages
 
