@@ -13,7 +13,7 @@ class Company < ActiveRecord::Base
         self.partners_average ||= -1
     end
 
-    #calculates the average rating of all partners, called when a new partner review is submitted
+    #calculates the average rating of all partners, called when a new partner review is submitted or a review is updated
     def recalculate_partners_average(review)
         #if no partners have been reviewed
         if(self.partners == -1)
@@ -22,7 +22,11 @@ class Company < ActiveRecord::Base
             #recalculate average rating across all partners
             oldAvg = self.partners_average
             numPartners = self.partners.size
-            oldTotal = oldAvg * (numPartners-1)
+            if caller.grep /create/
+                oldTotal = oldAvg * (numRatings-1)
+            elsif caller.grep /update/
+                oldTotal = oldAvg * (numRatings)
+            end
 
             newAvg = (oldTotal + review.rating) / (numPartners)
 
@@ -33,15 +37,19 @@ class Company < ActiveRecord::Base
         end
     end
 
-    #called whenever a new review is submitted on the company
+    #called whenever a new review is submitted or a review is updated on the company
     def recalculate_average(review)
     	#if no reviews have been submitted
     	if(self.avg_rating == -1)
             self.update_attribute(:avg_rating, review.rating)
         else
-           oldAvg = self.avg_rating
-           numRatings = self.reviews.size
-           oldTotal = oldAvg * (numRatings-1)
+            oldAvg = self.avg_rating
+            numRatings = self.reviews.size
+            if caller.grep /create/
+                oldTotal = oldAvg * (numRatings-1)
+            elsif caller.grep /update/
+                oldTotal = oldAvg * (numRatings)
+            end
 
     		newCompanyAvg = (oldTotal + review.rating) / (numRatings)
             partnerAvg = self.partners_average
