@@ -1,55 +1,23 @@
 class DiscussionsController < ApplicationController
-  # GET /discussions
-  # GET /discussions.json
-  def index
-    @discussions = Discussion.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @discussions }
-    end
-  end
-
-  # GET /discussions/1
-  # GET /discussions/1.json
-  def show
-    @discussion = Discussion.find(params[:id])
-    @review = @discussion.review
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @discussion }
-    end
-  end
-
-  # GET /discussions/new
-  # GET /discussions/new.json
-  def new
-    @review = Review.find(params[:review_id])
-    @discussion = Discussion.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @discussion }
-    end
-  end
-
-  # GET /discussions/1/edit
-  def edit
-    @discussion = Discussion.find(params[:id])
-    @review = @discussion.review
-  end
 
   # POST /discussions
-  # POST /discussions.json
+  # creates a new discussion that belongs to a particular review
+  # a discussion is simply an object that holds a list of comments,
+  # when a user creates a discussion, s/he is really creating the first comment in that dicussion
   def create
 
+    # a discussion belongs to a review
     @review = Review.find(params[:review_id])
-
     @discussion = @review.discussions.build(params[:discussion])
+
+    # from_user_id is the user who  posted the dicussion
     @discussion.from_user_id = current_user.id
+
+    # to_user_id is the user who posted the review
     @discussion.to_user_id = @review.user_id
 
+    # when the user chooses to post anonymous review, the public_name of this discussion,
+    # which is the displayed name shown to all users, will be "Anonymous"
     anonymous = params[:anonymous]
     if(anonymous)
       public_name = "Anonymous"
@@ -57,48 +25,25 @@ class DiscussionsController < ApplicationController
       public_name = current_user.name
     end
 
+    # when a user "creates a discussion," s/he is creating the first comment in that dicussion
     @comment = @discussion.comments.build(:body=>params[:body], :user_id=> current_user.id, :public_name=>public_name)
 
     respond_to do |format|
       if @discussion.save
+
+        # saves this discussoin create event to the list of notifications.
         @notification = Notification.new(user_id: current_user, user_name: current_user.name, notify:"d", review_id: @discussion.review_id, title:@review.title,)
         @notification.save
-        format.html { redirect_to @review, notice: 'Discussion was successfully created.' }
+
+        # dicussion is created
         format.json { render json: @review, status: :created, location: @review }
+        format.html { redirect_to @review}
       else
+
+        # discussion is not created, renders new with error
         format.html { render action: "new" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PUT /discussions/1
-  # PUT /discussions/1.json
-  def update
-    @discussion = Discussion.find(params[:id])
-    @review = @discussion.review
-
-    respond_to do |format|
-      if @discussion.update_attributes(params[:discussion])
-        format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @discussion.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /discussions/1
-  # DELETE /discussions/1.json
-  def destroy
-    @discussion = Discussion.find(params[:id])
-    @review = @discussion.review
-    @discussion.destroy
-
-    respond_to do |format|
-      format.html { redirect_to review_discussions_url(@review) }
-      format.json { head :no_content }
     end
   end
 end

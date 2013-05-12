@@ -1,3 +1,5 @@
+<!-- listing a review for a company or partner -->
+
 <script>
 
 $(function() {
@@ -20,12 +22,26 @@ $(function() {
             <b>You wrote: </b>
             <% end %>
             <% else %>
-                <b><%= review.public_name %> wrote:<b>
+            <% if review.public_name == "Anonymous" %>
+            <b><%= review.public_name %> wrote:<b>
+                <% else %>
+                <b><%= link_to review.public_name, profile_path(review.user) %> wrote:<b>
+                    <% end %>
+                    <% end %>
+
+                    <% if review.pros && review.cons %>
+
+                    <p><b>Pros: </b><%= review.pros.html_safe %></p>
+
+                    <p><b>Cons: </b><%= review.cons.html_safe %></p>
+
+                    <% end %>
+                    <% if review.body %>
+                    <p><b>Detail: </b> <%= review.body.html_safe %></p>
+                    <% end %>
+                </div>
+            </div>
             <% end %>
-            <p><%= review.body.html_safe %></p>
+
+
         </div>
-    </div>
-    <% end %>
-
-
-</div>

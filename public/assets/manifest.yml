@@ -11,6 +11,7 @@ Flat-UI-Icons-24.ttf: Flat-UI-Icons-24-ee6fc8eab52c13a8f657876044ea0ae7.ttf
 Flat-UI-Icons-24.woff: Flat-UI-Icons-24-6d356a8d29c0347539f0802d3096a969.woff
 checkbox-2x.png: checkbox-2x-697b89f869346d0a5cd121511b2935c7.png
 checkbox.png: checkbox-23e91f4e4d3b841b2c991d5eac2a57ed.png
+default-avatar.jpg: default-avatar-3d480d2f8ca413fe523102c6f6473479.jpg
 delete.gif: delete-6d68899102eb4bcfbf2a57915b4970de.gif
 demo/browser-2x.png: demo/browser-2x-e6d330657bcb79962c2bab4e88dbdb89.png
 demo/browser-author.jpg: demo/browser-author-972e13b5a7d27d073a8dff2cd1f85ffe.jpg
@@ -29,6 +30,7 @@ favicon.ico: favicon-603fc826f2be9bdc816cd7cfdf7004c4.ico
 footer/logo.png: footer/logo-6e727ac3d1473603b8c20e4a7f748049.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 glyphicons-halflings.png: glyphicons-halflings-ab3144065a860d198f1d7d9a4882640c.png
+home.png: home-62ed1e6c872b534a2e111236fdc55b53.png
 illustrations/bag.png: illustrations/bag-e47d772346d30c0330c522b086477c42.png
 illustrations/book.png: illustrations/book-cbc9dcb50b650c7687def4e7f02ee486.png
 illustrations/calendar.png: illustrations/calendar-9b5e61fd9acbcb20da26c0eba9b337ba.png
@@ -81,8 +83,8 @@ video/volume-full-2x.png: video/volume-full-2x-b2892b33ac2cf4246b6b3cfde36f36ed.
 video/volume-full.png: video/volume-full-cdf1ed5ce9f2e6ca65ec54cf4937e749.png
 video/volume-off-2x.png: video/volume-off-2x-33c4b7826b64772363e93050f1725941.png
 video/volume-off.png: video/volume-off-6b6e213cc94cce3b1154ff032f2678be.png
-application.js: application-b392d05f7424afd1ca72f3f3775ac8e6.js
-application.css: application-c386bb1db00afe8ff63e6e8149ec0d4a.css
+application.js: application-721ef5107a20acaf9fd7fbef3e8dcfc3.js
+application.css: application-1449f5864cdcca2d284214772e8f81ee.css
 rails_admin/aristo/images/bg_fallback.png: rails_admin/aristo/images/bg_fallback-3d4bcd1b12558498d7a2b23ef9bae072.png
 rails_admin/aristo/images/icon_sprite.png: rails_admin/aristo/images/icon_sprite-3e53b827179444eb3214614963723b82.png
 rails_admin/aristo/images/progress_bar.gif: rails_admin/aristo/images/progress_bar-04666131c29e989161fa7e05bdd8da04.gif

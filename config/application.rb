@@ -61,5 +61,8 @@ module Azure
     config.assets.initialize_on_precompile = false
     # Key for filepicker.io
     config.filepicker_rails.api_key = "AFn9Gk3U6TmSXkjWFa26fz"
+
+    # Key for Crunchbase API
+    Crunchbase::API.key = 'qcmsjxr83x7dyqhd9ppp4zev'
   end
 end

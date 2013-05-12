@@ -7,21 +7,26 @@
 		});
 	}
 </script>
+
+<!-- list of notifications for a user, displayed from the top bar -->
 <li class = "active"><a href = "#" onmouseover = "read()">Notifications <span class = "navbar-unread"><%= @num_unread %></span></a>
 
 	<% if @num_unread > 0 %>
 		<ul style = "color:white">
-			<%= puts "hello" %>
 			<% @relevant_notifications.each do |notification| %>
 
 				<% if notification.unread?(current_user) %>
-				<%= puts "hi" %>
 				  	<li>
+
+				  		<!-- if the notification is of type "c," which means that it is a comment -->
 				  		<% if notification.notify == "c" && notification.title %>
-					    <%= link_to notification.user_name + " added a new comment to " + notification.title, review_path(notification.review_id)%></li>
+					    <%= link_to notification.user_name + " added a new comment to " + notification.title, review_path(notification.review_id), :style => "color: white;" %></li>
 					    <% end %>
 					 <%end%>
 						<li>
+
+							<!-- if the notification is of type "d," which means that it is a discussion -->
+
 							<% if notification.notify == "d" && notification.unread?(current_user) %>
 					    	 <%= link_to notification.user_name + " added a new discussion to your review", review_path(notification.review_id) %>
 							<%end %>
@@ -31,6 +36,6 @@
 		</ul>
 
 	<% else%>
-		<ul style = "color:white; font-size:14px; text-align:center;"><li >No unread notifications!</li></ul>
+		<ul class="notifications-no-unread"><li >No unread notifications!</li></ul>
 	<%end%>
 </li>

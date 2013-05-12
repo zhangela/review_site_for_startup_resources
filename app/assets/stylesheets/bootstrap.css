@@ -3120,7 +3120,6 @@ table th[class*="span"],
   padding: 19px;
   margin-bottom: 20px;
   background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -4377,6 +4376,9 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-inner {
+  background-color:#2C3E50;
+  background-image:none;
+  max-height:60px;
   min-height: 40px;
   padding-right: 20px;
   padding-left: 20px;

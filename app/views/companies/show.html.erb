@@ -1,9 +1,11 @@
 <body onload="initialize()">
+	<!-- google maps api -->
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtrCKlyWSgQdGqMC1KmL2-FimUzbXWNM4&sensor=false">
 	</script>
-	<script>
 
+	<script>
+	 // for adding partners and reviews
 	$(document).ready(function(){
 
 		//Render add partner form
@@ -24,6 +26,7 @@
 		$('#addReviewButton').click(function(){
 			$('#addPartnerForm').remove();
 			$('#reviews').prepend('<%= escape_javascript( render(:partial=>"reviews/form")).html_safe %>');
+			$('.star').rating();
 			$('#addReviewButton').hide();
 		});
 
@@ -34,10 +37,11 @@
 		});
 
 	});
-
 	</script>
 
 	<script>
+
+	// for google map display of where the company is located
 	var geocoder;
 	var map;
 	function initialize() {
@@ -67,13 +71,14 @@
 	</script>
 
 
-<script>
+	<script>
 
-$(function() {
-    $('#companyinfo span.stars').stars();
-});
+	// for displaying the stars
+	$(function() {
+		$('#companyinfo span.stars').stars();
+	});
 
-</script>
+	</script>
 
 	<body onload = "initialize()">
 		<div class="container">
@@ -82,15 +87,19 @@ $(function() {
 				<div id="navigation">
 					<%= link_to '< Back to Company List', root_url %>
 				</div>
+
+				<!-- company info goes here -->
 				<div id="companyinfo">
-					<h2><a href ="<%=@company.url %>" target = "_blank"><%= @company.name %> </a></h2>
+					<h2><a href = "<%= url_with_protocol (@company.url) %>" target = "_blank"><%= @company.name %> </a></h2>
 
-						<% if @company.avg_rating < 0 %>
-						Not yet rated! <br>
-						<% else %>
-						<span class="stars"><%= @company.avg_rating %></span>
-						<% end %>
+					<!-- if avg_rating is -1, the company has not yet been rated. -->
+					<% if @company.avg_rating < 0 %>
+					Not yet rated! <br>
+					<% else %>
+					<span class="stars"><%= @company.avg_rating %></span>
+					<% end %>
 
+					<!-- company infomration detail goes here -->
 					<div id="companyinfo_detail">
 
 						<div> <b>Website: </b><a href = "<%= url_with_protocol (@company.url) %>" target="_blank" style ="color:#00aedb"><%= @company.url %></a> </div>
@@ -103,31 +112,26 @@ $(function() {
 
 					</div>
 				</div>
-				<div id="map-canvas" style="width: 400px; height: 300px; float:right"></div>
+
+				<!-- google map goes here -->
+				<div id="map-canvas"></div>
 			</div>
 			<div class="row">
-
+				<!-- reviews go here -->
 				<div class="span6">
-					<div id="reviews" style="float: left; text-allign: left;">
+					<div id="reviews">
 						<h3>Reviews</h3>
-
 						<input class ="customButton" id = "addReviewButton" type="button" value="New Review">
-
 						<%= render "reviews/reviews" %>
-
-
 					</div>
 
 				</div>
 
-				<div class="span6" style="float: right; text-allign: right;">
-
-					<div class="partners"  style="float: right; text-allign: right;">
+				<!-- partners go here -->
+				<div class="span6">
+					<div class="partners">
 						<h3>Partners</h3>
-
-
 						<input class="customButton" id = "addPartnerButton" type="button" value="Add Partner">
-
 						<%= render "partners/partners" %>
 					</div>
 				</div>

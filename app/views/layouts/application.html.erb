@@ -3,46 +3,56 @@
 <head>
   <title>Azure</title>
 
+
+<!-- all the style sheets -->
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= stylesheet_link_tag	"jquery.rating" %>
-  <%= stylesheet_link_tag	"bootstrap" %>
+
+  <%= stylesheet_link_tag "jquery.rating" %>
+  <%= stylesheet_link_tag "bootstrap" %>
   <%= stylesheet_link_tag "flat-ui" %>
-  <%= stylesheet_link_tag	"custom" %>
+  <%= stylesheet_link_tag "custom" %>
   <%= stylesheet_link_tag "companies" %>
-  
+
+
+<!-- all the javascript files -->
   <%= javascript_include_tag "jquery" %>
   <%= javascript_include_tag "bootstrap" %>
   <%= javascript_include_tag "jquery.rating.pack" %>
   <%= javascript_include_tag "displayrating" %>
   <%= javascript_include_tag "application" %>
   <%= filepicker_js_include_tag %>
+
   <%= csrf_meta_tags %>
-   <header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner" style = "background-color:#2C3E50; background-image:none; max-height:60px">
 
-        <div class="container" >
-          <%= link_to image_tag("/assets/home.png", :size => "200x30"), root_path, :class => 'brand' %>
-          <ul class= "nav pull-right">
-              <% if user_signed_in? %>
 
-              <li><%= link_to(current_user.name, profile_path(current_user.id)) %></li>
-              <%= render "notifications/notifications" %>
-              <li><%= link_to("Logout", destroy_user_session_path, :method=> 'delete') %></li>
+  <!-- navigation bar that goes on top of every page -->
+  <header class="navbar navbar-fixed-top">
+    <nav class="navbar-inner">
 
-              <% end %>
-          </ul>
-        </div>
-      </nav>
-    </header>
+      <div class="container" >
+        <%= link_to image_tag("/assets/home.png", :size => "200x30"), root_path, :class => 'brand' %>
+        <ul class= "nav pull-right">
+
+          <!-- user account stuff on the right -->
+          <% if user_signed_in? %>
+          <li><%= link_to(current_user.name, profile_path(current_user.id)) %></li>
+          <%= render "notifications/notifications" %>
+          <li><%= link_to("Logout", destroy_user_session_path, :method=> 'delete') %></li>
+
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
 </head>
 <body>
 
 
-<ul>
-</ul>
+  <ul>
+  </ul>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

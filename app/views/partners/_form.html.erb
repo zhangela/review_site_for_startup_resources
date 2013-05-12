@@ -1,6 +1,7 @@
 <div id="addPartnerForm" class="partner-form">
 
-<h4>New Partner</h4>
+
+<!-- add partner form -->
 
 <%= form_for [@company, @partner] do |f| %>
   <% if @partner.errors.any? %>
@@ -25,9 +26,11 @@
     <%= f.text_field :email %>
   </div>
   <div>
-    <%= f.submit "Add Partner", :class => "customButton" %>
+    <%= f.submit "Submit", :class => "customButton" %>
 </div>
+
 <input type="button" id="cancelPartnerForm" value="Cancel" class="cancelButton">
+
 <% end %>
 
 </div>

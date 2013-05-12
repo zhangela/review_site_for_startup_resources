@@ -1,22 +1,14 @@
 class PartnersController < ApplicationController
-  # GET /partners
-  # GET /partners.json
 
   before_filter :authenticate_user!
 
-  def index
-    @partners = Partner.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @partners }
-    end
-  end
-
   # GET /partners/1
-  # GET /partners/1.json
+  # Shows a particular partner's page
   def show
     @partner = Partner.find(params[:id])
+
+    # because you can review either a company or a partner, both company and partner are considered a reviewable.
+    # each review belongs to this phantom reviewable object that is indeed a partner
     @reviewable = @partner
     @reviews = @reviewable.reviews
     @review = Review.new
@@ -27,24 +19,14 @@ class PartnersController < ApplicationController
     end
   end
 
-  # GET /partners/new
-  # GET /partners/new.json
-  def new
-    @partner = Partner.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @partner }
-    end
-  end
-
   # GET /partners/1/edit
+  # Shows the edit page for a partner
   def edit
     @partner = Partner.find(params[:id])
   end
 
   # POST /partners
-  # POST /partners.json
+  # Creates a partner that belongs to a company
   def create
     @partner = Partner.new(params[:partner])
     @company = Company.find(params[:company_id])
@@ -63,7 +45,7 @@ class PartnersController < ApplicationController
   end
 
   # PUT /partners/1
-  # PUT /partners/1.json
+  # Updates a particular partner's information
   def update
     @partner = Partner.find(params[:id])
 
@@ -75,18 +57,6 @@ class PartnersController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @partner.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /partners/1
-  # DELETE /partners/1.json
-  def destroy
-    @partner = Partner.find(params[:id])
-    @partner.destroy
-
-    respond_to do |format|
-      format.html { redirect_to partners_url }
-      format.json { head :no_content }
     end
   end
 end

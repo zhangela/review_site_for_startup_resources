@@ -1,45 +1,38 @@
 <script>
 
 $(function() {
-    $('.entry span.stars').stars();
+  $('.entry span.stars').stars();
 });
 
 </script>
 
-  <%= hidden_field_tag :direction, params[:direction] %>
-  <%= hidden_field_tag :sort, params[:sort] %>
 
-<!--   <table>
-    <tr>
-      <th><%=sortable "name" %></th>
-      <th><%= sortable "category" %></th>
-      <th><%= sortable "avg_rating" %></th>
-      <th>Description</th>
-      <th>Url</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr> -->
+<!-- required for sorting correctly -->
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
 
-    <% @companies.each do |company| %>
+<% @companies.each do |company| %>
+  <div class = "entry">
+    <h3><%= link_to company.name, company %></h3>
 
-    <div class = "entry">
-      <h3><%= link_to company.name, company %></h3>
-      <% if company.avg_rating < 0 %>
+    <% if company.avg_rating < 0 %>
+      <!-- when a company does not have reviews, the avg_rating is set to -1 -->
       <td>Not yet rated! </td> <br>
-      <% else %>
+    <% else %>
+      <!-- otherwise, show stars -->
       <span class="stars"> <%= company.avg_rating %> </span>
-      <% end %>
+    <% end %>
+
+    <a href = "<%= company.url %>"><%= company.url %></a> <br>
+    <b>Category: </b><td><%= company.category %></td> <br>
+    <b>Location: </b><td><%= company.location %></td> <br>
+
+    <div class = "description">
       <br>
-      <a href = "<%= company.url %>" target="_blank" style ="color:#00aedb"><%= company.url %></a> <br>
-      <b>Category: </b><td><%= company.category %></td> <br>
-      <b>Location: </b><td><%= company.location %></td> <br>
-      <div class = "description">
-        <br>
-        <%= truncate(company.description, :length => 500, :omission => '...') %></div>
-      </div>
+      <%= truncate(company.description, :length => 500, :omission => '...') %></div>
+    </div>
 
-      <% end %>
-      <!--   </table> -->
+<% end %>
 
-      <%= will_paginate @companies %>
+<!-- needed for using will_paginate for pagination -->
+<%= will_paginate @companies %>

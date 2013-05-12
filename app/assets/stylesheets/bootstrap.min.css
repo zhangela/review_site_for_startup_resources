@@ -3696,7 +3696,7 @@ box-shadow:inset 1px 0 0 rgba(0,0,0,0.15),inset 0 -1px 0 rgba(0,0,0,0.15);
 
 .progress-striped .bar {
 background-color:#149bdf;
-background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%;
+background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%);
 -webkit-background-size:40px 40px;
 -moz-background-size:40px 40px;
 -o-background-size:40px 40px;
@@ -3720,7 +3720,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b',endC
 
 .progress-danger.progress-striped .bar,.progress-striped .bar-danger {
 background-color:#ee5f5b;
-background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%;
+background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%);
 }
 
 .progress-success .bar,.progress .bar-success {
@@ -3732,7 +3732,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462',endC
 
 .progress-success.progress-striped .bar,.progress-striped .bar-success {
 background-color:#62c462;
-background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%;
+background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%);
 }
 
 .progress-info .bar,.progress .bar-info {
@@ -3744,7 +3744,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de',endC
 
 .progress-info.progress-striped .bar,.progress-striped .bar-info {
 background-color:#5bc0de;
-background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%;
+background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%);
 }
 
 .progress-warning .bar,.progress .bar-warning {
@@ -3756,12 +3756,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450',endC
 
 .progress-warning.progress-striped .bar,.progress-striped .bar-warning {
 background-color:#fbb450;
-background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%;
+background-image:linear-gradient(45deg,rgba(255,255,255,0.15) 25% 25% 50% 50% 75% 75%);
 }
 
 .accordion-group {
 margin-bottom:2px;
-border:1px solid #e5e5e5;
 -webkit-border-radius:4px;
 -moz-border-radius:4px;
 border-radius:4px;
@@ -4320,10 +4319,6 @@ content:" (" attr(href) ")";
 
 abbr[title]:after {
 content:" (" attr(title) ")";
-}
-
-.ir a:after,a[href^=javascript:]:after,a[href^=#]:after {
-content:"";
 }
 
 pre,blockquote {
