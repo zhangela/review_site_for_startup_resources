@@ -1,7 +1,28 @@
+
+<script>
+
+$(function() {
+    $('.partner span.stars').stars();
+});
+
+</script>
+
+
+<!-- show all the partners that belongto one company -->
 <div id="partners">
 
-<% @partners.each do |partner| %>
-    <h4><%= link_to partner.name, partner %></h4>
+    <% @partners.each do |partner| %>
+
+    <div class="partner">
+        <h4><%= link_to partner.name, partner %></h4>
+        <p><%= partner.email %></p>
+        <% if partner.avg_rating < 0 %>
+        Not yet rated!
+        <% else %>
+        <span class="stars"><%= partner.avg_rating %></span>
+        <% end %>
+    </div>
+
     <% end %>
 
 </div>
