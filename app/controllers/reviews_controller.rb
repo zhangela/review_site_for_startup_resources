@@ -72,7 +72,8 @@ class ReviewsController < ApplicationController
   # POST review creation
   def create
     # @reviewable could be either a company or a partner
-    @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id)
+    @review =  @reviewable.reviews.build(params[:review])
+    @review.update_attributes(:rating=>params[:rating], :user_id=>current_user.id)
 
     recalculate_averages
 
