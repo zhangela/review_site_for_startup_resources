@@ -1,60 +1,62 @@
 <div class="comments accordion-group">
 
+      <!-- displays the first comment, which is never hidden -->
   <div class="first_comment">
     <% comment = @comments.first %>
     <% user = comment.user %>
-
-        <% if current_user == user %>
+      <% if current_user == user %>
         <% if comment.public_name == "Anonymous" %>
-        <b>You wrote, anonymously:</b>
+          <b>You wrote, anonymously:</b>
         <% else %>
-        <b>You wrote: </b>
+          <b>You wrote: </b>
         <% end %>
-        <% else %>
+      <% else %>
         <% if comment.public_name == "Anonymous" %>
-        <b><%= comment.public_name %> wrote:  </b>
+          <b><%= comment.public_name %> wrote:  </b>
         <% else %>
-        <b><%= link_to comment.public_name, profile_path(comment.user) %> wrote: </b>
+          <b><%= link_to comment.public_name, profile_path(comment.user) %> wrote: </b>
         <% end %>
-        <% end %>
-      <p>
-        <%= comment.body %>
-      </p>
-    </div>
-
-    <div class="accordion-header">
-      <!-- add hidden input to keep track of toggling to change message -->
-      <input type="hidden" class="hidden-boolean" value='collapsed'>
-      <% if @comments.size > 1 %>
-      <a class="message">Show Follow Up Comments</a>
       <% end %>
-    </div>
+    <p>
+      <%= comment.body %>
+    </p>
+  </div>
 
-    <div class="follow_up_comments accordion-group collapse">
-      <% @comments.each do |comment| %>
+  <!-- toddle for showing and hiding follow up comments -->
+  <div class="accordion-header">
+    <!-- add hidden input to keep track of toggling to change message -->
+    <input type="hidden" class="hidden-boolean" value='collapsed'>
+    <% if @comments.size > 1 %>
+      <a class="message">Show Follow Up Comments</a>
+    <% end %>
+  </div>
+
+  <!-- followup comments, usually hidden -->
+  <div class="follow_up_comments accordion-group collapse">
+    <% @comments.each do |comment| %>
       <% if comment != @comments.first %>
-      <div class="comment">
-        <div class="comment_heading">
-         <% user = comment.user %>
-         <% if current_user == user %>
-         <% if comment.public_name == "Anonymous" %>
-         <b>You wrote, anonymously:</b>
-         <% else %>
-         <b>You wrote: </b>
-         <% end %>
-         <% else %>
-         <% if comment.public_name == "Anonymous" %>
-         <b><%= comment.public_name %> wrote:  </b>
-         <% else %>
-         <b><%= link_to comment.public_name, profile_path(comment.user) %> wrote: </b>
-         <% end %>
-         <% end %>
-       </div>
-       <p>
-        <%= comment.body %>
-      </p>
-    </div>
-    <%end%>
+        <div class="comment">
+          <div class="comment_heading">
+            <% user = comment.user %>
+            <% if current_user == user %>
+              <% if comment.public_name == "Anonymous" %>
+                <b>You wrote, anonymously:</b>
+              <% else %>
+                <b>You wrote: </b>
+              <% end %>
+            <% else %>
+              <% if comment.public_name == "Anonymous" %>
+                <b><%= comment.public_name %> wrote:  </b>
+              <% else %>
+                <b><%= link_to comment.public_name, profile_path(comment.user) %> wrote: </b>
+              <% end %>
+            <% end %>
+          </div>
+          <p>
+            <%= comment.body %>
+         </p>
+        </div>
+      <%end%>
     <% end %>
   </div>
 </div>

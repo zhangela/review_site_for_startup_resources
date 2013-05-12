@@ -1,57 +1,50 @@
-<style type="text/css">
-      body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-      }
-
-
-
-</style>
+<!-- company form for manually adding a company, without using crunchbase data -->
 
 <%= form_for @company do |f|%>
 
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% @company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<!-- display possible form errors related to company creation -->
+<% if @company.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+  <ul>
+    <% @company.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
 
-  <div class="field">
-    Firm Name <br />
-    <%= f.text_field :name, :placeholder => "Y Combinator" %>
-  </div>
+<div class="field">
+  Firm Name <br />
+  <%= f.text_field :name, :placeholder => "Y Combinator" %>
+</div>
 
-  <div class="field">
-    Category <br />
-    <%#= f.text_field :category, :placeholder => "VC, Accelerator, Law, ..." %>
+<!-- category is a dropdown menu -->
+<div class="field">
+  Category <br />
+  <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
+</div>
 
-    <%= f.select :category, options_for_select([['Accelerators & Incubators' ,'Accelerators & Incubators'], ['Angel Investors', 'Angel Investors'], ['Finance', 'Finance'], ['Law', 'Law'], ['Venture Capital', 'Venture Capital'], ['Other', 'Other']]) %>
-  </div>
+<div class="field">
+  Website URL<br />
+  <%= f.text_field :url, :placeholder => "http://ycombinator.com/" %>
+</div>
 
-  <div class="field">
-    Website URL<br />
-    <%= f.text_field :url, :placeholder => "http://ycombinator.com/" %>
-  </div>
+<div class="field">
+  Location<br />
+  <%= f.text_field :location, :placeholder => "Mountain View, CA" %>
+</div>
 
-  <div class="field">
-    Location<br />
-    <%= f.text_field :location, :placeholder => "Mountain View, CA" %>
-  </div>
+<div class="field">
+  Short Description<br />
+  <%= f.text_area :description, :placeholder => "An American seed accelerator that provides seed money, advice, and connections at two 3-month programs per year in exchange for ~6% equity.", :rows => 4, :class => "textarea" %>
+</div>
 
-  <div class="field">
-    Short Description<br />
-    <%= f.text_area :description, :placeholder => "An American seed accelerator that provides seed money, advice, and connections at two 3-month programs per year in exchange for ~6% equity.", :rows => 4, :class => "textarea" %>
-  </div>
+<div>
+  <%= f.submit :class => "customButton" %>
+</div>
 
-  <div>
-    <%= f.submit :class => "customButton" %>
-  </div>
 <% end %>
