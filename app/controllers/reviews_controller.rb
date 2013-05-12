@@ -50,6 +50,21 @@ class ReviewsController < ApplicationController
         @company = @reviewable.company
         @company.recalculate_partners_average(@review) #total partner average
     end
+    if @reviewable.kind_of? Review
+      puts
+      puts
+      puts "BADDDDDDDDDDDDDDDDDDDDDDDDd"
+    end
+    if @reviewable.kind_of? Partner
+      puts
+      puts
+      puts "PartnerRRRRRRRRRRRRRRRRRr"
+    end    
+    if @reviewable.kind_of? Company
+      puts
+      puts
+      puts "companyYYYYYYYYYYYYYYYYYY"
+    end
     @reviewable.recalculate_average(@review)
   end
 
@@ -57,8 +72,9 @@ class ReviewsController < ApplicationController
   # POST review creation
   def create
     # @reviewable could be either a company or a partner
-    @review =  @reviewable.reviews.build(:title=>params[:review][:title], :body=>params[:review][:body], :rating=>params[:rating], :user_id=>current_user.id)
-    
+    @review =  @reviewable.reviews.build(params[:review])
+    @review.update_attributes(:rating=>params[:rating], :user_id=>current_user.id)
+
     recalculate_averages
 
     anonymous = params[:anonymous]
@@ -85,9 +101,9 @@ class ReviewsController < ApplicationController
   # Update the review after submitting edit form.
   def update
     @review = Review.find(params[:id])
-
+    @reviewable = @review.reviewable
     # update the review average for the firm and the partner
-    @reviewable.recalculate_average(@review)
+    recalculate_averages
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
