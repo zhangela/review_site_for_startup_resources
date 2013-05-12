@@ -1,4 +1,4 @@
-
+<!-- start a new discussion form -->
 <div id="newDiscussionForm" class="well discussion" style="width: 560px;">
   <%= form_for [@review, @review.discussions.build] do |f| %>
   <% if @discussion.errors.any? %>
@@ -13,9 +13,13 @@
   </div>
   <% end %>
 
+
+<!-- body of a comment (first in the discussion) -->
   <div class="field">
     <textarea name="body" rows="4" cols="50"></textarea>
   </div>
+
+  <!-- a checkbox for anonymous posting -->
   <div class="field">
     <input type="checkbox" name="anonymous">
     <%= label_tag 'anonymous', 'Post Anonymously?', :class=>"checkbox inline" %>

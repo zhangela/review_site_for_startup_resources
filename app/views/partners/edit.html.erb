@@ -1,8 +1,41 @@
 <div class="container">
 
-<h1>Editing partner</h1>
+    <h1>Edit <%= @partner.name %></h1>
 
-<%= render 'form' %>
+    <div class="partner-form">
+        <!-- edit partner form -->
+
+        <%= form_for [@company, @partner] do |f| %>
+        <% if @partner.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
+
+          <ul>
+              <% @partner.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+          </ul>
+      </div>
+      <% end %>
+
+      <div class="field">
+        Partner Name<br />
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+        Email<br />
+        <%= f.text_field :email %>
+    </div>
+    <div>
+        <%= f.submit "Submit", :class => "customButton" %>
+    </div>
+
+    <%= button_to 'Cancel', @company , :style => "color: white; height: 100%; width: 100px;", :class => "cancelButton", :method => :get %>
+
+    <% end %>
+
+</div>
 
 <br>
 

@@ -9,30 +9,6 @@ $( document ).ready( function() {
 });
 </script>
 
-<style>
-
-.search-input {
-    width: 400px;
-}
-
-.search-button {
-    height: 38px;
-    margin-bottom: 16px;
-    min-width: 80px;
-    margin-left: 5px;
-}
-
-#add_company_form,
-.company_detail {
-    display:none;
-}
-
-.crunchbase-header {
-    color:#1abc9c;
-    font-size: 18px;
-}
-</style>
-
 <div class="container">
     <div class="form-edit">
         <div id="div_search_crunchbase">
@@ -52,9 +28,9 @@ $( document ).ready( function() {
                     <td>
                      <%= form_tag new_company_path, :method => 'get', :id => "input_search_crunchbase" do %>
                      <th><%= text_field_tag :search, params[:search],:placeholder => "What's the name of the company?", :class=>"input-block-level search-input" %></th>
-                     <th><%= submit_tag "Search", :class => "customButton search-button" %></th>
+                     <th><%= submit_tag "Search", :class => " search-button" %></th>
                      <% end %>
-                     <th><%= button_to 'Cancel', companies_path, :class => "cancelButton search-button", :method => :get %></th>
+                     <th><%= button_to 'Cancel', companies_path, :class => "search-cancel-button", :method => :get %></th>
                  </td>
              </table>
          </div>
