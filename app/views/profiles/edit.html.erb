@@ -1,14 +1,5 @@
-<style type="text/css">
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
-}
-
-</style>
-
 <div class="form-edit">
-<h1>Editing Your Profile</h1>
+<h1>Edit Your Profile</h1>
 
 <%= form_for(@profile) do |f| %>
 <% if @profile.errors.any? %>
@@ -43,11 +34,7 @@ body {
 </div>
 <% end %>
 
-
-
-
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<%= button_to 'Back', profile_path(@profile), :method => :get, :class => "cancelButton" %>
 
 
 </div>

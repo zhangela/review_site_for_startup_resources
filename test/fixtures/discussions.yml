@@ -1,9 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  body: MyText
-  review: 
+    review_id: 1
+    public_name: "Angela Zhang"
+    from_user_id: 1
+    to_user_id: 2
 
 two:
-  body: MyText
-  review: 
+    review_id: 2
+    public_name: "Anonymous"
+    from_user_id: 2
+    to_user_id: 1
+
+
+
+
+  # create_table "discussions", :force => true do |t|
+  #   t.integer  "review_id"
+  #   t.datetime "created_at",   :null => false
+  #   t.datetime "updated_at",   :null => false
+  #   t.integer  "to_user_id"
+  #   t.integer  "from_user_id"
+  #   t.string   "public_name"
+  # end

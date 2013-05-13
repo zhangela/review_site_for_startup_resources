@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class PartnersControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
+
   setup do
+    @user = users(:one)
+    sign_in @user
     @partner = partners(:one)
   end
 

@@ -1,17 +1,32 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  type: 
+  notify: c
   user_id: 1
   title: MyString
   body: MyString
   undread: false
   review_id: 1
+  user_name: Angela Zhang
 
 two:
-  type: 
-  user_id: 1
+  notify: d
+  user_id: 2
   title: MyString
   body: MyString
   undread: false
-  review_id: 1
+  review_id: 2
+  user_name: Julianna Mello
+
+
+  # create_table "notifications", :force => true do |t|
+  #   t.string   "notify"
+  #   t.integer  "user_id"
+  #   t.string   "title"
+  #   t.string   "body"
+  #   t.boolean  "undread"
+  #   t.integer  "review_id"
+  #   t.datetime "created_at", :null => false
+  #   t.datetime "updated_at", :null => false
+  #   t.string   "user_name"
+  # end

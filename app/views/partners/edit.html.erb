@@ -1,9 +1,9 @@
 <div class="container">
 
+<!-- edit partner form -->
     <h1>Edit <%= @partner.name %></h1>
 
     <div class="partner-form">
-        <!-- edit partner form -->
 
         <%= form_for [@company, @partner] do |f| %>
         <% if @partner.errors.any? %>

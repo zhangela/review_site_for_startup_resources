@@ -51,7 +51,7 @@ Azure::Application.configure do
     :port => 587,
     :domain => "mydomain.com",
     :authentication => :login,
-    :user_name => "myemaiL@mydomain.com",
-    :password => "mypass"
+    :user_name => "startmartazure@gmail.com",
+    :password => "testing123123"
   }
 end
