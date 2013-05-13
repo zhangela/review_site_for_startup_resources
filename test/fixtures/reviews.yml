@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: This is review one 
+  title: This is review one
   rating: 5
   body: MyText
   pros: I love this company so much.

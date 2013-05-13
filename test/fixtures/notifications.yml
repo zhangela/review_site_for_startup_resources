@@ -5,18 +5,18 @@ one:
   user_id: 1
   title: MyString
   body: MyString
-  undread: false
   review_id: 1
   user_name: Angela Zhang
+  id: 1
 
 two:
   notify: d
   user_id: 2
   title: MyString
   body: MyString
-  undread: false
   review_id: 2
   user_name: Julianna Mello
+  id: 2
 
 
   # create_table "notifications", :force => true do |t|

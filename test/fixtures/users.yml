@@ -10,11 +10,13 @@ one:
     name: 'Angela Zhang'
     id: 1
     encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+    id: 1
 two:
     email: 'test@mit.edu'
     name: 'Tester Test'
     id: 2
     encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+    id: 2
 
 
   # create_table "users", :force => true do |t|

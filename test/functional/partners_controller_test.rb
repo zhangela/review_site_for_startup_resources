@@ -9,22 +9,13 @@ class PartnersControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
     @partner = partners(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:partners)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
+    @company = companies(:one)
+    @company.save
   end
 
   test "should create partner" do
     assert_difference('Partner.count') do
-      post :create, partner: { avg_rating: @partner.avg_rating, name: @partner.name }
+      post :create, {partner: { avg_rating: @partner.avg_rating, name: @partner.name, company_id: 1, email: @partner.email }, company_id: 1}
     end
 
     assert_redirected_to partner_path(assigns(:partner))
@@ -41,15 +32,8 @@ class PartnersControllerTest < ActionController::TestCase
   end
 
   test "should update partner" do
-    put :update, id: @partner, partner: { avg_rating: @partner.avg_rating, name: @partner.name }
+    put :update, id: @partner, partner: { avg_rating: @partner.avg_rating, name: @partner.name, company_id: 1, email: @partner.email }
     assert_redirected_to partner_path(assigns(:partner))
   end
 
-  test "should destroy partner" do
-    assert_difference('Partner.count', -1) do
-      delete :destroy, id: @partner
-    end
-
-    assert_redirected_to partners_path
-  end
 end
