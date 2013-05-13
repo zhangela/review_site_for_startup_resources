@@ -1,5 +1,5 @@
 class AddProsToReviews < ActiveRecord::Migration
   def change
-    add_column :reviews, :pros, :string
+    add_column :reviews, :pros, :text
   end
 end
