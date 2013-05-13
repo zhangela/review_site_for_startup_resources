@@ -28,7 +28,7 @@
 							<!-- if the notification is of type "d," which means that it is a discussion -->
 
 							<% if notification.notify == "d" && notification.unread?(current_user) %>
-					    	 <%= link_to notification.user_name + " added a new discussion to your review", review_path(notification.review_id) %>
+					    	 <%= link_to notification.user_name + " added a new discussion to " + notifcation.title, review_path(notification.review_id) %>
 							<%end %>
 						</li>
 
