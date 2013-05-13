@@ -17,7 +17,7 @@ class Company < ActiveRecord::Base
     #calculates the average rating of all partners, called when a new partner review is submitted or a review is updated
     def recalculate_partners_average(review)
         #if no partners have been reviewed
-        if(self.partners == -1)
+        if(self.partners_average == -1)
             self.update_attribute(:partners_average, review.rating)
         else
             #recalculate average rating across all partners
