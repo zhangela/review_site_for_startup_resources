@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511225405) do
+ActiveRecord::Schema.define(:version => 20130513030001) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(:version => 20130511225405) do
     t.datetime "updated_at",   :null => false
     t.integer  "to_user_id"
     t.integer  "from_user_id"
-    t.string   "public_name"
   end
 
   add_index "discussions", ["review_id"], :name => "index_discussions_on_review_id"
@@ -69,7 +68,6 @@ ActiveRecord::Schema.define(:version => 20130511225405) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "body"
-    t.boolean  "undread"
     t.integer  "review_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
