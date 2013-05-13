@@ -2,9 +2,11 @@
 
 one:
   title: MyString
-  rating: 1
+  rating: 5
   body: MyText
-  user: 
+  pros: I love this company so much.
+  cons: I can't think of any.
+  user:
   reviewable_id: 1
   reviewable_type: MyString
 
@@ -12,6 +14,9 @@ two:
   title: MyString
   rating: 1
   body: MyText
-  user: 
-  reviewable_id: 1
+  pros: Nothing good.
+  cons: I hate the company.
+  user:
+  reviewable_id: 2
   reviewable_type: MyString
+  id: 2

@@ -4,14 +4,33 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-user_one: {
-	email: vicli@mit.edu
-	id: 1 
-	name: Victoria 
- 	encrypted_password: <%= User.new.send(:password_digest, "user123") %>
- 	confirmed_at: <%= Time.now %>
-}
-# column: value
-#
-two: {}
-#  column: value
+
+one:
+    email: 'angelaz@mit.edu'
+    name: 'Angela Zhang'
+    encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+two:
+    email: 'test@mit.edu'
+    name: 'Tester Test'
+    encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+
+  # create_table "users", :force => true do |t|
+  #   t.string   "email",                  :default => "", :null => false
+  #   t.string   "encrypted_password",     :default => "", :null => false
+  #   t.string   "reset_password_token"
+  #   t.datetime "reset_password_sent_at"
+  #   t.datetime "remember_created_at"
+  #   t.integer  "sign_in_count",          :default => 0
+  #   t.datetime "current_sign_in_at"
+  #   t.datetime "last_sign_in_at"
+  #   t.string   "current_sign_in_ip"
+  #   t.string   "last_sign_in_ip"
+  #   t.datetime "created_at",                             :null => false
+  #   t.datetime "updated_at",                             :null => false
+  #   t.string   "confirmation_token"
+  #   t.datetime "confirmed_at"
+  #   t.datetime "confirmation_sent_at"
+  #   t.string   "name"
+  # end
+>>>>>>> 343cdd6b74ec1f9f2b13862b6adaf08ba43078e9

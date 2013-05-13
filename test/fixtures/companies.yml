@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
-  avg_rating: 9.99
-  url: MyString
+  name: CompanyName1
+  description: Company description 1.
+  avg_rating: 5
+  url: company.com
 
 two:
   name: MyString
   description: MyText
-  avg_rating: 9.99
+  avg_rating: -1
   url: MyString

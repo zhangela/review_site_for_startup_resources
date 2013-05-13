@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class ReviewsControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
+    @user = users(:one)
+    sign_in @user
     @review = reviews(:one)
   end
 
