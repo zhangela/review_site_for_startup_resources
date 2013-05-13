@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
   setup do
-    @comment = comments(:one)
+    @comment = comments(:comment_one)
   end
 
   test "should get index" do

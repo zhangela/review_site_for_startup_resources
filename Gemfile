@@ -10,7 +10,7 @@ gem 'heroku'
 gem 'filepicker-rails'
 gem 'best_in_place'
 gem 'unread'
-gem 'rails_admin'
+#gem 'rails_admin'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
