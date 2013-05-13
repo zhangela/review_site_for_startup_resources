@@ -5,11 +5,19 @@ one:
   description: Company description 1.
   avg_rating: 5
   url: company.com
+  category: Law
+  location: "Mountain View, CA"
+  add_from_crunchbase: true
+  partners_average: 2
   id: 1
 
 two:
-  name: MyString
-  description: MyText
-  avg_rating: -1
-  url: MyString
+  name: CompanyName2
+  description: Company description 2.
+  avg_rating: 1
+  url: company2.com
+  category: Finance
+  location: "Mountain View, CA"
+  add_from_crunchbase: true
+  partners_average: 1
   id: 2

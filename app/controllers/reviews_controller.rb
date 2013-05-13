@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
   end
 
   #checks if @reviewable is type partner.
-  #If partner, must recalculate partner and total average in the partner's company 
+  #If partner, must recalculate partner and total average in the partner's company
   def recalculate_averages
     if @reviewable.kind_of? Partner
         @company = @reviewable.company
