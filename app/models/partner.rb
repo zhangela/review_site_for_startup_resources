@@ -19,16 +19,16 @@ class Partner < ActiveRecord::Base
 
     #called whenever a new review is submitted
     def recalculate_average()
-        #if no reviews have been submitted
 
-            total = 0
-            self.reviews.each do |review|
-                total = total + review.rating
-            end
-
-            newAvg = total / self.reviews.size
-
-            self.update_attribute(:avg_rating, newAvg)
+        #find total of all review ratings by iterating through them
+        total = 0
+        self.reviews.each do |review|
+            total = total + review.rating
         end
+
+        newAvg = total / self.reviews.size
+
+        self.update_attribute(:avg_rating, newAvg)
+    end
 
 end

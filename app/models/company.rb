@@ -14,25 +14,26 @@ class Company < ActiveRecord::Base
 
     #called whenever a new review is submitted or a review is updated on the company
     def recalculate_average()
-    	#if no reviews have been submitted
 
-            companyTotal = 0
-            self.reviews.each do |compReview|
-                companyTotal = companyTotal + compReview.rating
+        #find the company's total by iterating through all reviews
+        companyTotal = 0
+        self.reviews.each do |compReview|
+            companyTotal = companyTotal + compReview.rating
+        end
+
+        #find the partner's total score by iterating through all partners and all reviews
+        partnerTotal = 0
+        partnerCount = 0
+        self.partners.each do |partner| 
+            partner.reviews.each do |partReview|
+                partnerTotal = partnerTotal + partReview.rating
+                partnerCount = partnerCount + 1
             end
+        end
 
-            partnerTotal = 0
-            partnerCount = 0
-            self.partners.each do |partner| 
-                partner.reviews.each do |partReview|
-                    partnerTotal = partnerTotal + partReview.rating
-                    partnerCount = partnerCount + 1
-                end
-            end
-
-            #must be float to account for remainder
-            newAvg = (companyTotal +  partnerTotal).to_f / (self.reviews.size + partnerCount)
-    		self.update_attribute(:avg_rating, newAvg)
+        #must be float to account for remainder
+        newAvg = (companyTotal +  partnerTotal).to_f / (self.reviews.size + partnerCount)
+  		self.update_attribute(:avg_rating, newAvg)
     end 
 
    # custom wrote search function
