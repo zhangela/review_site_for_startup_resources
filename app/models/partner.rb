@@ -26,7 +26,12 @@ class Partner < ActiveRecord::Base
     	else
          oldAvg = self.avg_rating
          numRatings = self.reviews.size
-         oldTotal = oldAvg * (numRatings-1)
+
+         if caller.grep /create/
+            oldTotal = oldAvg * (numRatings-1)
+         elsif caller.grep /update/
+            oldTotal = oldAvg * (numRatings)
+         end
 
          newAvg = (oldTotal + review.rating) / (numRatings)
 
