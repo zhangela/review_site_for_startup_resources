@@ -5,11 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-    email: angelaz@mit.edu
-    name: Angela Zhang
+    email: 'angelaz@mit.edu'
+    name: 'Angela Zhang'
+    encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 two:
-    email: test@mit.edu
-    name: Tester Test
+    email: 'test@mit.edu'
+    name: 'Tester Test'
+    encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 
   # create_table "users", :force => true do |t|

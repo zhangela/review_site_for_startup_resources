@@ -17,5 +17,6 @@ two:
   pros: Nothing good.
   cons: I hate the company.
   user:
-  reviewable_id: 1
+  reviewable_id: 2
   reviewable_type: MyString
+  id: 2
