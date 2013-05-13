@@ -12,9 +12,8 @@ class ReviewsControllerTest < ActionController::TestCase
 
   test "should create review" do
     assert_difference('Review.count') do
-      post :create, {review: { body: @review.body, rating: @review.rating, pros: @review.pros, cons: @review.cons, reviewable_id: 1, reviewable_type: @review.reviewable_type, title: @review.title }, review_id: 1, reviewable_id: 1}
+      post :create, review: { body: @review.body, rating: @review.rating, pros: @review.pros, cons: @review.cons, reviewable_id: @review.reviewable_id, reviewable_type: @review.reviewable_type, title: @review.title }
     end
-
     assert_redirected_to review_path(assigns(:review))
   end
 
@@ -27,5 +26,4 @@ class ReviewsControllerTest < ActionController::TestCase
     put :update, id: @review.id, review: { body: @review.body,  pros: @review.pros, cons: @review.cons, rating: @review.rating, reviewable_id: 1, reviewable_type: @review.reviewable_type, title: @review.title }
     assert_redirected_to review_path(assigns(:review))
   end
-
 end

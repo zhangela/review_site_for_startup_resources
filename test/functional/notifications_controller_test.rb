@@ -9,5 +9,4 @@ class NotificationsControllerTest < ActionController::TestCase
     sign_in @user
     @notification = notifications(:one)
   end
-
 end

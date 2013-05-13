@@ -38,9 +38,11 @@
       <% end %>
       <br />
       <h2>Recent Comments:</h2>
-      <% @comments.each do |comment| %>
-      <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion.review_id) %> at <%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %> </p>
-      <% end %>
+      
+        <% @comments.each do |comment| %>
+        <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion.review_id) %> at <%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %> </p>
+        <% end %>
+  
     </div>
   </div>
 </div>

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable,
   #  :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable # :confirmable
+         :recoverable, :rememberable, :trackable, :validatable #:confirmable
   validates_format_of :email, :with => /(.*)@mit.edu/i, :message => "Must be mit.edu email address"
   has_many :reviews
   has_many :comments
