@@ -10,18 +10,14 @@ class Company < ActiveRecord::Base
     # default average rating to -1 so we can check for it and display "not yet rated."
     def default_values
         self.avg_rating ||= -1
-        self.partners_average ||= -1
-        self.num_partner_reviews ||= 0
     end
 
     #called whenever a new review is submitted or a review is updated on the company
-    def recalculate_average(review)
+    def recalculate_average()
     	#if no reviews have been submitted
-    	if(self.avg_rating == -1)
-            self.update_attribute(:avg_rating, review.rating)
-        else
+
             companyTotal = 0
-            company.reviews.each do |compReview|
+            self.reviews.each do |compReview|
                 companyTotal = companyTotal + compReview.rating
             end
 
@@ -33,10 +29,10 @@ class Company < ActiveRecord::Base
                     partnerCount = partnerCount + 1
                 end
             end
- 
-            newAvg = (companyTotal +  partnerCount + review.rating) / (company.reviews.size + partnerCount)
+
+            #must be float to account for remainder
+            newAvg = (companyTotal +  partnerTotal).to_f / (self.reviews.size + partnerCount)
     		self.update_attribute(:avg_rating, newAvg)
-    	end
     end 
 
    # custom wrote search function

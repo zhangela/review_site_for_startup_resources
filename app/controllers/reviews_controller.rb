@@ -48,9 +48,9 @@ class ReviewsController < ApplicationController
   def recalculate_averages
     if @reviewable.kind_of? Partner
         @company = @reviewable.company
-        @company.recalculate_partners_average(@review) #total partner average
+        @company.recalculate_average() #total partner average
     end
-    @reviewable.recalculate_average(@review)
+    @reviewable.recalculate_average()
   end
 
   # POST /reviews

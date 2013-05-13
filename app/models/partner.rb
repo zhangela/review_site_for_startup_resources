@@ -18,11 +18,8 @@ class Partner < ActiveRecord::Base
     end
 
     #called whenever a new review is submitted
-    def recalculate_average(review)
+    def recalculate_average()
         #if no reviews have been submitted
-        if(self.avg_rating == -1)
-            self.update_attribute(:avg_rating, review.rating)
-        else
 
             total = 0
             self.reviews.each do |review|
@@ -33,6 +30,5 @@ class Partner < ActiveRecord::Base
 
             self.update_attribute(:avg_rating, newAvg)
         end
-    end 
 
 end
