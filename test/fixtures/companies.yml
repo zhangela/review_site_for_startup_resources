@@ -5,9 +5,11 @@ one:
   description: Company description 1.
   avg_rating: 5
   url: company.com
+  id: 1
 
 two:
   name: MyString
   description: MyText
   avg_rating: -1
   url: MyString
+  id: 2

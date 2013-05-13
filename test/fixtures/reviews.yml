@@ -9,6 +9,7 @@ one:
   user:
   reviewable_id: 1
   reviewable_type: MyString
+  id: 1
 
 two:
   title: MyString

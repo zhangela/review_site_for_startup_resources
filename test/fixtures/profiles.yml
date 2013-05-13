@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  about: MyText
+  about: Hello I like startups! weeee
   contactnum: MyString
   user_id: 1
+  id: 1
 
 two:
   about: MyText
   contactnum: MyString
   user_id: 1
+  id: 2
