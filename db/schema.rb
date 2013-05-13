@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513052502) do
+ActiveRecord::Schema.define(:version => 20130513171141) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -68,8 +68,6 @@ ActiveRecord::Schema.define(:version => 20130513052502) do
     t.string   "category"
     t.string   "location"
     t.boolean  "add_from_crunchbase"
-    t.integer  "partners_average"
-    t.integer  "num_partner_reviews"
   end
 
   create_table "discussions", :force => true do |t|
