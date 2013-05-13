@@ -50,21 +50,6 @@ class ReviewsController < ApplicationController
         @company = @reviewable.company
         @company.recalculate_partners_average(@review) #total partner average
     end
-    if @reviewable.kind_of? Review
-      puts
-      puts
-      puts "BADDDDDDDDDDDDDDDDDDDDDDDDd"
-    end
-    if @reviewable.kind_of? Partner
-      puts
-      puts
-      puts "PartnerRRRRRRRRRRRRRRRRRr"
-    end    
-    if @reviewable.kind_of? Company
-      puts
-      puts
-      puts "companyYYYYYYYYYYYYYYYYYY"
-    end
     @reviewable.recalculate_average(@review)
   end
 
