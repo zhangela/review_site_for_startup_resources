@@ -27,10 +27,10 @@
         <%= @user.email %>
 
         <h4>Phone:</h4>
-        <%= best_in_place @profile, :contactnum, :nil => "No phone number on file :(", :html_attrs => {:size =>"300px"} %>
+        <%= @profile.contactnum %>
 
         <h4>About:</h4>
-        <%= best_in_place @profile, :about, :nil => "Nothing yet :(", :html_attrs => {:size =>"300px"} %>
+        <%= @profile.about %>
       </p>
 
       <% if @user == current_user %>
@@ -38,11 +38,11 @@
       <% end %>
       <br />
       <h2>Recent Comments:</h2>
-      
+
         <% @comments.each do |comment| %>
         <p class = "recent"><%= link_to "'" + comment.body + "'", review_path(comment.discussion.review_id) %> at <%= comment.created_at.strftime(" %I:%M %p on %B %d, %Y") %> </p>
         <% end %>
-  
+
     </div>
   </div>
 </div>
