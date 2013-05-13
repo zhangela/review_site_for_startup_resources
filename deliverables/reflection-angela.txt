@@ -1,0 +1,21 @@
+PEER REVIEW:
+
+Julianna Mello:
+
+Julianna was very hardworking, easily reachable, eager to learn, and enjoyable to work with. She is very energetic and very willing to put in the work. However, she hasn't had a lot of prior experience in web/rails development, and at times might not be the most efficient in terms of code design.
+
+Victoria Li:
+
+Victoria is a brilliant and resourceful programmer. She has put in a lot of work, especially at the MVP phase, and implemented major parts of the project. However, DanceTroupe turned out to be a major time commitment and as a result she is a lot busier towards the end of the project phase.
+
+
+EVALUATION:
+
+From the team planning perspective, I would say we followed the project duedates and timeline effectively. One of the major improvements we could make is that we should have assigned each person larger parts of the project. We kept a weekly to-do for each person at the beginning; but near the end we were just grabbing whatever is left to be done and were therefore much less organized. Secondly, we could have met more regularly, as discussed on the team work plan, as opposed to one person emailing out about where she is working and the others joining her if they are free.
+
+LESSONS LEARNED:
+
+-> I should always put team meetings in my google calendar (Sorry, TAs, for missing our last team meeting).
+-> We should divide the big tasks up early on.
+-> We should meet more regularly.
+-> We should practice test-driven development more than we did.
