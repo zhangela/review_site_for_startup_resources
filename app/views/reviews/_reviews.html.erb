@@ -23,9 +23,9 @@ $(function() {
             <% end %>
             <% else %>
             <% if review.public_name == "Anonymous" %>
-            <b><%= review.public_name %> wrote:<b>
+            <b><%= review.public_name %> wrote:</b>
                 <% else %>
-                <b><%= link_to review.public_name, profile_path(review.user) %> wrote:<b>
+                <b><%= link_to review.public_name, profile_path(review.user) %> wrote:</b>
                     <% end %>
                     <% end %>
 
