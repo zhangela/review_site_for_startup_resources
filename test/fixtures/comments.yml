@@ -28,4 +28,3 @@ two:
   #   t.integer  "user_id"
   #   t.string   "public_name"
   # end
->>>>>>> 343cdd6b74ec1f9f2b13862b6adaf08ba43078e9
