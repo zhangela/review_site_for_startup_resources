@@ -3,11 +3,11 @@
 one:
   name: MyString
   description: MyText
-  avg_rating: 9.99
+  avg_rating: 5
   url: MyString
 
 two:
   name: MyString
   description: MyText
-  avg_rating: 9.99
+  avg_rating: 0
   url: MyString
