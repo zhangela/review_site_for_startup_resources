@@ -8,10 +8,12 @@ one:
     email: 'angelaz@mit.edu'
     name: 'Angela Zhang'
     encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+    id: 1
 two:
     email: 'test@mit.edu'
     name: 'Tester Test'
     encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+    id: 2
 
 
   # create_table "users", :force => true do |t|

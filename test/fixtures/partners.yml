@@ -1,11 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: Paul Graham
   avg_rating: 9.99
-  company: 
+  company_id: 1
+  id: 1
+  email: pg@ycombinator.com
 
 two:
-  name: MyString
+  name: Peter Thiel
   avg_rating: 9.99
-  company: 
+  company_id: 2
+  id: 2
+  email: pt@ff.com
+
+
+
+
+  # create_table "partners", :force => true do |t|
+  #   t.string   "name"
+  #   t.decimal  "avg_rating"
+  #   t.integer  "company_id"
+  #   t.datetime "created_at", :null => false
+  #   t.datetime "updated_at", :null => false
+  #   t.string   "email"
+  # end

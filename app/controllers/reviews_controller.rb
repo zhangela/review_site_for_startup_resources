@@ -44,26 +44,11 @@ class ReviewsController < ApplicationController
   end
 
   #checks if @reviewable is type partner.
-  #If partner, must recalculate partner and total average in the partner's company 
+  #If partner, must recalculate partner and total average in the partner's company
   def recalculate_averages
     if @reviewable.kind_of? Partner
         @company = @reviewable.company
         @company.recalculate_partners_average(@review) #total partner average
-    end
-    if @reviewable.kind_of? Review
-      puts
-      puts
-      puts "BADDDDDDDDDDDDDDDDDDDDDDDDd"
-    end
-    if @reviewable.kind_of? Partner
-      puts
-      puts
-      puts "PartnerRRRRRRRRRRRRRRRRRr"
-    end    
-    if @reviewable.kind_of? Company
-      puts
-      puts
-      puts "companyYYYYYYYYYYYYYYYYYY"
     end
     @reviewable.recalculate_average(@review)
   end
