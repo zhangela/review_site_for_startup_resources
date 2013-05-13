@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
     before_save :default_values
 
-    attr_accessible :avg_rating, :partners_average, :description, :name, :url, :category, :location, :add_from_crunchbase
+    attr_accessible :avg_rating, :partners_average, :description, :name, :url, :category, :location, :add_from_crunchbase, :num_partner_reviews
     has_many :reviews, :as => :reviewable
     has_many :partners
 
@@ -11,6 +11,7 @@ class Company < ActiveRecord::Base
     def default_values
         self.avg_rating ||= -1
         self.partners_average ||= -1
+        self.num_partner_reviews ||= 0
     end
 
     #calculates the average rating of all partners, called when a new partner review is submitted or a review is updated
@@ -20,21 +21,21 @@ class Company < ActiveRecord::Base
             self.update_attribute(:partners_average, review.rating)
         else
             #recalculate average rating across all partners
-            oldAvg = self.partners_average
-            numPartners = self.partners.size
-            numRatings = self.reviews.size
+            oldPartnersAvg = self.partners_average
+            oldNumPartnerReviews = self.num_partner_reviews
             if caller.grep /create/
-                oldTotal = oldAvg * (numRatings-1)
+                oldPartnerTotal = oldAvg * (oldNumPartnerReviews-1)
             elsif caller.grep /update/
-                oldTotal = oldAvg * (numRatings)
+                oldPartnerTotal = oldAvg * (oldNumPartnerReviews)
             end
 
-            newAvg = (oldTotal + review.rating) / (numPartners)
+            newPartnersAvg = (oldPartnerTotal + review.rating) / (oldNumPartnerReviews)
 
             #recalculate average rating of company
-            newCompanyAvg = (self.avg_rating + newAvg) / 2
+            companyTotal = self.avg_rating*self.reviews.size
+            newCompanyAvg = (companyTotal + oldPartnerTotal + review.rating) / (oldNumPartnerReviews + self.reviews.size)
 
-            self.update_attributes(:partners_average=>newAvg, :avg_rating=>newCompanyAvg)
+            self.update_attributes(:partners_average=>newPartnersAvg, :avg_rating=>newCompanyAvg, :num_partner_reviews=>(self.num_partner_reviews+1))
         end
     end
 
@@ -46,16 +47,17 @@ class Company < ActiveRecord::Base
         else
             oldAvg = self.avg_rating
             numRatings = self.reviews.size
+
             if caller.grep /create/
                 oldTotal = oldAvg * (numRatings-1)
             elsif caller.grep /update/
                 oldTotal = oldAvg * (numRatings)
             end
 
-    		newCompanyAvg = (oldTotal + review.rating) / (numRatings)
-            partnerAvg = self.partners_average
+            numPartnerReviews = self.num_partner_reviews
+            partnerTotal = (self.partners_average * self.num_partner_reviews)
 
-            newAvg = (newCompanyAvg + partnerAvg) / 2
+            newAvg = (oldTotal + partnerTotal + review.rating) / (self.num_partner_reviews + numRatings)
 
     		self.update_attribute(:avg_rating, newAvg)
     	end
