@@ -23,7 +23,7 @@ $(function() {
       <span class="stars"> <%= company.avg_rating %> </span>
     <% end %>
 
-    <a href = "<%= company.url %>"><%= company.url %></a> <br>
+    <a href = "<%= company.url %>"><%= url_with_protocol (@company.url) %></a> <br>
     <b>Category: </b><td><%= company.category %></td> <br>
     <b>Location: </b><td><%= company.location %></td> <br>
 
