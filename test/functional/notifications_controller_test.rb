@@ -16,10 +16,6 @@ class NotificationsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:notifications)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
 
   test "should create notification" do
     assert_difference('Notification.count') do
@@ -34,21 +30,4 @@ class NotificationsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @notification
-    assert_response :success
-  end
-
-  test "should update notification" do
-    put :update, id: @notification, notification: { body: @notification.body, review_id: @notification.review_id, title: @notification.title, type: @notification.type, undread: @notification.undread, user_id: @notification.user_id }
-    assert_redirected_to notification_path(assigns(:notification))
-  end
-
-  test "should destroy notification" do
-    assert_difference('Notification.count', -1) do
-      delete :destroy, id: @notification
-    end
-
-    assert_redirected_to notifications_path
-  end
 end
