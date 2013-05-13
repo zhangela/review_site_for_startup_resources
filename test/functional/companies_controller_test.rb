@@ -5,13 +5,13 @@ class CompaniesControllerTest < ActionController::TestCase
     @company = companies(:one)
   end
 
-  test "should get index" do
+  test "should get company index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:companies)
   end
 
-  test "should get new" do
+  test "should get company new" do
     get :new
     assert_response :success
   end
@@ -39,11 +39,4 @@ class CompaniesControllerTest < ActionController::TestCase
     assert_redirected_to company_path(assigns(:company))
   end
 
-  test "should destroy company" do
-    assert_difference('Company.count', -1) do
-      delete :destroy, id: @company
-    end
-
-    assert_redirected_to companies_path
-  end
 end
