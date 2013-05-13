@@ -4,6 +4,7 @@ class UsersController < Devise::SessionsController
   def build_profile
         @user.build_profile
         @user.profile.user_id = current_user.id
+        @user.profile.contactnum = "No phone number on file :("
         @user.save!
     end
 
