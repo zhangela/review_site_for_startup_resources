@@ -22,6 +22,7 @@ class Company < ActiveRecord::Base
             #recalculate average rating across all partners
             oldAvg = self.partners_average
             numPartners = self.partners.size
+            numRatings = self.reviews.size
             if caller.grep /create/
                 oldTotal = oldAvg * (numRatings-1)
             elsif caller.grep /update/
